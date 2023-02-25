@@ -1,0 +1,55 @@
+@import '/assets/css/--mixins';
+@import '/assets/css/--root';
+@import '/assets/css/--variables';
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+  color: var(--c-black);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  &-fluid {
+    width: 100%;
+  }
+
+  @each $name, $width in $containers {
+    @include breakpoint-to(#{$name}) {
+        max-width: #{$width};
+    }
+  }
+}
+
+.row {
+  margin: 0 -1rem;
+}
+
+a {
+  color: var(--c-primary);
+  cursor: pointer;
+  @include hover-underline(var(--c-primary));
+}
+
+ul {
+  @include reset-list;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

@@ -1,0 +1,58 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-family: 'IBM Plex Sans Condensed', Arial, Helvetica, sans-serif
+}
+
+.font {
+  &-sans {
+    font-family: 'IBM Plex Sans Condensed', Arial, Helvetica, sans-serif
+  }
+
+  &-600 {
+    font-weight: 600;
+  }
+}
+
+.text {
+  &-size {
+    &--small {
+      font-size: .75rem;
+    }
+
+    &--basic {
+      font-size: 1rem;
+    }
+  
+    &--medium {
+      font-size: 1.25rem;
+    }
+  
+    &--large {
+      font-size: 1.5rem;
+    }
+  
+    &--largest {
+      font-size: 1.75rem;
+    }
+  }
+
+  &-color {
+    &--primary {
+      color: var(--c-primary);
+    }
+
+    &--secondary {
+      color: var(--c-secondary);
+    }
+
+    &--white {
+      color: var(--c-white);
+    }
+  }
+}
+
