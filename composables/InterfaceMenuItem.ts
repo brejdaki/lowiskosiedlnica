@@ -1,4 +1,4 @@
 export interface MenuItem {
-  label: string;
-  link: string;
+	label: string
+	link: string
 }
