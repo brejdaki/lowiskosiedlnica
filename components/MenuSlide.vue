@@ -67,7 +67,7 @@ function handlePhoneCall (): void {
 				class="menu-slide__call-icon"
 			>
 				<img 
-					src="icons/phone.svg"
+					src="/icons/phone.svg"
 					loading="lazy"
 					width="48"
 					height="48"
