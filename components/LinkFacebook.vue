@@ -26,7 +26,7 @@ defineProps({
     ]"
   >
     <img 
-      src="icons/facebook.svg"
+      src="/icons/facebook.svg"
       loading="lazy"
       :width="size"
       :height="size"
