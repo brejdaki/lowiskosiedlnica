@@ -30,5 +30,10 @@ function handleOverflowLayer() {
   background-color: var(--c-black-alpha);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
+
+  @include breakpoint-to('mobile-xlarge') {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
 }
 </style>

@@ -67,6 +67,10 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
     padding: 0 1rem;
     justify-content: space-between;
     align-items: center;
+
+    @include breakpoint-to('desktop-small') {
+      padding: 0 1.5rem;
+    }
   }
 
   &__logo {
