@@ -22,21 +22,21 @@ const menuItem: MenuItem[] = [
 </script>
 
 <template>
-  <ul 
-    class="navbar__list"
+<ul 
+  class="navbar__list"
+>
+  <li
+    v-for="(item, index) in menuItem"
+    :key="index"
+    class="navbar__list-item font-sans"
   >
-    <li
-      v-for="(item, index) in menuItem"
-      :key="index"
-      class="navbar__list-item font-sans"
+    <NuxtLink
+      :to="item.link"
     >
-      <NuxtLink
-        :to="item.link"
-      >
-        {{ item.label }}
-      </NuxtLink>
-    </li>
-  </ul>
+      {{ item.label }}
+    </NuxtLink>
+  </li>
+</ul>
 </template>
 
 <style lang="scss" scoped>

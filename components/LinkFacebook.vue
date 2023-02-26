@@ -17,27 +17,27 @@ defineProps({
 </script>
 
 <template>
-  <a
-    href="https://www.facebook.com/groups/504530429732131"
-    target="_blank"
-    :class="[
-      'link-facebook',
-      { 'link-facebook--desc': isDescription }
-    ]"
-  >
-    <img 
-      src="/icons/facebook.svg"
-      loading="lazy"
-      :width="size"
-      :height="size"
-    />
+<a
+  href="https://www.facebook.com/groups/504530429732131"
+  target="_blank"
+  :class="[
+    'link-facebook',
+    { 'link-facebook--desc': isDescription }
+  ]"
+>
+  <img 
+    src="/icons/facebook.svg"
+    loading="lazy"
+    :width="size"
+    :height="size"
+  />
 
-    <div
-      v-if="isDescription"
-    >
-      Facebook grupa
-    </div>
-  </a>
+  <div
+    v-if="isDescription"
+  >
+    Facebook grupa
+  </div>
+</a>
 </template>
 
 <style lang="scss" scoped>

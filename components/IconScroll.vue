@@ -1,11 +1,11 @@
 <template>
-  <img 
-    class="scroll-icon"
-    src="/icons/scroll.svg"
-    loading="lazy"
-    width="36"
-    height="36"
-  />
+<img 
+  class="scroll-icon"
+  src="/icons/scroll.svg"
+  loading="lazy"
+  width="36"
+  height="36"
+/>
 </template>
 
 <style lang="scss" scoped>

@@ -1,6 +1,9 @@
 <template>
+<div
+  class="container"
+>
   <div
-    class="container info-box"
+    class="info-box"
   >
     <h3
       class="title"
@@ -16,6 +19,23 @@
       Od tego dnia łowisko będzie czynne tylko w weekendy.
     </p>
   </div>
+
+  <img 
+    class="hero__birds"
+    src="/images/birds.svg"
+    width="201"
+    height="108"
+    loading="lazy"
+  />
+
+  <img 
+    class="hero__cloud"
+    src="/images/cloud.svg"
+    width="117"
+    height="65"
+    loading="lazy"
+  />
+</div>
 </template>
 
 <style lang="scss" scoped>

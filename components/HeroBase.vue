@@ -3,60 +3,44 @@ const viewport = useViewport()
 </script>
 
 <template>
+<div 
+  :class="[
+    'hero',
+    { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
+    { 'container' : viewport.isGreaterOrEquals('mobile-xlarge') }
+  ]"
+>
   <div 
-    :class="[
-      'hero',
-      { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
-      { 'container' : viewport.isGreaterOrEquals('mobile-xlarge') }
-    ]"
+    class="hero__image"
   >
-    <div 
-      class="hero__image"
-    >
-      <img 
-        src="/images/hero.svg"
-        fetchpriority="high"
-      />
-    </div>
-
-    <div
-      :class="[
-        'hero__container',
-      ]"
-    >
-      <div
-        class="hero__inner"
-      >
-        <h1 
-          class="hero__title"
-        >
-          Łowisko wędkarskie Siedlnica
-        </h1>
-
-        <span 
-          class="hero__desc"
-        >
-          Mała wielka woda.
-        </span> 
-      </div>
-    </div>
-
     <img 
-      class="hero__birds"
-      src="/images/birds.svg"
-      width="201"
-      height="108"
-      loading="lazy"
-    />
-
-    <img 
-      class="hero__cloud"
-      src="/images/cloud.svg"
-      width="117"
-      height="65"
-      loading="lazy"
+      src="/images/hero.svg"
+      fetchpriority="high"
     />
   </div>
+
+  <div
+    :class="[
+      'hero__container',
+    ]"
+  >
+    <div
+      class="hero__inner"
+    >
+      <h1 
+        class="hero__title"
+      >
+        Łowisko wędkarskie Siedlnica
+      </h1>
+
+      <span 
+        class="hero__desc"
+      >
+        Mała wielka woda.
+      </span> 
+    </div>
+  </div>
+</div>
 </template>
 
 <style lang="scss" scoped>
