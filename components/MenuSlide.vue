@@ -106,17 +106,15 @@ function handlePhoneCall (): void {
 	background-color: var(--c-white);
 	z-index: var(--z-fixed);
 	box-shadow: var(--b-shadow-menu) 0 0 1.5rem 0.25rem;
-
-	// @include breakpoint-to('s') {
-	// 	right: inherit;
-	// 	width: 17rem;
-	// }
+	overflow-y: auto;
 
 	&__title {
 		color: var(--c-black-alpha);
 	}
 
 	&__list {
+		margin-bottom: 3rem;
+
 		&-item {
 			font-size: 1.75rem;
 
@@ -147,8 +145,7 @@ function handlePhoneCall (): void {
 	}
 
 	&__facebook {
-		position: absolute;
-		bottom: 6.75rem;
+		margin-bottom: 1.5rem;
 
 		@media screen and (height: 30rem) {
 			padding: 0 1rem 0 0;
@@ -179,16 +176,6 @@ function handlePhoneCall (): void {
 
 			img {
     		position: relative;
-
-				// @media screen and (height: 30rem) {
-				// 	transform: scale(.9);
-				// 	top: 0;
-				// }
-
-				// @media screen and (height: 41.125rem) and (width: 20rem) {
-				// 	transform: scale(.9);
-				// 	top: 0;
-				// }
 			}
 		}
 
@@ -199,7 +186,7 @@ function handlePhoneCall (): void {
 				font-size: 0.85rem;
 			}
 
-			@media screen and (height: 41.125rem) and (width: 20rem) {
+			@media screen and (height: 40rem) and (width: 20rem) {
 				font-size: 0.85rem;
 			}
 		}
@@ -212,7 +199,7 @@ function handlePhoneCall (): void {
 				font-size: 1.25rem;
 			}
 
-			@media screen and (height: 41.125rem) and (width: 20rem) {
+			@media screen and (height: 40rem) and (width: 20rem) {
 				font-size: 1.25rem;
 			}
 		}
