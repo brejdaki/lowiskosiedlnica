@@ -1,6 +1,6 @@
  @mixin breakpoint-to($breakpoint) {
   @media screen and (min-width: map-get($map: $breakpoints, $key: $breakpoint)) {
-      @content;
+    @content;
   }
 }
 
@@ -38,7 +38,7 @@
   background-color: transparent;
   font-family: 'IBM Plex Sans Condensed', Arial, Helvetica, sans-serif;
   font-weight: 600;
-  
+
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: button;

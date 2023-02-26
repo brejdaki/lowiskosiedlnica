@@ -9,13 +9,13 @@
         class="hero__container"
       >
         <h1 
-          class="hero__title text-size--largest"
+          class="hero__title"
         >
           Łowisko wędkarskie Siedlnica
         </h1>
 
         <span 
-          class="hero__desc text-size--small"
+          class="hero__desc"
         >
           Mała wielka woda.
         </span> 

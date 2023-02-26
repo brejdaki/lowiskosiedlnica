@@ -56,13 +56,10 @@ function handleButton() {
 <style lang="scss" scoped>
 .navbar__hamburger {
   @include reset-button;
-  position: absolute;
-  right: -0.5rem;
-  top: -0.5rem;
   height: 80px;
   width: 80px;
-  overflow: hidden;
-  transform: scale(.8);
+  margin: -1.5rem -1.5rem -1.5rem 0;
+  position: relative;
 
   svg {
     transform: translate(-50%, -50%);
@@ -115,7 +112,7 @@ function handleButton() {
     left: 0;
     top: 0;
     transform: scale(0);
-    transition: transform 400ms;
+    transition: all 400ms;
   }
 
   &--active {
@@ -152,9 +149,9 @@ function handleButton() {
     }
     .x {
       left: 0;
-      top: 0;
+      top: -1px;
       transform: scale(1);
-      transition: transform 400ms 50ms;
+      transition: all 400ms 50ms;
     }
   } 
 }

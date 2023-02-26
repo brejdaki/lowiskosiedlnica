@@ -3,12 +3,9 @@ import { MenuItem } from '@/composables/InterfaceMenuItem';
 
 const menuItem: MenuItem[] = [
 	{
-		label: 'Aktualności',
-		link: ''
-	}, {
 		label: 'Kalendarz',
 		link: ''
-	},{
+	}, {
 		label: 'Cennik',
 		link: ''
 	}, {
@@ -32,96 +29,119 @@ function handlePhoneCall (): void {
 	<div
 		class="menu-slide"
 	>
-		<h3
-			class="menu-slide__title"
+		<div
+			class="menu-slide__top"
 		>
-			Menu
-		</h3>
-
-		<ul 
-			class="menu-slide__list"
-		>
-			<li
-				v-for="(item, index) in menuItem"
-				:key="index"
-				class="menu-slide__list-item font-sans text-size--largest"
+			<h3
+				class="menu-slide__title"
 			>
-				<NuxtLink
-					class="text-color--secondary"
-					:to="item.link"
+				Menu
+			</h3>
+
+			<ul 
+				class="menu-slide__list"
+			>
+				<li
+					v-for="(item, index) in menuItem"
+					:key="index"
+					class="menu-slide__list-item font-sans"
 				>
-					{{ item.label }}
-				</NuxtLink>
-			</li>
-		</ul>
+					<NuxtLink
+						class="text-color--secondary"
+						:to="item.link"
+					>
+						{{ item.label }}
+					</NuxtLink>
+				</li>
+			</ul>
+		</div>
 
-		<LinkFacebook 
-			class="menu-slide__facebook"
-		/>
-
-		<button
-			class="menu-slide__call text-color--white"
-			@click="handlePhoneCall"
+		<div
+			class="menu-slide__bottom"
 		>
-			<div
-				class="menu-slide__call-icon"
-			>
-				<img 
-					src="/icons/phone.svg"
-					loading="lazy"
-					width="48"
-					height="48"
-				/>
-			</div>
+			<LinkFacebook 
+				class="menu-slide__facebook"
+			/>
 
-			<div
-				class="menu-slide__call-desc text-size--basic"
+			<button
+				class="menu-slide__call text-color--white"
+				@click="handlePhoneCall"
 			>
-				Zadzwoń do właściciela
-			</div>
-			<div
-				class="menu-slide__call-number text-size--large"
-			>
-				+48 888 660 314
-			</div>
-		</button>
+				<div
+					class="menu-slide__call-icon"
+				>
+					<img 
+						src="/icons/phone.svg"
+						loading="lazy"
+						width="36"
+						height="36"
+					/>
+				</div>
+
+				<div
+					class="menu-slide__call-desc"
+				>
+					Zadzwoń do właściciela
+				</div>
+				<div
+					class="menu-slide__call-number"
+				>
+					+48 888 660 314
+				</div>
+			</button>
+		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 .menu-slide {
 	position: fixed;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
 	top: 0;
 	left: 0;
 	bottom: 0;
-	right: 4rem;
-	padding: 1rem 1.5rem;
+	padding: 1rem 1.5rem 0;
 	background-color: var(--c-white);
 	z-index: var(--z-fixed);
 	box-shadow: var(--b-shadow-menu) 0 0 1.5rem 0.25rem;
+
+	// @include breakpoint-to('s') {
+	// 	right: inherit;
+	// 	width: 17rem;
+	// }
 
 	&__title {
 		color: var(--c-black-alpha);
 	}
 
 	&__list {
-		margin-bottom: 2rem;
-
 		&-item {
+			font-size: 1.75rem;
+
+			@media screen and (height: 30rem) {
+				font-size: 1.25rem;
+			}
+
+			@media screen and (min-height: 48.75rem) {
+				font-size: 2rem;
+			}
+
 			&:not(:last-child) {
 				margin-bottom: 1rem;
 
 				@media screen and (height: 30rem) {
 					margin-bottom: .75rem;
 				}
+
+				@media screen and (min-height: 48.75rem) {
+					margin-bottom: 1.5rem;
+				}
 			}
 
 			a {
 				@include hover-underline(var(--c-secondary))
-			}
-
-			@media screen and (height: 30rem) {
-				font-size: 1.25rem;
 			}
 		}
 	}
@@ -141,36 +161,34 @@ function handlePhoneCall (): void {
 
 	&__call {
 		@include reset-button;
-		position: absolute;
 		display: grid;
-		grid-template-columns: 48px 1fr;
+		grid-template-columns: 2.25rem 1fr;
 		grid-template-areas: 
 			"icon description"
 			"icon number";
 		grid-column-gap: 1rem;
 		grid-row-gap: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		padding: 1rem;
+		width: calc(100% + 3rem);
+		align-items: center;
+		margin: 0 -1.5rem;
+		padding: 1rem 1.5rem;
 		background-color: var(--c-black-alpha);
 
 		&-icon {
 			grid-area: icon;
 
 			img {
-				top: .125rem;
     		position: relative;
 
-				@media screen and (height: 30rem) {
-					transform: scale(.9);
-					top: 0;
-				}
+				// @media screen and (height: 30rem) {
+				// 	transform: scale(.9);
+				// 	top: 0;
+				// }
 
-				@media screen and (height: 41.125rem) and (width: 20rem) {
-					transform: scale(.9);
-					top: 0;
-				}
+				// @media screen and (height: 41.125rem) and (width: 20rem) {
+				// 	transform: scale(.9);
+				// 	top: 0;
+				// }
 			}
 		}
 
@@ -188,6 +206,7 @@ function handlePhoneCall (): void {
 
 		&-number {
 			grid-area: number;
+			font-size: 1.5rem;
 
 			@media screen and (height: 30rem) {
 				font-size: 1.25rem;
