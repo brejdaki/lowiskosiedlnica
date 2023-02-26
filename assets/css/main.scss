@@ -20,12 +20,16 @@ body {
 }
 
 .container {
-  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 
   &-fluid {
     width: 100%;
+  }
+
+  @include breakpoint-to('desktop-small') {
+    padding: 0 1rem;
   }
 
   @each $name, $width in $containers {
@@ -52,4 +56,9 @@ ul {
 img {
   display: block;
   max-width: 100%;
+}
+
+.title {
+  color: var(--c-black-alpha);
+  font-size: 1.5rem;
 }
