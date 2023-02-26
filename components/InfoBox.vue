@@ -18,28 +18,43 @@
     <p>
       Od tego dnia łowisko będzie czynne tylko w weekendy.
     </p>
+
+    <img 
+      class="info-box__birds"
+      src="/images/birds.svg"
+      width="201"
+      height="108"
+      loading="lazy"
+    />
+
+    <img 
+      class="info-box__cloud"
+      src="/images/cloud.svg"
+      width="117"
+      height="65"
+      loading="lazy"
+    />
   </div>
-
-  <img 
-    class="hero__birds"
-    src="/images/birds.svg"
-    width="201"
-    height="108"
-    loading="lazy"
-  />
-
-  <img 
-    class="hero__cloud"
-    src="/images/cloud.svg"
-    width="117"
-    height="65"
-    loading="lazy"
-  />
 </div>
 </template>
 
 <style lang="scss" scoped>
 .info-box {
-  margin-bottom: 3rem;
+  padding: 5rem 0 3rem;
+  position: relative;
+
+  &__birds {
+    position: absolute;
+    right: -1rem;
+    top: -2.5rem;
+    opacity: .5;
+  }
+
+  &__cloud {
+    position: absolute;
+    right: 0;
+    top: 3rem;
+    opacity: .7;
+  }
 }
 </style>

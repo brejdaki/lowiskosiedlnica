@@ -46,7 +46,6 @@ const viewport = useViewport()
 <style lang="scss" scoped>
 .hero {
   position: relative;
-  padding-bottom: 5rem;
 
   @include breakpoint-to('mobile-xlarge') {
     padding-bottom: 3rem;
@@ -94,20 +93,6 @@ const viewport = useViewport()
 
   &__desc {
     color: var(--c-secondary);
-  }
-
-  &__birds {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 2rem;
-    opacity: .5;
-  }
-
-  &__cloud {
-    position: absolute;
-    right: 1rem;
-    bottom: -1rem;
-    opacity: .7;
   }
 }
 </style>

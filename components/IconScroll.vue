@@ -10,9 +10,9 @@
 
 <style lang="scss" scoped>
 .scroll-icon {
-  opacity: .25;
+  opacity: 0.5;
   position: fixed;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  bottom: 1rem;
+  right: 1rem;
 }
 </style>
