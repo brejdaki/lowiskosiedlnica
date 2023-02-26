@@ -11,37 +11,63 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
     class="navbar"
   >
     <div 
-      class="navbar__logo"
+      :class="[
+        'navbar__container',
+        { 'container': viewport.isGreaterOrEquals('desktop-small') }
+      ]"
     >
-      <NuxtLink 
-        to="/"
-        class="navbar__link"
+      <div 
+        class="navbar__logo"
       >
-        łowiskosiedlnica.pl
-      </NuxtLink>
+        <NuxtLink 
+          to="/"
+          class="navbar__link"
+        >
+          łowiskosiedlnica.pl
+        </NuxtLink>
+      </div>
+
+      <div
+        class="navbar__inner"
+      >
+        <MenuNavbar 
+          v-if="viewport.isGreaterOrEquals('desktop-small')"
+        />
+
+        <LinkFacebook 
+          v-if="viewport.isGreaterOrEquals('desktop')"
+          :size="28"
+        />
+
+        <Transition name="slide">
+          <MenuSlide 
+            v-if="isMenuSlideVisible"
+          />
+        </Transition>
+
+        <NavbarHamburger 
+          v-if="viewport.isLessThan('desktop-small')"
+        />
+      </div>
     </div>
-
-    <MenuNavbar 
-      v-if="viewport.isGreaterOrEquals('desktop')"
-    />
-
-    <Transition name="slide">
-      <MenuSlide 
-        v-if="isMenuSlideVisible"
-      />
-    </Transition>
-
-    <NavbarHamburger 
-      v-if="viewport.isLessThan('desktop')"
-    />
   </nav>
 </template>
 
 <style lang="scss" scoped>
 .navbar {
-  background-color: var(--c-lgray);
-  padding: 1rem;
+  display: flex;
+  height: 4rem;
   position: relative;
+  background-color: var(--c-lgray);
+  overflow: hidden;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    padding: 0 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__logo {
     font-size: 1.25rem;
@@ -53,7 +79,10 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
     @include hover-underline(var(--c-secondary))
   }
 
-  &__list {
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
   }
 }
 
@@ -64,6 +93,6 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
 
 .slide-enter-from,
 .slide-leave-to {
-  transform: translateX(-18rem);
+  transform: translateX(-100%);
 }
 </style>

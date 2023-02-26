@@ -1,15 +1,26 @@
-$breakpoints: (
-  "xxs": 20rem,   // 320
-  "xs": 22.5rem,  // 360
-  "s": 36rem,     // 576
-  "m": 64rem,     // 1024
-  "l": 85.375rem, // 1366
-  "xl": 95rem,    // 1520
-);
+// $breakpoints: (
+//   "xxs": 20rem,   // 320
+//   "xs": 22.5rem,  // 360
+//   "s": 36rem,     // 576
+//   "m": 64rem,     // 1024
+//   "l": 85.375rem, // 1366
+//   "xl": 95rem,    // 1520
+// );
 
 $containers: (
-  "s": 36rem,    // 576
-  "m": 64rem,    // 1024
-  "l": 75rem,    // 1200
-  "xl": 89rem,   // 1424
+  "mobile-xlarge":  36rem,         // 576
+  "desktop-small":  64rem,         // 1024
+  "desktop":        80rem,         // 1280
+  "desktop-medium": 89rem,         // 1424
+);
+
+$breakpoints: (
+  "mobile-small":   20rem,         // 320
+  "mobile":         22.5rem,       // 360
+  "mobile-medium":  24.375rem,     // 390 
+  "mobile-large":   25.75rem,      // 412
+  "mobile-xlarge":  36rem,         // 576
+  "desktop-small":  64rem,         // 1024
+  "desktop":        85.375rem,     // 1366
+  "desktop-medium": 96rem,         // 1536
 );

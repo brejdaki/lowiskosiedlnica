@@ -56,7 +56,8 @@ defineProps({
     align-items: center;
     border: 1px solid var(--c-facebook);
     border-radius: .25rem;
-    color: var(--c-facebook)
+    color: var(--c-facebook);
+    font-size: 0.875rem;
   }
 }
 </style>
