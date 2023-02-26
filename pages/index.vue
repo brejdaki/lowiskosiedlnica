@@ -6,4 +6,8 @@ definePageMeta({
 
 <template>
   <HeroBase />
+
+  <InfoBox />
+
+  <IconScroll />
 </template>

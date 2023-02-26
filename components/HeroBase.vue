@@ -1,12 +1,31 @@
+<script lang="ts" setup>
+const viewport = useViewport()
+</script>
+
 <template>
   <div 
-    class="container-fluid hero"
+    :class="[
+      'hero',
+      { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
+      { 'container' : viewport.isGreaterOrEquals('mobile-xlarge') }
+    ]"
   >
+    <div 
+      class="hero__image"
+    >
+      <img 
+        src="/images/hero.svg"
+        fetchpriority="high"
+      />
+    </div>
+
     <div
-      class="container"
+      :class="[
+        'hero__container',
+      ]"
     >
       <div
-        class="hero__container"
+        class="hero__inner"
       >
         <h1 
           class="hero__title"
@@ -22,45 +41,89 @@
       </div>
     </div>
 
-    <div 
-      class="hero__image"
-    >
-      <img src="/images/hero.svg" />
-    </div>
+    <img 
+      class="hero__birds"
+      src="/images/birds.svg"
+      width="201"
+      height="108"
+      loading="lazy"
+    />
+
+    <img 
+      class="hero__cloud"
+      src="/images/cloud.svg"
+      width="117"
+      height="65"
+      loading="lazy"
+    />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .hero {
   position: relative;
-  padding: 2rem 0;
+  padding-bottom: 5rem;
+
+  @include breakpoint-to('mobile-xlarge') {
+    padding-bottom: 3rem;
+  } 
+
+  &__image {
+    width: calc(100% + 3.5rem);
+    margin: 0 -2rem 0 -1.5rem;
+
+    img {
+      @include breakpoint-to('mobile-xlarge') {
+        height: 20rem;
+        margin-left: auto;
+      } 
+    }
+  }
 
   &__container {
-    max-width: 50vw;
-    padding-left: .5rem;
+    margin-top: -1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+
+    @include breakpoint-to('mobile-xlarge') {
+      padding-left: 0;
+      margin-top: -20rem;
+      background: none;
+    } 
+  }
+
+  &__inner {
+    @include breakpoint-to('mobile-xlarge') {
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+      background: linear-gradient(90deg, rgba(255,255,255, .7) 0%, rgba(255,255,255, .2) 60%, rgba(255,255,255,0) 100%);
+    }
   }
 
   &__title {
+    font-size: 3rem;
     line-height: 1.2;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+    margin-bottom: 0.5rem;
+    width: 20rem;
   }
 
   &__desc {
-    // font-size: .75rem;
+    color: var(--c-secondary);
   }
 
-  &__image {
-    width: 75vw;
-    top: 5%;
-    bottom: 0;
-    right: 0;
-    z-index: var(--z-under);
+  &__birds {
     position: absolute;
+    right: 1.5rem;
+    bottom: 2rem;
+    opacity: .5;
+  }
 
-    img {
-      max-height: 100%;
-      margin-left: auto;
-    }
+  &__cloud {
+    position: absolute;
+    right: 1rem;
+    bottom: -1rem;
+    opacity: .7;
   }
 }
 </style>
