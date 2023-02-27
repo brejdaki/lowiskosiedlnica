@@ -14,6 +14,7 @@ export default defineNuxtConfig({
 	 */
 	modules: [
 		"@nuxt/content", // https://content.nuxtjs.org/get-started
+		"@nuxt/image-edge", // https://image.nuxtjs.org/getting-started
 		"@nuxtjs/google-fonts", // https://google-fonts.nuxtjs.org/setup
 		"@nuxtjs/critters", // https://github.com/nuxt-modules/critters
 		"@vueuse/nuxt", // https://vueuse.org/guide/
