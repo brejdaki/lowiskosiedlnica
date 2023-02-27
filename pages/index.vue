@@ -19,6 +19,13 @@ useHead({
       name: 'robots',
       content: 'noindex, nofollow'
     }
+  ],
+  link: [
+    {
+      rel: 'preload',
+      href: '/images/hero.svg',
+      as: 'image'
+    }
   ]
 })
 
