@@ -25,7 +25,7 @@ defineProps({
     { 'link-facebook--desc': isDescription }
   ]"
 >
-  <img 
+  <NuxtImg 
     src="/icons/facebook.svg"
     loading="lazy"
     :width="size"

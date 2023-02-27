@@ -13,7 +13,7 @@ const viewport = useViewport()
   <div 
     class="hero__image"
   >
-    <img 
+    <NuxtImg 
       src="/images/hero.svg"
       fetchpriority="high"
       height="280"

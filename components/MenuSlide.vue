@@ -59,7 +59,7 @@ function handlePhoneCall (): void {
 			<div
 				class="menu-slide__call-icon"
 			>
-				<img 
+				<NuxtImg 
 					src="/icons/phone.svg"
 					loading="lazy"
 					width="36"

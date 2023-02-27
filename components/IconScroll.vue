@@ -7,7 +7,7 @@ const setIconName = computed((): string => {
 </script>
 
 <template>
-<img 
+<NuxtImg 
   class="scroll-icon"
   :src="`/icons/${setIconName}.svg`"
   loading="lazy"
