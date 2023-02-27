@@ -3,7 +3,7 @@ const viewport = useViewport()
 </script>
 
 <template>
-<header 
+<div 
   :class="[
     'hero',
     { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
@@ -16,6 +16,7 @@ const viewport = useViewport()
     <img 
       src="/images/hero.svg"
       fetchpriority="high"
+      alt="Łowisko"
     />
   </div>
 
@@ -40,7 +41,7 @@ const viewport = useViewport()
       </span> 
     </div>
   </div>
-</header>
+</div>
 </template>
 
 <style lang="scss" scoped>

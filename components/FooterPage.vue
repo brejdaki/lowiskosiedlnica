@@ -6,7 +6,7 @@ const getYear = new Date().getFullYear()
 
 <template>
   <footer
-    class="footer-page__outer container-fluid"
+    class="footer-page__outer text-color--secondary container-fluid"
   >
     <div
       class="footer-page container"
@@ -41,7 +41,15 @@ const getYear = new Date().getFullYear()
       <div
         class="footer-page__copyright"
       >
-        &copy; Łowisko wędkarskie Siedlnica - {{ getYear }}
+        <span
+          class="footer-page__created"
+        >
+          wykonanie: <NuxtLink to="">whitecatstudio.pl</NuxtLink>
+        </span>
+
+        <div>
+          &copy; Łowisko wędkarskie Siedlnica - {{ getYear }} 
+        </div>
       </div>
 
       <img 
@@ -50,6 +58,7 @@ const getYear = new Date().getFullYear()
         width="97"
         height="200"
         loading="lazy"
+        alt="Grafika rośliny"
       />
     </div>
   </footer>
@@ -68,7 +77,7 @@ const getYear = new Date().getFullYear()
   grid-row-gap: 0px;
 
   @include breakpoint-to('desktop-small') {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-areas: 
       "contact menu"
       "contact copyright";
@@ -84,6 +93,8 @@ const getYear = new Date().getFullYear()
   &__contact {
     grid-area: contact;
     margin-bottom: 2rem;
+    text-decoration: none;
+    pointer-events: none;
 
     @include breakpoint-to('desktop-small') {
       margin: 0;
@@ -101,6 +112,7 @@ const getYear = new Date().getFullYear()
       flex-flow: row;
       justify-content: flex-end;
       gap: 1rem;
+      margin-right: 7rem;
     }
 
     &-item {
@@ -111,11 +123,20 @@ const getYear = new Date().getFullYear()
   &__copyright {
     grid-area: copyright;
     display: flex;
+    flex-flow: column-reverse;
+    gap: 1rem;
 
     @include breakpoint-to('desktop-small') {
       justify-content: flex-end;
       align-items: flex-end;
+      flex-flow: row;
+      gap: 2rem;
     }
+  }
+
+  &__created {
+    font-size: .75rem;
+    line-height: 1.5rem;
   }
 
   &__plant {

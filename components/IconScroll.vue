@@ -13,6 +13,7 @@ const setIconName = computed((): string => {
   loading="lazy"
   width="36"
   height="36"
+  alt="Ikona łapki"
 />
 </template>
 

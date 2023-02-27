@@ -30,6 +30,7 @@ defineProps({
     loading="lazy"
     :width="size"
     :height="size"
+    alt="Logo facebook"
   />
 
   <div

@@ -17,6 +17,7 @@ function handleButton() {
     'navbar__hamburger',
     { 'navbar__hamburger--active' : isMenuSlideVisible }
   ]"
+  aria-label="Menu"
 >
   <svg>
     <defs>
