@@ -4,6 +4,7 @@ specifiers:
   '@nuxt/content': ^2.4.3
   '@nuxtjs/critters': ^0.4.0
   '@nuxtjs/google-fonts': ^3.0.0-1
+  '@nuxtjs/web-vitals': ^0.2.2
   '@pinia/nuxt': ^0.4.7
   '@types/node': ^18.14.1
   '@typescript-eslint/eslint-plugin': ^5.53.0
@@ -27,6 +28,7 @@ specifiers:
 
 dependencies:
   '@nuxtjs/critters': 0.4.0
+  '@nuxtjs/web-vitals': 0.2.2
   '@pinia/nuxt': 0.4.7_typescript@4.9.5
   '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
   '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
@@ -1215,6 +1217,19 @@ packages:
       - rollup
       - supports-color
     dev: true
+
+  /@nuxtjs/web-vitals/0.2.2:
+    resolution: {integrity: sha512-UfIxBJGDXYnCgchPKt3rN1Tf66gUpRtOyo8gk9V9S2VWp8Q9ylHrwTB+y6ZPW+HRIC4B+KRh+LBIHv9ELycAJQ==}
+    dependencies:
+      '@nuxt/kit': 3.2.2
+      defu: 6.1.2
+      pathe: 1.1.0
+      ufo: 1.1.0
+      web-vitals: 3.1.1
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
 
   /@pinia/nuxt/0.4.7_typescript@4.9.5:
     resolution: {integrity: sha512-ifgA9PO/jmPlK1e/HtkrZa7OMSL8EUOpo8Z1O5vNLRr/OZ42kKGEaY1NbIoCz6dIf/pbkATTNHJmcrlPCo3zSA==}
@@ -7214,6 +7229,10 @@ packages:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}
     engines: {node: '>= 8'}
     dev: true
+
+  /web-vitals/3.1.1:
+    resolution: {integrity: sha512-qvllU+ZeQChqzBhZ1oyXmWsjJ8a2jHYpH8AMaVuf29yscOPZfTQTjQFRX6+eADTdsDE8IanOZ0cetweHMs8/2A==}
+    dev: false
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
