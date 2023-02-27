@@ -23,6 +23,7 @@ const setIconName = computed((): string => {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+  z-index: var(--z-upper);
 
   @include breakpoint-to('desktop-small') {
     bottom: 1.5rem;

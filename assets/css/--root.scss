@@ -1,5 +1,7 @@
 :root {
   --c-primary: rgba(255, 115, 93, 1);
+  --c-primary-darker: rgba(178, 80, 65, 1);
+
   --c-secondary: rgba(55, 90, 100, 1);
   --c-white: rgba(255, 255, 255, 1);
   --c-lgray: rgba(245, 245, 245, 1);
@@ -12,5 +14,6 @@
 
   --z-under: -1;
   --z-fixed: 20;
+  --z-upper: 40;
   --z-overflow: 10;
 }

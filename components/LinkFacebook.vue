@@ -17,7 +17,7 @@ defineProps({
 </script>
 
 <template>
-<a
+<NuxtLink
   href="https://www.facebook.com/groups/504530429732131"
   target="_blank"
   :class="[
@@ -38,13 +38,11 @@ defineProps({
   >
     Facebook grupa
   </div>
-</a>
+</NuxtLink>
 </template>
 
 <style lang="scss" scoped>
 .link-facebook {
-  text-decoration: none;
-
   &::before {
     display: none;
   }

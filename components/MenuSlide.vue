@@ -1,5 +1,12 @@
 <script lang="ts" setup>
+import { useMainStore } from '@/stores/main'
 import { menuItem } from '@/composables/MenuItem';
+
+const store = useMainStore()
+
+function handleMenuItem() {
+  store.setModalMenuVisible(false)
+}
 
 function handlePhoneCall (): void {
 	document.location.href = 'tel:+48888660314'
@@ -28,6 +35,7 @@ function handlePhoneCall (): void {
 				class="menu-slide__list-item font-sans"
 			>
 				<NuxtLink
+					@click="handleMenuItem"
 					class="text-color--secondary"
 					:to="item.link"
 				>
@@ -109,19 +117,11 @@ function handlePhoneCall (): void {
 			}
 
 			&:not(:last-child) {
-				margin-bottom: 1rem;
-
-				@media screen and (height: 30rem) {
-					margin-bottom: .75rem;
-				}
+				margin-bottom: 0.5rem;
 
 				@media screen and (min-height: 48.75rem) {
-					margin-bottom: 1.5rem;
+					margin-bottom: 1.25rem;
 				}
-			}
-
-			a {
-				@include hover-underline(var(--c-secondary))
 			}
 		}
 	}

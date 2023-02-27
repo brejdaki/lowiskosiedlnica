@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.7;
   font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
   color: var(--c-black);
   text-rendering: optimizeLegibility;
@@ -41,12 +41,14 @@ body {
 }
 
 a {
-  color: var(--c-primary);
+  text-decoration: none;
+  color: var(--c-primary-darker);
   cursor: pointer;
   @include hover-underline(var(--c-primary));
 }
 
-ul {
+ul,
+ol {
   @include reset-list;
 }
 

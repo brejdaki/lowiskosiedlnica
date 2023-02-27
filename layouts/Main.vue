@@ -20,4 +20,7 @@ const { isLayerOverflowVisible } = storeToRefs(useMainStore())
 </template>
 
 <style lang="scss">
+main {
+  padding-top: 4rem;
+}
 </style>
