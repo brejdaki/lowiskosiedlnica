@@ -52,7 +52,7 @@ const getYear = new Date().getFullYear()
         </div>
       </div>
 
-      <img 
+      <NuxtImg 
         class="footer-page__plant"
         src="/images/plant-color-2.svg"
         width="97"

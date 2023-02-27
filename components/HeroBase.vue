@@ -14,8 +14,8 @@ const viewport = useViewport()
     class="hero__image"
   >
     <NuxtImg 
+      preload
       src="/images/hero.svg"
-      fetchpriority="high"
       height="280"
       alt="Łowisko"
     />
