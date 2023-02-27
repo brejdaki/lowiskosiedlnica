@@ -3,7 +3,7 @@ const viewport = useViewport()
 </script>
 
 <template>
-<div 
+<header 
   :class="[
     'hero',
     { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
@@ -40,7 +40,7 @@ const viewport = useViewport()
       </span> 
     </div>
   </div>
-</div>
+</header>
 </template>
 
 <style lang="scss" scoped>

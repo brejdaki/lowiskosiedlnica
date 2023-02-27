@@ -1,24 +1,5 @@
 <script lang="ts" setup>
-import { MenuItem } from '@/composables/InterfaceMenuItem';
-
-const menuItem: MenuItem[] = [
-  {
-		label: 'Kalendarz',
-		link: ''
-	}, {
-		label: 'Cennik',
-		link: ''
-	}, {
-		label: 'Regulamin',
-		link: ''
-	}, {
-		label: 'Oferta',
-		link: ''
-	}, {
-		label: 'Kontakt',
-		link: ''
-	},
-]
+import { menuItem } from '@/composables/MenuItem';
 </script>
 
 <template>
@@ -31,6 +12,7 @@ const menuItem: MenuItem[] = [
     class="navbar__list-item font-sans"
   >
     <NuxtLink
+      class="text-color--secondary"
       :to="item.link"
     >
       {{ item.label }}
@@ -48,7 +30,6 @@ const menuItem: MenuItem[] = [
   &-item {
     a {
       font-size: 1.25rem;
-      color: var(--c-secondary);
       @include hover-underline(var(--c-secondary))
     }
   }

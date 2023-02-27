@@ -1,24 +1,5 @@
 <script lang="ts" setup>
-import { MenuItem } from '@/composables/InterfaceMenuItem';
-
-const menuItem: MenuItem[] = [
-	{
-		label: 'Kalendarz',
-		link: ''
-	}, {
-		label: 'Cennik',
-		link: ''
-	}, {
-		label: 'Regulamin',
-		link: ''
-	}, {
-		label: 'Oferta',
-		link: ''
-	}, {
-		label: 'Kontakt',
-		link: ''
-	},
-]
+import { menuItem } from '@/composables/MenuItem';
 
 function handlePhoneCall (): void {
 	document.location.href = 'tel:+48888660314'

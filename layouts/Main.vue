@@ -7,7 +7,12 @@ const { isLayerOverflowVisible } = storeToRefs(useMainStore())
 
 <template>
   <NavbarBase />
-  <slot />
+
+  <main>
+    <slot />
+  </main>
+
+  <FooterPage />
 
   <LayerOverflow 
     v-if="isLayerOverflowVisible"
