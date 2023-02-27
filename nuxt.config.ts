@@ -90,4 +90,22 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
+	/**
+	 * Config app
+	 */
+	app: {
+    head: {
+      charset: 'utf-16',
+      viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+    }
+  },
+
+	/**
+	 * Config nuxt-schema-org
+	 */
+	schemaOrg: {
+    host: 'http://localhost:3000/',
+		inLanguage: 'pl'
+  },
 })

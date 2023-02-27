@@ -39,6 +39,7 @@
       width="201"
       height="108"
       loading="lazy"
+      alt="Grafika ptaków"
     />
 
     <img 
@@ -47,6 +48,7 @@
       width="117"
       height="65"
       loading="lazy"
+      alt="Grafika chmury"
     />
   </div>
 </div>

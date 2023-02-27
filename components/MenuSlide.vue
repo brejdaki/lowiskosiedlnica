@@ -56,13 +56,14 @@ function handlePhoneCall (): void {
 					loading="lazy"
 					width="36"
 					height="36"
+					alt="Ikona telefonu"
 				/>
 			</div>
 
 			<div
 				class="menu-slide__call-desc"
 			>
-				Zadzwoń do właściciela
+				Zadzwoń do gospodarza
 			</div>
 			<div
 				class="menu-slide__call-number"
