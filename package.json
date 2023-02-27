@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@nuxtjs/critters": "^0.4.0",
+    "@nuxtjs/web-vitals": "^0.2.2",
     "@pinia/nuxt": "^0.4.7",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
