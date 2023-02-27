@@ -2,19 +2,29 @@ import { MenuItemInterface } from '@/composables/MenuItemInterface';
 
 export const menuItem: MenuItemInterface[] = [
   {
+    label: 'Aktualności',
+    link: '/#aktualnosci',
+    isDesktop: false,
+  }, {
     label: 'Kalendarz',
-    link: ''
+    link: '/#kalendarz',
+    isDesktop: true,
   }, {
     label: 'Cennik',
-    link: ''
+    link: '/#cennik',
+    isDesktop: true,
   }, {
     label: 'Regulamin',
-    link: ''
+    link: 'regulamin',
+    isDesktop: true,
+    isPage: true
   }, {
     label: 'Oferta',
-    link: ''
+    link: '/#oferta',
+    isDesktop: true,
   }, {
     label: 'Kontakt',
-    link: ''
+    link: '/#kontakt',
+    isDesktop: true,
   },
 ]

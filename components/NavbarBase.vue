@@ -55,11 +55,15 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
 
 <style lang="scss" scoped>
 .navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   height: 4rem;
-  position: relative;
   background-color: var(--c-lgray);
   overflow: hidden;
+  z-index: var(--z-upper);
 
   &__container {
     width: 100%;
@@ -67,6 +71,7 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
     padding: 0 1rem;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     @include breakpoint-to('desktop-small') {
       padding: 0 1.5rem;
@@ -78,9 +83,7 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
   }
 
   &__link {
-    text-decoration: none;
     color: var(--c-secondary);
-    @include hover-underline(var(--c-secondary))
   }
 
   &__inner {

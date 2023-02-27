@@ -1,5 +1,6 @@
 <template>
 <div
+  id="aktualnosci"
   class="container"
 >
   <div

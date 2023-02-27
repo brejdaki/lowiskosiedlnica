@@ -54,5 +54,7 @@ useHead({
 
   <InfoBox />
 
+  <InfoFishery />
+
   <IconScroll />
 </template>

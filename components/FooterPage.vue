@@ -142,7 +142,7 @@ const getYear = new Date().getFullYear()
   &__plant {
     position: absolute;
     right: 1.5rem;
-    bottom: 3rem;
+    bottom: 5rem;
   }
 }
 </style>

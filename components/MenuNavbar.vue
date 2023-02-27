@@ -6,18 +6,21 @@ import { menuItem } from '@/composables/MenuItem';
 <ul 
   class="navbar__list"
 >
-  <li
-    v-for="(item, index) in menuItem"
-    :key="index"
-    class="navbar__list-item font-sans"
+  <template
+    v-for="item in menuItem"
   >
-    <NuxtLink
-      class="text-color--secondary"
-      :to="item.link"
+    <li
+      v-if="item.isDesktop"
+      class="navbar__list-item font-sans"
     >
-      {{ item.label }}
-    </NuxtLink>
-  </li>
+      <NuxtLink
+        class="text-color--secondary"
+        :to="item.link"
+      >
+        {{ item.label }}
+      </NuxtLink>
+    </li>
+  </template>
 </ul>
 </template>
 
