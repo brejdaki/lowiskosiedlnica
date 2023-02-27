@@ -1,24 +1,5 @@
 <script lang="ts" setup>
-import { MenuItem } from '@/composables/InterfaceMenuItem';
-
-const menuItem: MenuItem[] = [
-	{
-		label: 'Kalendarz',
-		link: ''
-	}, {
-		label: 'Cennik',
-		link: ''
-	}, {
-		label: 'Regulamin',
-		link: ''
-	}, {
-		label: 'Oferta',
-		link: ''
-	}, {
-		label: 'Kontakt',
-		link: ''
-	},
-]
+import { menuItem } from '@/composables/MenuItem';
 
 function handlePhoneCall (): void {
 	document.location.href = 'tel:+48888660314'
@@ -26,71 +7,71 @@ function handlePhoneCall (): void {
 </script>
 
 <template>
+<div
+	class="menu-slide"
+>
 	<div
-		class="menu-slide"
+		class="menu-slide__top"
 	>
-		<div
-			class="menu-slide__top"
+		<h3
+			class="menu-slide__title"
 		>
-			<h3
-				class="menu-slide__title"
-			>
-				Menu
-			</h3>
+			Menu
+		</h3>
 
-			<ul 
-				class="menu-slide__list"
-			>
-				<li
-					v-for="(item, index) in menuItem"
-					:key="index"
-					class="menu-slide__list-item font-sans"
-				>
-					<NuxtLink
-						class="text-color--secondary"
-						:to="item.link"
-					>
-						{{ item.label }}
-					</NuxtLink>
-				</li>
-			</ul>
-		</div>
-
-		<div
-			class="menu-slide__bottom"
+		<ul 
+			class="menu-slide__list"
 		>
-			<LinkFacebook 
-				class="menu-slide__facebook"
-			/>
-
-			<button
-				class="menu-slide__call text-color--white"
-				@click="handlePhoneCall"
+			<li
+				v-for="(item, index) in menuItem"
+				:key="index"
+				class="menu-slide__list-item font-sans"
 			>
-				<div
-					class="menu-slide__call-icon"
+				<NuxtLink
+					class="text-color--secondary"
+					:to="item.link"
 				>
-					<img 
-						src="/icons/phone.svg"
-						loading="lazy"
-						width="36"
-						height="36"
-					/>
-				</div>
-
-				<div
-					class="menu-slide__call-desc"
-				>
-					Zadzwoń do właściciela
-				</div>
-				<div
-					class="menu-slide__call-number"
-				>
-					+48 888 660 314
-				</div>
-			</button>
-		</div>
+					{{ item.label }}
+				</NuxtLink>
+			</li>
+		</ul>
 	</div>
+
+	<div
+		class="menu-slide__bottom"
+	>
+		<LinkFacebook 
+			class="menu-slide__facebook"
+		/>
+
+		<button
+			class="menu-slide__call text-color--white"
+			@click="handlePhoneCall"
+		>
+			<div
+				class="menu-slide__call-icon"
+			>
+				<img 
+					src="/icons/phone.svg"
+					loading="lazy"
+					width="36"
+					height="36"
+				/>
+			</div>
+
+			<div
+				class="menu-slide__call-desc"
+			>
+				Zadzwoń do właściciela
+			</div>
+			<div
+				class="menu-slide__call-number"
+			>
+				+48 888 660 314
+			</div>
+		</button>
+	</div>
+</div>
 </template>
 
 <style lang="scss" scoped>

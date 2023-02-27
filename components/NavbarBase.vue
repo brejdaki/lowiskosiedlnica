@@ -7,50 +7,50 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
 </script>
 
 <template>
-  <nav 
-    class="navbar"
+<nav 
+  class="navbar"
+>
+  <div 
+    :class="[
+      'navbar__container',
+      { 'container': viewport.isGreaterOrEquals('desktop-small') }
+    ]"
   >
     <div 
-      :class="[
-        'navbar__container',
-        { 'container': viewport.isGreaterOrEquals('desktop-small') }
-      ]"
+      class="navbar__logo"
     >
-      <div 
-        class="navbar__logo"
+      <NuxtLink 
+        to="/"
+        class="navbar__link"
       >
-        <NuxtLink 
-          to="/"
-          class="navbar__link"
-        >
-          łowiskosiedlnica.pl
-        </NuxtLink>
-      </div>
-
-      <div
-        class="navbar__inner"
-      >
-        <MenuNavbar 
-          v-if="viewport.isGreaterOrEquals('desktop-small')"
-        />
-
-        <LinkFacebook 
-          v-if="viewport.isGreaterOrEquals('desktop')"
-          :size="28"
-        />
-
-        <Transition name="slide">
-          <MenuSlide 
-            v-if="isMenuSlideVisible"
-          />
-        </Transition>
-
-        <NavbarHamburger 
-          v-if="viewport.isLessThan('desktop-small')"
-        />
-      </div>
+        łowiskosiedlnica.pl
+      </NuxtLink>
     </div>
-  </nav>
+
+    <div
+      class="navbar__inner"
+    >
+      <MenuNavbar 
+        v-if="viewport.isGreaterOrEquals('desktop-small')"
+      />
+
+      <LinkFacebook 
+        v-if="viewport.isGreaterOrEquals('desktop')"
+        :size="28"
+      />
+
+      <Transition name="slide">
+        <MenuSlide 
+          v-if="isMenuSlideVisible"
+        />
+      </Transition>
+
+      <NavbarHamburger 
+        v-if="viewport.isLessThan('desktop-small')"
+      />
+    </div>
+  </div>
+</nav>
 </template>
 
 <style lang="scss" scoped>
@@ -67,6 +67,10 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
     padding: 0 1rem;
     justify-content: space-between;
     align-items: center;
+
+    @include breakpoint-to('desktop-small') {
+      padding: 0 1.5rem;
+    }
   }
 
   &__logo {

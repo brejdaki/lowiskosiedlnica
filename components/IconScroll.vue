@@ -1,18 +1,30 @@
+<script lang="ts" setup>
+const viewport = useViewport()
+
+const setIconName = computed((): string => {
+  return viewport.isGreaterOrEquals('desktop-small') ? 'scroll-mouse' : 'scroll-hand'
+})
+</script>
+
 <template>
-  <img 
-    class="scroll-icon"
-    src="/icons/scroll.svg"
-    loading="lazy"
-    width="36"
-    height="36"
-  />
+<img 
+  class="scroll-icon"
+  :src="`/icons/${setIconName}.svg`"
+  loading="lazy"
+  width="36"
+  height="36"
+/>
 </template>
 
 <style lang="scss" scoped>
 .scroll-icon {
-  opacity: .25;
+  opacity: 0.5;
   position: fixed;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  bottom: 1rem;
+  right: 1rem;
+
+  @include breakpoint-to('desktop-small') {
+    bottom: 1.5rem;
+  }
 }
 </style>

@@ -11,12 +11,12 @@ function handleOverflowLayer() {
 </script>
 
 <template>
-  <Transition name="fade">
-    <div 
-      class="overflow-layer"
-      @click.stop.prevent="handleOverflowLayer"
-    />
-  </Transition>
+<Transition name="fade">
+  <div 
+    class="overflow-layer"
+    @click.stop.prevent="handleOverflowLayer"
+  />
+</Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -30,5 +30,10 @@ function handleOverflowLayer() {
   background-color: var(--c-black-alpha);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
+
+  @include breakpoint-to('mobile-xlarge') {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
 }
 </style>
