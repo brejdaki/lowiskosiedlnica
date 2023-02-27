@@ -34,21 +34,21 @@
       </li>
     </ul>
 
-    <img 
+    <NuxtImg 
+      preload
       class="info-box__birds"
       src="/images/birds.svg"
       width="201"
       height="108"
-      loading="lazy"
       alt="Grafika ptaków"
     />
 
-    <img 
+    <NuxtImg 
+      preload
       class="info-box__cloud"
       src="/images/cloud.svg"
       width="117"
       height="65"
-      loading="lazy"
       alt="Grafika chmury"
     />
   </div>
