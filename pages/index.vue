@@ -20,13 +20,13 @@ useHead({
       content: 'noindex, nofollow'
     }
   ],
-  link: [
-    {
-      rel: 'preload',
-      href: '/images/hero.svg',
-      as: 'image'
-    }
-  ]
+  // link: [
+  //   {
+  //     rel: 'preload',
+  //     href: '/images/hero.svg',
+  //     as: 'image'
+  //   }
+  // ]
 })
 
 // useSchemaOrg([

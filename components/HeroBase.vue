@@ -16,6 +16,7 @@ const viewport = useViewport()
     <img 
       src="/images/hero.svg"
       fetchpriority="high"
+      height="280"
       alt="Łowisko"
     />
   </div>
@@ -57,8 +58,12 @@ const viewport = useViewport()
     } 
 
     img {
+      height: auto;
+      width: 100%;
+
       @include breakpoint-to('mobile-xlarge') {
         height: 20rem;
+        width: auto;
         margin-left: auto;
       } 
 
