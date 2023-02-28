@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const viewport = useViewport()
+// const viewport = useViewport()
 </script>
 
 <template>
@@ -7,7 +7,7 @@ const viewport = useViewport()
   :class="[
     'hero',
     { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
-    { 'container' : viewport.isGreaterOrEquals('mobile-xlarge') }
+    { 'container' : $viewport.isGreaterOrEquals('mobile-xlarge') }
   ]"
 >
   <div 
@@ -55,6 +55,8 @@ const viewport = useViewport()
 
     @include breakpoint-to('desktop-small') {
       width: inherit;
+      position: relative;
+      top: 3rem;
     } 
 
     img {

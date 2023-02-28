@@ -2,7 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
 
-const viewport = useViewport()
+// const viewport = useViewport()
 const { isMenuSlideVisible } = storeToRefs(useMainStore()) 
 </script>
 
@@ -13,7 +13,7 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
   <div 
     :class="[
       'navbar__container',
-      { 'container': viewport.isGreaterOrEquals('desktop-small') }
+      { 'container': $viewport.isGreaterOrEquals('desktop-small') }
     ]"
   >
     <div 
@@ -31,11 +31,11 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
       class="navbar__inner"
     >
       <MenuNavbar 
-        v-if="viewport.isGreaterOrEquals('desktop-small')"
+        v-if="$viewport.isGreaterOrEquals('desktop-small')"
       />
 
       <LinkFacebook 
-        v-if="viewport.isGreaterOrEquals('desktop')"
+        v-if="$viewport.isGreaterOrEquals('desktop')"
         :size="28"
       />
 
@@ -46,7 +46,7 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
       </Transition>
 
       <NavbarHamburger 
-        v-if="viewport.isLessThan('desktop-small')"
+        v-if="$viewport.isLessThan('desktop-small')"
       />
     </div>
   </div>

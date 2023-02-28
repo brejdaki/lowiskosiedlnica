@@ -43,8 +43,21 @@ defineProps({
 
 <style lang="scss" scoped>
 .link-facebook {
+  // transition: all 250ms;
+
   &::before {
     display: none;
+  }
+
+  &:hover {
+    @include breakpoint-to('desktop') {
+      color: var(--c-white);
+      background-color: var(--c-facebook);
+
+      img {
+        filter: brightness(100);
+      }
+    }
   }
 
   &--desc {

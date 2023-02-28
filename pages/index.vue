@@ -65,5 +65,9 @@ useHead({
 
   <InfoPrice />
 
+  <InfoOffer />
+
+  <InfoContact />
+
   <IconScroll />
 </template>

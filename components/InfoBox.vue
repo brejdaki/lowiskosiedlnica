@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+const viewport = useViewport()
+</script>
+
 <template>
 <div
   id="aktualnosci"
@@ -45,6 +49,7 @@
     />
 
     <NuxtImg 
+      v-if="$viewport.isLessThan('desktop-small')" 
       preload
       class="info-box__cloud"
       src="/images/cloud.svg"
@@ -105,7 +110,14 @@
     }
 
     @include breakpoint-to('desktop-small') {
-      display: none;
+      top: 15rem;
+      right: 2rem;
+      height: 12rem;
+      width: auto;
+    }
+
+    @include breakpoint-to('desktop') {
+      height: 15rem;
     }
   }
 
@@ -117,10 +129,6 @@
 
     @include breakpoint-to('mobile-xlarge') {
       top: 7rem;
-    }
-
-    @include breakpoint-to('desktop-small') {
-      display: none;
     }
   }
 }

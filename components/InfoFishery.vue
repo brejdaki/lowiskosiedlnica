@@ -1,11 +1,13 @@
+<script lang="ts" setup>
+// const viewport = useViewport()
+</script>
+
 <template>
 <div
   id="info-fishery"
-  class="container"
+  class="info-fishery container"
 >
-  <div
-    class="info-fishery"
-  >
+
     <div
       class="info-fishery__inner"
     >
@@ -33,7 +35,7 @@
       </h3>
 
       <p>
-        Powierzchnia stawu to 2 ha lustra wodym, na której znajdują 
+        Powierzchnia stawu to 2 ha lustra wody, na której znajdują 
         się dwie wyspy. Akwen powstał po zamkniętej kopalni piasku dzięki czemu
         dno jest piaszczyste z licznymi dołkami. Głębokość średnia to 3 metry a
         maksymalna ok 5 m.
@@ -52,15 +54,33 @@
         koni na wybiegu, które są prawie na wyciągnięcie ręki.
       </p>
     </div>
-  </div>
+
+    <NuxtImg
+      v-if="$viewport.isGreaterOrEquals('desktop-small')"
+      class="info-fishery__cloud"
+      src="/images/cloud.svg" 
+      loading="lazy"
+      height="112"
+      width="201"
+    />
 </div>
 </template>
 
 <style lang="scss" scoped>
 .info-fishery {
+  position: relative;
+
   &__inner {
-    &:not(:last-child) {
+    &:first-child {
       margin-bottom: 2rem;
+    }
+
+    @include breakpoint-to('desktop-small') {
+      &:first-child {
+        max-width: 60%;
+      }
+
+      max-width: 80%;
     }
   }
 
@@ -68,23 +88,14 @@
     color: var(--c-primary-darker)
   }
 
-  // ul {
-  //   list-style-type: circle;
-  //   padding-left: 1.1rem;
+  &__cloud {
+    position: absolute;
+    right: 5rem;
+    top: 5rem;
 
-  //   @include breakpoint-to('desktop-small') {
-  //     padding-left: 1.3rem;
-  //   }
-
-  //   li {
-  //     &::marker {
-  //       color: var(--c-black-alpha);
-  //     }
-
-  //     &:not(:last-child) {
-  //       margin-bottom: .75rem;
-  //     }
-  //   }
-  // }
+    @include breakpoint-to('desktop') {
+      right: 9rem;
+    }
+  }
 }
 </style>
