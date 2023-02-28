@@ -95,6 +95,7 @@ const getYear = new Date().getFullYear()
     margin-bottom: 2rem;
     text-decoration: none;
     pointer-events: none;
+    color: var(--c-secondary);
 
     @include breakpoint-to('desktop-small') {
       margin: 0;
