@@ -113,7 +113,7 @@ definePageMeta({
     </li>
 
     <li>
-      Na stanowisku można podjechać autem w celu rozpakowania się, 
+      Na stanowisko można podjechać autem w celu rozpakowania się, 
       po czym auto odstawiamy na parking.
     </li>
 
