@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+const viewport = useViewport()
+</script>
+
 <template>
 <div
   id="cennik"
@@ -67,6 +71,24 @@
       height="70"
       width="126"
     />
+
+    <NuxtImg
+      v-if="$viewport.isGreaterOrEquals('desktop-small')"
+      class="info-price__cloud info-price__cloud--two"
+      src="/images/cloud.svg" 
+      loading="lazy"
+      height="89"
+      width="160"
+    />
+
+    <NuxtImg
+      v-if="$viewport.isGreaterOrEquals('desktop-small')"
+      class="info-price__cloud info-price__cloud--three"
+      src="/images/cloud.svg" 
+      loading="lazy"
+      height="45"
+      width="80"
+    />
   </div>
 </div>
 </template>
@@ -87,6 +109,11 @@
     gap: 2rem;
     padding-bottom: 2rem;
     margin-bottom: 1rem;
+
+    @include breakpoint-to('desktop-small') {
+      flex-flow: row;
+      gap: 10rem;
+    }
   }
 
   &__box {
@@ -136,9 +163,14 @@
     bottom: 0;
     right: 0;
 
-    // @include breakpoint-to('mobile-medium') {
-    //   width: 6rem;
-    // }
+    @include breakpoint-to('mobile-xlarge') {
+      width: 6.25rem;
+      height: auto;
+    }
+
+    @include breakpoint-to('desktop-small') {
+      right: 8rem;
+    }
   }
 
   &__line {
@@ -147,12 +179,32 @@
     position: absolute;
     bottom: 0;
     right: -4rem;
+
+    @include breakpoint-to('desktop-small') {
+      right: 0;
+      width: 30rem;
+    }
   }
 
   &__cloud {
     position: absolute;
     top: 1rem;
     right: 2rem;
+
+    @include breakpoint-to('desktop-small') {
+      top: 4rem;
+      right: 17rem;
+    }
+
+    &--two {
+      top: 1rem;
+      right: 1rem;
+    }
+
+    &--three {
+      top: 2rem;
+      right: 32rem;
+    }
   }
 
   &__info {

@@ -26,7 +26,8 @@
       </li>
 
       <li>
-        <strong>UWAGA!</strong> Zmieniły się opłaty, zalecamy sprawdzić <NuxtLink>cennik</NuxtLink>,
+        <strong>UWAGA!</strong> Zmieniły się opłaty, zalecamy sprawdzić 
+        <NuxtLink to="#cennik">cennik</NuxtLink>,
       </li>
 
       <li>
