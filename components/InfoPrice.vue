@@ -107,7 +107,7 @@ const viewport = useViewport()
     position: relative;
     flex-flow: column;
     gap: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     margin-bottom: 1rem;
 
     @include breakpoint-to('desktop-small') {

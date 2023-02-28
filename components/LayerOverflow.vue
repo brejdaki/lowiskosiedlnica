@@ -11,12 +11,10 @@ function handleOverflowLayer() {
 </script>
 
 <template>
-<Transition name="fade">
-  <div 
-    class="overflow-layer"
-    @click.stop.prevent="handleOverflowLayer"
-  />
-</Transition>
+<div 
+  class="overflow-layer"
+  @click.stop.prevent="handleOverflowLayer"
+/>
 </template>
 
 <style lang="scss" scoped>

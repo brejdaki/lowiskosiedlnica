@@ -33,7 +33,7 @@
       </h3>
 
       <p>
-        Powierzchnia stawu to 2 ha lustra wodym, na której znajdują 
+        Powierzchnia stawu to 2 ha lustra wody, na której znajdują 
         się dwie wyspy. Akwen powstał po zamkniętej kopalni piasku dzięki czemu
         dno jest piaszczyste z licznymi dołkami. Głębokość średnia to 3 metry a
         maksymalna ok 5 m.
