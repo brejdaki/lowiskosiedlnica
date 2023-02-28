@@ -1,11 +1,13 @@
+<script lang="ts" setup>
+// const viewport = useViewport()
+</script>
+
 <template>
 <div
   id="info-fishery"
-  class="container"
+  class="info-fishery container"
 >
-  <div
-    class="info-fishery"
-  >
+
     <div
       class="info-fishery__inner"
     >
@@ -52,20 +54,48 @@
         koni na wybiegu, które są prawie na wyciągnięcie ręki.
       </p>
     </div>
-  </div>
+
+    <NuxtImg
+      v-if="$viewport.isGreaterOrEquals('desktop-small')"
+      class="info-fishery__cloud"
+      src="/images/cloud.svg" 
+      loading="lazy"
+      height="112"
+      width="201"
+    />
 </div>
 </template>
 
 <style lang="scss" scoped>
 .info-fishery {
+  position: relative;
+
   &__inner {
-    &:not(:last-child) {
+    &:first-child {
       margin-bottom: 2rem;
+    }
+
+    @include breakpoint-to('desktop-small') {
+      &:first-child {
+        max-width: 60%;
+      }
+
+      max-width: 80%;
     }
   }
 
   span {
     color: var(--c-primary-darker)
+  }
+
+  &__cloud {
+    position: absolute;
+    right: 5rem;
+    top: 5rem;
+
+    @include breakpoint-to('desktop') {
+      right: 9rem;
+    }
   }
 }
 </style>

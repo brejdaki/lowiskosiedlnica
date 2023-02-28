@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const viewport = useViewport()
+// const viewport = useViewport()
 </script>
 
 <template>
@@ -39,6 +39,11 @@ const viewport = useViewport()
           <li>osoba wędkująca - <span>50 zł</span>,</li>
           <li>osoba towarzysząca - 20 zł.</li>
         </ul>
+
+        <span>
+          Po wcześniejszym kontakcie <br>
+          <NuxtLink to="#kontakt">telefonicznym</NuxtLink>.
+        </span>
       </div>
 
       <NuxtImg
@@ -110,15 +115,6 @@ const viewport = useViewport()
       loading="lazy"
       height="1"
     />
-
-    <NuxtImg
-      v-if="false"
-      class="info-price__rock"
-      src="/images/rock.svg" 
-      loading="lazy"
-      height="48"
-      width="88"
-    />
   </div>
 </div>
 </template>
@@ -130,7 +126,7 @@ const viewport = useViewport()
 
   @include breakpoint-to('desktop') {
     font-size: 1.25rem;
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 
   &__inner {
@@ -172,6 +168,19 @@ const viewport = useViewport()
 
         span {
           color: var(--c-primary-darker);
+        }
+      }
+    }
+
+    > span {
+      display: block;
+      font-size: 1rem;
+      margin-top: 1rem;
+      color: var(--c-black-alpha);
+
+      @include breakpoint-to('mobile-xlarge') {
+        br {
+          display: none;
         }
       }
     }
@@ -224,7 +233,7 @@ const viewport = useViewport()
     position: absolute;
     bottom: 0;
     right: -2rem;
-    opacity: .4;
+    opacity: .25;
 
     @include breakpoint-to('desktop-small') {
       right: -1rem;
@@ -275,7 +284,7 @@ const viewport = useViewport()
       }
 
       @include breakpoint-to('desktop') {
-        width: 42rem;
+        width: 50rem;
       }
     }
 
@@ -293,11 +302,12 @@ const viewport = useViewport()
       }
 
       @include breakpoint-to('desktop-small') {
-        right: -1rem;
+        right: 10rem;
         width: 40rem;
       }
 
       @include breakpoint-to('desktop') {
+        right: 15rem;
         width: 45rem;
       }
     }
@@ -323,26 +333,5 @@ const viewport = useViewport()
       right: 32rem;
     }
   }
-
-  // &__rock {
-  //   position: absolute;
-  //   bottom: -1rem;
-  //   left: 0;
-
-  //   @include breakpoint-to('mobile-xlarge') {
-  //     left: 1rem;
-  //   }
-
-  //   @include breakpoint-to('desktop-small') {
-  //     left: 9rem;
-  //   }
-
-  //   @include breakpoint-to('desktop') {
-  //     height: 3.5rem;
-  //     width: auto;
-  //     bottom: -1.5rem;
-  //     left: 12rem;
-  //   }
-  // }
 }
 </style>

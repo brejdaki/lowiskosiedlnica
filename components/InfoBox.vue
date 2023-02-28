@@ -112,7 +112,7 @@ const viewport = useViewport()
     @include breakpoint-to('desktop-small') {
       top: 15rem;
       right: 2rem;
-      height: 10rem;
+      height: 12rem;
       width: auto;
     }
 

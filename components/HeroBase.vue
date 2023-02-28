@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const viewport = useViewport()
+// const viewport = useViewport()
 </script>
 
 <template>
@@ -7,7 +7,7 @@ const viewport = useViewport()
   :class="[
     'hero',
     { 'container-fluid': $viewport.isLessThan('mobile-xlarge') },
-    { 'container' : viewport.isGreaterOrEquals('mobile-xlarge') }
+    { 'container' : $viewport.isGreaterOrEquals('mobile-xlarge') }
   ]"
 >
   <div 
