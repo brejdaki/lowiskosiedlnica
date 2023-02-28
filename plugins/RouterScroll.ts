@@ -1,6 +1,4 @@
 import { defineNuxtPlugin } from "#app";
-import Vue from 'vue'
-
 interface To {
   hash: string
 }
@@ -35,6 +33,11 @@ export default defineNuxtPlugin((nuxtApp) => {
         return window.scrollTo(0, el.offsetTop);
       }
     }
-    return { left: 0, top: 0, behaviour: "smooth" };
+    
+    return { 
+      left: 0, 
+      top: 0, 
+      behaviour: "smooth" 
+    };
   };
 })
