@@ -58,8 +58,6 @@
 
 <style lang="scss" scoped>
 .info-fishery {
-  padding: 0 0 5rem;
-
   &__inner {
     &:not(:last-child) {
       margin-bottom: 2rem;

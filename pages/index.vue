@@ -63,5 +63,7 @@ useHead({
 
   <InfoFishery />
 
+  <InfoPrice />
+
   <IconScroll />
 </template>
