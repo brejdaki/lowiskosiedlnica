@@ -74,7 +74,7 @@ const getYear = new Date().getFullYear()
     "menu"
     "copyright";
   grid-column-gap: 1.5rem;
-  grid-row-gap: 0px;
+  grid-row-gap: 0;
 
   @include breakpoint-to('desktop-small') {
     grid-template-columns: auto 1fr;

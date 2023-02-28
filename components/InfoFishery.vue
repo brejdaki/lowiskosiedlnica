@@ -58,8 +58,6 @@
 
 <style lang="scss" scoped>
 .info-fishery {
-  padding: 0 0 5rem;
-
   &__inner {
     &:not(:last-child) {
       margin-bottom: 2rem;
@@ -69,24 +67,5 @@
   span {
     color: var(--c-primary-darker)
   }
-
-  // ul {
-  //   list-style-type: circle;
-  //   padding-left: 1.1rem;
-
-  //   @include breakpoint-to('desktop-small') {
-  //     padding-left: 1.3rem;
-  //   }
-
-  //   li {
-  //     &::marker {
-  //       color: var(--c-black-alpha);
-  //     }
-
-  //     &:not(:last-child) {
-  //       margin-bottom: .75rem;
-  //     }
-  //   }
-  // }
 }
 </style>
