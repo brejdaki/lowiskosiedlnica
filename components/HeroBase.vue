@@ -55,6 +55,8 @@ const viewport = useViewport()
 
     @include breakpoint-to('desktop-small') {
       width: inherit;
+      position: relative;
+      top: 3rem;
     } 
 
     img {

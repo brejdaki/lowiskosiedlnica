@@ -44,7 +44,13 @@ const getYear = new Date().getFullYear()
         <span
           class="footer-page__created"
         >
-          wykonanie: <NuxtLink to="">whitecatstudio.pl</NuxtLink>
+          wykonanie:
+          <NuxtLink 
+            target="_blank" 
+            to="https://whitecatstudio.pl"
+          >
+            whitecatstudio.pl
+          </NuxtLink>
         </span>
 
         <div>

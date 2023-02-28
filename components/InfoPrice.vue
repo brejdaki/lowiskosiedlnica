@@ -89,17 +89,48 @@ const viewport = useViewport()
       height="45"
       width="80"
     />
+
+    <NuxtImg
+      class="info-price__line info-price__line--two"
+      src="/images/line.svg" 
+      loading="lazy"
+      height="1"
+    />
+
+    <NuxtImg
+      class="info-price__line info-price__line--three"
+      src="/images/line.svg" 
+      loading="lazy"
+      height="1"
+    />
+
+    <NuxtImg
+      class="info-price__line info-price__line--four"
+      src="/images/line.svg" 
+      loading="lazy"
+      height="1"
+    />
+
+    <NuxtImg
+      v-if="false"
+      class="info-price__rock"
+      src="/images/rock.svg" 
+      loading="lazy"
+      height="48"
+      width="88"
+    />
   </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .info-price {
-  padding: 5rem 0;
+  padding: 5rem 0 2.5rem;
   position: relative;
 
   @include breakpoint-to('desktop') {
     font-size: 1.25rem;
+    padding-bottom: 4rem;
   }
 
   &__inner {
@@ -107,12 +138,17 @@ const viewport = useViewport()
     position: relative;
     flex-flow: column;
     gap: 2rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 
     @include breakpoint-to('desktop-small') {
       flex-flow: row;
       gap: 10rem;
+    }
+
+    @include breakpoint-to('desktop') {
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
     }
   }
 
@@ -158,6 +194,16 @@ const viewport = useViewport()
     }
   }
 
+  &__info {
+    @include breakpoint-to('mobile-xlarge') {
+      max-width: 75%;
+    }
+
+    @include breakpoint-to('desktop-small') {
+      max-width: 60%;
+    }
+  }
+
   &__plant {
     position: absolute;
     bottom: 0;
@@ -174,15 +220,86 @@ const viewport = useViewport()
   }
 
   &__line {
-    width: 19rem;
-    height: 1px;
+    width: 14rem;
     position: absolute;
     bottom: 0;
-    right: -4rem;
+    right: -2rem;
+    opacity: .4;
 
     @include breakpoint-to('desktop-small') {
-      right: 0;
-      width: 30rem;
+      right: -1rem;
+      width: 35rem;
+    }
+
+    @include breakpoint-to('desktop') {
+      width: 60rem;
+      right: -8rem;
+    }
+
+    &--two {
+      right: inherit;
+      left: -4rem;
+      width: 19rem;
+
+      @include breakpoint-to('mobile-xlarge') {
+        left: -1rem;
+        width: 25rem;
+      }
+
+      @include breakpoint-to('desktop-small') {
+        width: 35rem;
+      }
+
+      @include breakpoint-to('desktop') {
+        left: -1rem;
+        width: 40rem;
+      }
+
+      @include breakpoint-to('desktop') {
+        width: 45rem;
+      }
+    }
+
+    &--three {
+      bottom: 1rem;
+      width: 12rem;
+
+      @include breakpoint-to('mobile-xlarge') {
+        right: -2rem;
+        width: 20rem;
+      }
+
+      @include breakpoint-to('desktop-small') {
+        right: -1rem;
+        width: 35rem;
+      }
+
+      @include breakpoint-to('desktop') {
+        width: 42rem;
+      }
+    }
+
+    &--four {
+      bottom: -1rem;
+      width: 15rem;
+
+      @include breakpoint-to('mobile-large') {
+        width: 17rem;
+        right: -2rem;
+      }
+
+      @include breakpoint-to('mobile-xlarge') {
+        width: 25rem;
+      }
+
+      @include breakpoint-to('desktop-small') {
+        right: -1rem;
+        width: 40rem;
+      }
+
+      @include breakpoint-to('desktop') {
+        width: 45rem;
+      }
     }
   }
 
@@ -207,7 +324,25 @@ const viewport = useViewport()
     }
   }
 
-  &__info {
-  }
+  // &__rock {
+  //   position: absolute;
+  //   bottom: -1rem;
+  //   left: 0;
+
+  //   @include breakpoint-to('mobile-xlarge') {
+  //     left: 1rem;
+  //   }
+
+  //   @include breakpoint-to('desktop-small') {
+  //     left: 9rem;
+  //   }
+
+  //   @include breakpoint-to('desktop') {
+  //     height: 3.5rem;
+  //     width: auto;
+  //     bottom: -1.5rem;
+  //     left: 12rem;
+  //   }
+  // }
 }
 </style>

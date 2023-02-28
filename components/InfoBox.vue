@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+const viewport = useViewport()
+</script>
+
 <template>
 <div
   id="aktualnosci"
@@ -35,7 +39,7 @@
       </li>
     </ul>
 
-    <img 
+    <img
       class="info-box__birds"
       src="/images/birds.svg"
       width="201"
@@ -45,6 +49,7 @@
     />
 
     <img 
+      v-if="$viewport.isLessThan('desktop-small')" 
       class="info-box__cloud"
       src="/images/cloud.svg"
       width="117"
@@ -105,7 +110,14 @@
     }
 
     @include breakpoint-to('desktop-small') {
-      display: none;
+      top: 15rem;
+      right: 2rem;
+      height: 10rem;
+      width: auto;
+    }
+
+    @include breakpoint-to('desktop') {
+      height: 15rem;
     }
   }
 
@@ -117,10 +129,6 @@
 
     @include breakpoint-to('mobile-xlarge') {
       top: 7rem;
-    }
-
-    @include breakpoint-to('desktop-small') {
-      display: none;
     }
   }
 }
