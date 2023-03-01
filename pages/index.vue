@@ -70,4 +70,6 @@ useHead({
   <InfoContact />
 
   <IconScroll />
+
+  <FaqBox />
 </template>

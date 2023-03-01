@@ -27,7 +27,7 @@ function handlePhoneCall (): void {
       </div>
 
       <NuxtImg
-        class="info-contact__line"
+        class="info-contact__line info-contact__line--one"
         src="/images/line.svg" 
         loading="lazy"
         height="1"
@@ -41,29 +41,12 @@ function handlePhoneCall (): void {
       />
 
       <NuxtImg
-        v-if="false"
-        class="info-contact__line info-contact__line--three"
-        src="/images/line.svg" 
-        loading="lazy"
-        height="1"
-      />
-
-      <NuxtImg
         class="info-contact__rock"
         src="/images/rock.svg" 
         loading="lazy"
         height="36"
         width="67"
       />
-
-      <!-- <NuxtImg
-        v-if="$viewport.isGreaterOrEquals('mobile-xlarge')"
-        class="info-contact__plant"
-        src="/images/plant-color-1.svg" 
-        loading="lazy"
-        width="80"
-        height="109"
-      /> -->
     </div>
   </div>
 </template>
@@ -71,7 +54,7 @@ function handlePhoneCall (): void {
 <style lang="scss" scoped>
 .info-contact {
   padding: 5rem 0 3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 7rem;
   position: relative;
 
   @include breakpoint-to('mobile-xlarge') {
@@ -86,6 +69,7 @@ function handlePhoneCall (): void {
 
   @include breakpoint-to('desktop-small') {
     padding-bottom: 5rem;
+    margin-bottom: 10rem;
   }
 
   &__phone {
@@ -125,14 +109,17 @@ function handlePhoneCall (): void {
 
   &__line {
     position: absolute;
-    bottom: 0;
-    width: 70%;
-    left: -2rem;
-    opacity: .25;
+    opacity: .3;
 
-    @include breakpoint-to('mobile-xlarge') {
-      width: 100%;
-      left: -0.5rem;
+    &--one {
+      bottom: 0;
+      width: 70%;
+      left: -2rem;
+
+      @include breakpoint-to('mobile-xlarge') {
+        width: 100%;
+        left: -0.5rem;
+      }
     }
 
     &--two {
@@ -144,17 +131,6 @@ function handlePhoneCall (): void {
         left: 6rem;
       }
     }
-
-    // &--three {
-    //   left: inherit;
-    //   width: 75%;
-    //   bottom: -3rem;
-    //   right: -2rem;
-
-    //   @include breakpoint-to('mobile-xlarge') {
-    //     right: -0.5rem;
-    //   }
-    // }
   }
 
   &__rock {
@@ -165,15 +141,6 @@ function handlePhoneCall (): void {
     @include breakpoint-to('mobile-xlarge') {
       right: 40%;
     }
-  }
-
-  &__plant {
-    position: absolute;
-    bottom: 0;
-    right: 25%;
-    transform: scaleX(-1);
-    filter: grayscale(1);
-    opacity: .25;
   }
 }
 </style>

@@ -148,7 +148,7 @@ definePageMeta({
 
   ol {
     list-style-type: decimal-leading-zero;
-    padding-left: 1.7rem;
+    padding-left: 1.8rem;
 
     li {
       padding-left: 0.25rem;

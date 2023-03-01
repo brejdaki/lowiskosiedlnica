@@ -55,7 +55,7 @@
       />
 
       <NuxtImg
-        class="info-price__line"
+        class="info-price__line info-price__line--one"
         src="/images/line.svg" 
         loading="lazy"
         height="1"
@@ -224,25 +224,29 @@
     }
 
     @include breakpoint-to('desktop-small') {
-      right: 8rem;
+      right: 6rem;
     }
   }
 
   &__line {
-    width: 14rem;
     position: absolute;
     bottom: 0;
     right: -2rem;
-    opacity: .25;
+    opacity: .3;
 
-    @include breakpoint-to('desktop-small') {
-      right: -1rem;
-      width: 35rem;
-    }
+    &--one {
+      bottom: 0;
+      width: 14rem;
 
-    @include breakpoint-to('desktop') {
-      width: 60rem;
-      right: -8rem;
+      @include breakpoint-to('desktop-small') {
+        right: -1rem;
+        width: 35rem;
+      }
+
+      @include breakpoint-to('desktop') {
+        width: 60rem;
+        right: -8rem;
+      }
     }
 
     &--two {
