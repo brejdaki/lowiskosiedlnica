@@ -110,7 +110,20 @@ export default defineNuxtConfig({
 		inLanguage: 'pl'
   },
 
+	/**
+	 * Config build
+	 */
 	build: {
     transpile: ['v-calendar']
-  }
+  },
+
+	/**
+	 * Config route
+	 */
+	routeRules: {
+		'/': { static: true },
+		// '/**': { redirect: { to: '/', statusCode: 302 } },
+		'/regulamin': { static: true },
+		'/kalendarz': { static: true },
+	}
 })
