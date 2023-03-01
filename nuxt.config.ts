@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 		"@nuxt/content", // https://content.nuxtjs.org/get-started
 		"@nuxt/image-edge", // https://image.nuxtjs.org/getting-started
 		"@nuxtjs/google-fonts", // https://google-fonts.nuxtjs.org/setup
-		"@nuxtjs/critters", // https://github.com/nuxt-modules/critters
+		// "@nuxtjs/critters", // https://github.com/nuxt-modules/critters
 		"@vueuse/nuxt", // https://vueuse.org/guide/
 		"@pinia/nuxt", // https://pinia.vuejs.org/ssr/nuxt.html#installation
 		"nuxt-viewport", // https://github.com/mvrlin/nuxt-viewport
@@ -66,12 +66,12 @@ export default defineNuxtConfig({
 	 * Options passed directly to critters:
 	 * https://github.com/GoogleChromeLabs/critters#critters-2
 	 */
-	critters: {
-		config: {
-			// Default: 'media'
-			preload: "swap",
-		},
-	},
+	// critters: {
+	// 	config: {
+	// 		// Default: 'media'
+	// 		preload: "swap",
+	// 	},
+	// },
 
 	/**
 	 * Config style

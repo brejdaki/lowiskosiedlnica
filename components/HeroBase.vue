@@ -81,7 +81,6 @@
 
   &__container {
     margin-top: -1rem;
-    padding-left: 1.5rem;
     position: relative;
     background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
 
