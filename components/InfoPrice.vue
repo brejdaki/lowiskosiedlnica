@@ -52,6 +52,7 @@
         loading="lazy"
         width="80"
         height="109"
+        alt="Roślina"
       />
 
       <NuxtImg
@@ -59,6 +60,7 @@
         src="/images/line.svg" 
         loading="lazy"
         height="1"
+        alt="Linia"
       />
     </div>
 
@@ -75,6 +77,7 @@
       loading="lazy"
       height="70"
       width="126"
+      alt="Chmura"
     />
 
     <NuxtImg
@@ -84,6 +87,7 @@
       loading="lazy"
       height="89"
       width="160"
+      alt="Chmura"
     />
 
     <NuxtImg
@@ -93,6 +97,7 @@
       loading="lazy"
       height="45"
       width="80"
+      alt="Chmura"
     />
 
     <NuxtImg
@@ -100,6 +105,7 @@
       src="/images/line.svg" 
       loading="lazy"
       height="1"
+      alt="Linia"
     />
 
     <NuxtImg
@@ -107,6 +113,7 @@
       src="/images/line.svg" 
       loading="lazy"
       height="1"
+      alt="Linia"
     />
 
     <NuxtImg
@@ -114,6 +121,7 @@
       src="/images/line.svg" 
       loading="lazy"
       height="1"
+      alt="Linia"
     />
   </div>
 </div>

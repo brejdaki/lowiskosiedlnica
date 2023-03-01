@@ -109,4 +109,8 @@ export default defineNuxtConfig({
     host: 'http://localhost:3000/',
 		inLanguage: 'pl'
   },
+
+	build: {
+    transpile: ['v-calendar']
+  }
 })

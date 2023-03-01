@@ -31,6 +31,7 @@ function handlePhoneCall (): void {
         src="/images/line.svg" 
         loading="lazy"
         height="1"
+        alt="Linia"
       />
 
       <NuxtImg
@@ -38,6 +39,7 @@ function handlePhoneCall (): void {
         src="/images/line.svg" 
         loading="lazy"
         height="1"
+        alt="Linia"
       />
 
       <NuxtImg
@@ -46,6 +48,7 @@ function handlePhoneCall (): void {
         loading="lazy"
         height="36"
         width="67"
+        alt="Kamień"
       />
     </div>
   </div>

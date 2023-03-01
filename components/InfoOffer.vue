@@ -78,6 +78,10 @@
   padding-top: 5rem;
   position: relative;
 
+  @include breakpoint-to('desktop') {
+    font-size: 1.1rem;
+  }
+
   p {
     &:last-child {
       color: var(--c-black-alpha);
@@ -104,7 +108,7 @@
     }
 
     @include breakpoint-to('desktop') {
-      max-width: 85%;
+      max-width: 90%;
     }
 
     li {

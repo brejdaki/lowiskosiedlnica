@@ -62,6 +62,7 @@
       loading="lazy"
       height="112"
       width="201"
+      alt="Chmura"
     />
 </div>
 </template>
@@ -69,6 +70,10 @@
 <style lang="scss" scoped>
 .info-fishery {
   position: relative;
+
+  @include breakpoint-to('desktop') {
+    font-size: 1.1rem;
+  }
 
   &__inner {
     &:first-child {
