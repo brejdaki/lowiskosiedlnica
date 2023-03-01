@@ -10,6 +10,7 @@ specifiers:
   '@types/node': ^18.14.1
   '@typescript-eslint/eslint-plugin': ^5.53.0
   '@typescript-eslint/parser': ^5.53.0
+  '@vercel/analytics': ^0.1.11
   '@vue/eslint-config-standard': ^8.0.1
   '@vueuse/core': ^9.13.0
   '@vueuse/head': ^1.1.9
@@ -37,6 +38,7 @@ dependencies:
   '@pinia/nuxt': 0.4.7_typescript@4.9.5
   '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
   '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
+  '@vercel/analytics': 0.1.11
   '@vue/eslint-config-standard': 8.0.1_sjwtqjh7jw6t7xa4rhru36qzxe
   eslint: 8.34.0
   eslint-config-prettier: 8.6.0_eslint@8.34.0
@@ -1720,6 +1722,12 @@ packages:
       unhead: 1.1.11
       vue: 3.2.47
     dev: true
+
+  /@vercel/analytics/0.1.11:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dev: false
 
   /@vercel/nft/0.22.6:
     resolution: {integrity: sha512-gTsFnnT4mGxodr4AUlW3/urY+8JKKB452LwF3m477RFUJTAaDmcz2JqFuInzvdybYIeyIv1sSONEJxsxnbQ5JQ==}
