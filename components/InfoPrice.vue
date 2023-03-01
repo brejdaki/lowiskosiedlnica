@@ -42,7 +42,7 @@
 
         <span>
           Po wcześniejszym kontakcie <br>
-          <NuxtLink to="#kontakt">telefonicznym</NuxtLink>.
+          <NuxtLink no-rel to="#kontakt">telefonicznym</NuxtLink>.
         </span>
       </div>
 

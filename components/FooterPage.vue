@@ -30,6 +30,7 @@ const getYear = new Date().getFullYear()
           class="footer-page__list-item"
         >
           <NuxtLink
+            no-rel
             class="text-color--secondary"
             :to="item.link"
           >

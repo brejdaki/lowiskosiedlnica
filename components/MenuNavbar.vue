@@ -14,6 +14,7 @@ import { menuItem } from '@/composables/MenuItem';
       class="navbar__list-item font-sans"
     >
       <NuxtLink
+        no-rel
         class="text-color--secondary"
         :to="item.link"
       >

@@ -31,7 +31,7 @@ const viewport = useViewport()
 
       <li>
         <strong>UWAGA!</strong> Zmieniły się opłaty, zalecamy sprawdzić 
-        <NuxtLink to="#cennik">cennik</NuxtLink>,
+        <NuxtLink no-rel to="#cennik">cennik</NuxtLink>,
       </li>
 
       <li>

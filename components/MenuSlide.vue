@@ -35,6 +35,7 @@ function handlePhoneCall (): void {
 				class="menu-slide__list-item font-sans"
 			>
 				<NuxtLink
+					no-rel
 					@click="handleMenuItem"
 					class="text-color--secondary"
 					:to="item.link"
