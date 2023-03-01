@@ -6,22 +6,22 @@ export const menuItem: MenuItemInterface[] = [
     link: '/#aktualnosci',
     isDesktop: false,
   }, {
-    label: 'Kalendarz',
-    link: '/#kalendarz',
+    label: 'Oferta',
+    link: '/#oferta',
     isDesktop: true,
   }, {
     label: 'Cennik',
     link: '/#cennik',
     isDesktop: true,
   }, {
+    label: 'Kalendarz',
+    link: '/kalendarz',
+    isDesktop: true,
+  }, {
     label: 'Regulamin',
     link: 'regulamin',
     isDesktop: true,
     isPage: true
-  }, {
-    label: 'Oferta',
-    link: '/#oferta',
-    isDesktop: true,
   }, {
     label: 'Kontakt',
     link: '/#kontakt',

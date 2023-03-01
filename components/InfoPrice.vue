@@ -204,12 +204,16 @@
   }
 
   &__info {
-    @include breakpoint-to('mobile-xlarge') {
-      max-width: 75%;
+    @include breakpoint-to('mobile-medium') {
+      max-width: 70%;
     }
 
     @include breakpoint-to('desktop-small') {
-      max-width: 60%;
+      max-width: 100%;
+    }
+
+    @include breakpoint-to('desktop') {
+      font-size: 1rem;
     }
   }
 

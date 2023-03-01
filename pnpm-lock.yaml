@@ -27,6 +27,7 @@ specifiers:
   prettier: ^2.8.4
   sass: ^1.58.3
   typescript: ^4.9.5
+  v-calendar: 3.0.0-alpha.8
   vue-tsc: ^1.2.0
 
 dependencies:
@@ -45,6 +46,7 @@ dependencies:
   pinia: 2.0.32_typescript@4.9.5
   prettier: 2.8.4
   typescript: 4.9.5
+  v-calendar: 3.0.0-alpha.8
   vue-tsc: 1.2.0_typescript@4.9.5
 
 devDependencies:
@@ -1277,6 +1279,10 @@ packages:
     dev: true
     optional: true
 
+  /@popperjs/core/2.4.0:
+    resolution: {integrity: sha512-NMrDy6EWh9TPdSRiHmHH2ye1v5U0gBD7pRYwSwJvomx7Bm4GG04vu63dYiVzebLOx2obPpJugew06xVP0Nk7hA==}
+    dev: false
+
   /@rollup/plugin-alias/4.0.3_rollup@3.17.2:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
     engines: {node: '>=14.0.0'}
@@ -1461,6 +1467,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: false
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: false
 
   /@types/mdast/3.0.10:
@@ -2713,6 +2723,19 @@ packages:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
     dev: true
+
+  /date-fns-tz/1.3.8_date-fns@2.29.3:
+    resolution: {integrity: sha512-qwNXUFtMHTTU6CFSFjoJ80W8Fzzp24LntbjFFBgL/faqds4e5mo9mftoRLgr3Vi1trISsg4awSpYVsOQCRnapQ==}
+    peerDependencies:
+      date-fns: '>=2.0.0'
+    dependencies:
+      date-fns: 2.29.3
+    dev: false
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /de-indent/1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
@@ -7232,6 +7255,18 @@ packages:
       kleur: 4.1.5
       sade: 1.8.1
     dev: true
+
+  /v-calendar/3.0.0-alpha.8:
+    resolution: {integrity: sha512-T23H5UbK0EomrwArlF/jrT2LFbV/lu+Bp9JroZ1paN6rPoaMyvE+HrLxvAmUgi+pODrdTURDMzM3+WPgeFKEBQ==}
+    peerDependencies:
+      vue: ^3.1.0
+    dependencies:
+      '@popperjs/core': 2.4.0
+      '@types/lodash': 4.14.191
+      date-fns: 2.29.3
+      date-fns-tz: 1.3.8_date-fns@2.29.3
+      lodash: 4.17.21
+    dev: false
 
   /vfile-location/4.1.0:
     resolution: {integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==}

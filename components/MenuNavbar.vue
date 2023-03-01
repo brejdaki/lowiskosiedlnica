@@ -33,7 +33,7 @@ import { menuItem } from '@/composables/MenuItem';
   &-item {
     a {
       font-size: 1.25rem;
-      @include hover-underline(var(--c-primary))
+      @include hover-underline(var(--c-primary));
     }
   }
 }
