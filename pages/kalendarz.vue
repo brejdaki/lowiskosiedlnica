@@ -235,8 +235,8 @@ const attributes = [
     position: absolute;
     border: none;
     padding: 0;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2em;
     border-radius: 1.5rem;
     background: transparent;
     color: var(--c-black-alpha);
@@ -247,7 +247,7 @@ const attributes = [
       position: absolute;
       top: 0;
       left: calc(50% - 0.0625rem);
-      width: 0.25rem;
+      width: 0.125rem;
       height: 100%;
       border-radius: 0.125rem;
       transform: rotate(45deg);
@@ -333,10 +333,16 @@ const attributes = [
     justify-content: center;;
     border: 1px solid #cbd5e0;
 
+    @include breakpoint-to('desktop-small') {
+      padding-left: 35%;
+      font-size: 1.25rem;
+    }
+
     &-inner {
-      display: flex;
+      display: grid;
+      grid-template-columns: 0.5rem 1fr;
       gap: 1rem;
-      align-items: center;
+      align-items: baseline;
       
       &:not(:last-child) {
         margin-bottom: 1.5rem;
@@ -344,8 +350,13 @@ const attributes = [
     }
 
     h3 {
-      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
       color: var(--c-black-alpha);
+
+      @include breakpoint-to('desktop-small') {
+        margin-bottom: 2rem;
+      }
     }
     
     span {
