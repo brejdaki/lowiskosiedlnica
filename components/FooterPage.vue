@@ -5,70 +5,70 @@ const getYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer
-    class="footer-page__outer text-color--secondary container-fluid"
+<footer
+  class="footer-page__outer text-color--secondary container-fluid"
+>
+  <div
+    class="footer-page container"
   >
     <div
-      class="footer-page container"
+      class="footer-page__contact"
     >
-      <div
-        class="footer-page__contact"
-      >
-        Łowisko Wędkarskie Siedlnica<br/>
-        Marzena Juszczak<br/>
-        67-400 Wschowa<br/>
-        Siedlnica<br/>
-        NIP: 6971385856
-      </div>
-
-      <ul 
-        class="footer-page__list"
-      >
-        <li
-          v-for="(item, index) in menuItem"
-          :key="index"
-          class="footer-page__list-item"
-        >
-          <NuxtLink
-            no-rel
-            class="text-color--secondary"
-            :to="item.link"
-          >
-            {{ item.label }}
-          </NuxtLink>
-        </li>
-      </ul>
-
-      <div
-        class="footer-page__copyright"
-      >
-        <span
-          class="footer-page__created"
-        >
-          wykonanie:
-          <NuxtLink 
-            target="_blank" 
-            to="https://whitecatstudio.pl"
-          >
-            whitecatstudio.pl
-          </NuxtLink>
-        </span>
-
-        <div>
-          &copy; Łowisko wędkarskie Siedlnica - {{ getYear }} 
-        </div>
-      </div>
-
-      <NuxtImg 
-        class="footer-page__plant"
-        src="/images/plant-color-2.svg"
-        width="97"
-        height="200"
-        loading="lazy"
-        alt="Grafika rośliny"
-      />
+      Łowisko Wędkarskie Siedlnica<br/>
+      Marzena Juszczak<br/>
+      67-400 Wschowa<br/>
+      Siedlnica<br/>
+      NIP: 6971385856
     </div>
-  </footer>
+
+    <ul 
+      class="footer-page__list"
+    >
+      <li
+        v-for="(item, index) in menuItem"
+        :key="index"
+        class="footer-page__list-item"
+      >
+        <NuxtLink
+          no-rel
+          class="text-color--secondary"
+          :to="item.link"
+        >
+          {{ item.label }}
+        </NuxtLink>
+      </li>
+    </ul>
+
+    <div
+      class="footer-page__copyright"
+    >
+      <span
+        class="footer-page__created"
+      >
+        wykonanie:
+        <NuxtLink 
+          target="_blank" 
+          to="https://whitecatstudio.pl"
+        >
+          whitecatstudio.pl
+        </NuxtLink>
+      </span>
+
+      <div>
+        &copy; Łowisko wędkarskie Siedlnica - {{ getYear }} 
+      </div>
+    </div>
+
+    <NuxtImg 
+      class="footer-page__plant"
+      src="/images/plant-color-2.svg"
+      width="97"
+      height="200"
+      loading="lazy"
+      alt="Grafika rośliny"
+    />
+  </div>
+</footer>
 </template>
 
 <style lang="scss" scoped>
@@ -149,6 +149,10 @@ const getYear = new Date().getFullYear()
   &__created {
     font-size: .75rem;
     line-height: 1.5rem;
+
+    @include breakpoint-to('desktop') {
+      line-height: 1.75rem;
+    }
   }
 
   &__plant {

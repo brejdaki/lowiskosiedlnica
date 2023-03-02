@@ -3,6 +3,23 @@ import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
 
 const { isLayerOverflowVisible } = storeToRefs(useMainStore())
+
+useHead({
+  htmlAttrs: { 
+    lang: 'pl' 
+  },
+  title: 'Łowisko wędkarskie Siedlnica',
+  meta: [
+    { 
+      name: 'description',
+      content: 'Wędkarskie łowisko komercyjne Siedlnica zaprasza zawody wędkarskie dla zakładów pracy i grup zorganizowanych, łowienie rekreacyjne.'
+    },
+    {
+      name: 'robots',
+      content: 'noindex, nofollow'
+    }
+  ],
+})
 </script>
 
 <template>

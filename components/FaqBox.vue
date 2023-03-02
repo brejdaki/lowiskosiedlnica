@@ -6,7 +6,7 @@
   id="faq"
   class="container"
 >
-  <div
+  <!-- <div
     class="faq"
   >
     <h3
@@ -15,7 +15,7 @@
       Pytania i odpowiedzi
     </h3>
 
-  </div>
+  </div> -->
 </div>
 </template>
 

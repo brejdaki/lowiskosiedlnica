@@ -1,4 +1,4 @@
-import DateFromToInterface from '@/composables/DateFromToInterface'
+import { DateFromToInterface } from '@/composables/DateFromToInterface'
 
 export interface CalendarItemInterface {
 	description: string

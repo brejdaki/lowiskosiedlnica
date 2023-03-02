@@ -1,34 +1,68 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { Calendar } from 'v-calendar';
-import { CalendarItem } from '@/composables/CalendarItem'
 
+import { CalendarItem } from '@/composables/CalendarItem'
+import { CalendarItemDayInterface } from '@/composables/CalendaItemDayInterface'
+import { SelectedDayInterface } from '@/composables/SelectedDayInterface' 
+import { useMainStore } from '@/stores/main'
 
 definePageMeta({
   layout: 'main',
 })
 
-// const date = new Date()
+const store = useMainStore()
+const { selectedDay } = storeToRefs(store) 
+
+let date = new Date()
+// const month = date.getMonth()
+const isDayInfo = ref(false)
+
+function handleDay (item: CalendarItemDayInterface) {
+  const selectedDay: SelectedDayInterface = {
+    label: item.ariaLabel,
+    events: []
+  }
+
+  console.log(item)
+
+  selectedDay.label = item.ariaLabel
+
+  item.attributes.forEach((item) => {
+    selectedDay.events.push({ 
+      name: item.customData.description,
+      style: item.dot.base.color  
+    })
+  })
+
+  if (selectedDay.events.length > 0) {
+    store.setSelectedDay(selectedDay)
+    isDayInfo.value = true
+  }
+}
+
+function handleClosePopup() {
+  isDayInfo.value = false
+}
 
 
 const attributes = [
   {
     key: 'today',
     highlight: 'gray',
-    dates: new Date(),
+    dates: date,
     fillMode: 'outline'
   },
 
   ...CalendarItem.map((item, index)  => ({
     key: index,
-
     dates: item.dates,
     dot: {
       color: item.color,
     },
     popover: {
-      label: item.description,
       visibility: 'hidden',
-      placement: 'auto'
     },
     customData: {
       description: item.description
@@ -36,16 +70,6 @@ const attributes = [
     excludeDates: []
   })),
 ]
-
-const show = ref(false)
-
-function test (e) {
-  console.log('test', e), 
-  console.log('test attr', e.attributes[0].customData)
-  show.value = true
-
-  console.log('show', show)
-}
 </script>
 
 <template>
@@ -64,33 +88,68 @@ function test (e) {
     <div
       class="calendar__legend-dot calendar__legend-dot--open"
     >
-      łowisko otwarte w podanych godzinach
+      łowisko otwarte w podanych godzinach,
     </div>
 
     <div
       class="calendar__legend-dot calendar__legend-dot--reservation"
     >
-      zawody na łowisku, proszę zwrócić uwagę na zajętość łowiska (całe lub pół)
-      w przypadku zajętości połowy jest możliwość rekreacyjnego połowu na wolnej 
-      połowie łowiska
+      zawody na łowisku, proszę zwrócić uwagę na zajętość (całe lub pół)
+      w przypadku połowy jest możliwość rekreacyjnego połowu na wolnej
+      części łowiska.
     </div>
   </div>
 
-  <ClientOnly 
-    fallback-tag="div" 
-    fallback="Ładuję kalendarz..."
+  <div 
+    class="calendar__outer"
   >
-    <Calendar 
-      class="calendar-custom"
-      is-expanded
-      :min-date="date"
-      :max-date="new Date(2023, 11, 31)"
-      :attributes="attributes"
-      disabled-dates=""
-      title-position="left"
-      @dayclick="test($event)"
-    />
-  </ClientOnly>
+    <ClientOnly>
+      <template #default>
+        <Calendar 
+          ref="calendar"
+          class="calendar__custom"
+          is-expanded
+          :min-date="date"
+          :max-date="new Date(2023, 11, 31)"
+          :attributes="attributes"
+          disabled-dates=""
+          title-position="left"
+          @dayclick="handleDay($event)"
+        />
+      </template>
+
+      <template #fallback>
+        <div class="calendar__loading">
+          Ładuję kalendarz...
+        </div>
+      </template>
+    </ClientOnly>
+
+    <div
+      v-if="isDayInfo"
+      class="calendar__popup"
+    >
+      <button 
+        class="calendar__close"
+        @click="handleClosePopup"
+      />
+
+      <h3>{{ selectedDay?.label }}</h3>
+
+      <div
+        v-for="event in selectedDay?.events"
+        class="calendar__popup-inner"
+      >
+        <span 
+          :class="event.style"
+        />
+
+        <div>
+          {{ event.name }}
+        </div>
+      </div>
+    </div>
+  </div>
 
   <p
     class="calendar__info"
@@ -100,11 +159,11 @@ function test (e) {
 
   <ul>
     <li>
-      dzień aby zobaczyć godziny otwarcia.
+      dzień aby zobaczyć godziny otwarcia | czas trwania zawodów,
     </li>
 
     <li>
-      strzałki aby przejść do miesiąca licząc od aktualnego (poprzedni | następny),
+      strzałki aby przejść do miesiąca licząc od aktualnego (poprzedni | następny).
     </li>
   </ul>
 </div>
@@ -115,15 +174,23 @@ function test (e) {
   $self: &;
   padding-top: 2rem;
   padding-bottom: 3rem;
-  min-height: 30rem;
+  min-height: 45rem;
 
   @include breakpoint-to('desktop-small') {
-    height: calc(100vh - 296px);
+    height: calc(100vh - 359px);
   }
 
   &__info {
     color: var(--c-black-alpha);
     font-size: .875rem;
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 27.25rem;
+    color: var(--c-black-alpha);
   }
 
   ul {
@@ -148,7 +215,54 @@ function test (e) {
     }
   }
 
-  :deep(.calendar-custom) {
+  &__outer {
+    position: relative;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    width: calc(100% + 3rem);
+
+    @include breakpoint-to('mobile-xlarge') {
+      margin-right: 0;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  &__close {
+    top: 1rem;
+    right: 1rem;
+    overflow: hidden;
+    position: absolute;
+    border: none;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background: transparent;
+    color: var(--c-black-alpha);
+    cursor: pointer;
+
+    &:before, 
+    &:after {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 0.0625rem);
+      width: 0.25rem;
+      height: 100%;
+      border-radius: 0.125rem;
+      transform: rotate(45deg);
+      background: currentcolor;
+      content: "";
+    }
+    
+    &:after { 
+      transform: rotate(-45deg); 
+    }
+  }
+
+  :deep(.calendar__custom) {
+    border-radius: 0;
+
     .vc-header {
       padding: 1rem;
 
@@ -167,8 +281,12 @@ function test (e) {
 
     .vc-day-content {
       font-size: 1rem;
-      width: 3rem;
+      width: 2rem;
       height: 3rem;
+
+      @include breakpoint-to('mobile-xlarge') {
+        width: 3rem;
+      }
 
       &.is-disabled {
         pointer-events: none;
@@ -181,8 +299,8 @@ function test (e) {
 
     .vc-highlight {
       font-size: 1rem;
-      width: 3rem;
-      height: 3rem;
+      width: 2rem;
+      height: 2rem;
       color: var(--c-white);
     }
 
@@ -198,6 +316,51 @@ function test (e) {
 
     .vc-day-popover-row {
       font-size: 1rem;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    background: var(--c-white);
+    padding: 2rem;
+    z-index: var(--z-overflow);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;;
+    border: 1px solid #cbd5e0;
+
+    &-inner {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+      color: var(--c-black-alpha);
+    }
+    
+    span {
+      width: .5rem;
+      height: .5rem;
+      border-radius: .375rem;
+      display: block;
+
+      &.green {
+        background-color: var(--c-cal-open);
+      }
+
+      &.red {
+        background-color: var(--c-cal-reservation);
+      }
     }
   }
 
