@@ -121,9 +121,8 @@ export default defineNuxtConfig({
 	 * Config route
 	 */
 	routeRules: {
-		'/': { static: true },
-		// '/**': { redirect: { to: '/', statusCode: 302 } },
-		'/regulamin': { static: true },
-		'/kalendarz': { static: true },
+		'/index.php/cennik': { redirect: { to: '/#cennik', statusCode: 302 } },
+		'/index.php/kalendarzje': { redirect: { to: '/kalendarz', statusCode: 302 } },
+		'/index.php/**': { redirect: { to: '/', statusCode: 302 } },
 	}
 })
