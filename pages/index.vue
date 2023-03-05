@@ -1,9 +1,15 @@
 <script lang="ts" setup>
 // import { useSchemaOrg, defineWebPage, defineLocalBusiness } from '@vueuse/schema-org'
+const { find } = useStrapi()
 
 definePageMeta({
   layout: 'main',
 })
+
+const landing = await find('landing', {
+  populate: '*',
+})
+console.log('landing', landing)
 
 // useSchemaOrg([
 //   defineLocalBusiness({

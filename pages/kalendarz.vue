@@ -16,7 +16,6 @@ const store = useMainStore()
 const { selectedDay } = storeToRefs(store) 
 
 let date = new Date()
-// const month = date.getMonth()
 const isDayInfo = ref(false)
 
 function handleDay (item: CalendarItemDayInterface) {
@@ -24,8 +23,6 @@ function handleDay (item: CalendarItemDayInterface) {
     label: item.ariaLabel,
     events: []
   }
-
-  console.log(item)
 
   selectedDay.label = item.ariaLabel
 
@@ -45,7 +42,6 @@ function handleDay (item: CalendarItemDayInterface) {
 function handleClosePopup() {
   isDayInfo.value = false
 }
-
 
 const attributes = [
   {
@@ -144,9 +140,9 @@ const attributes = [
           :class="event.style"
         />
 
-        <div>
-          {{ event.name }}
-        </div>
+        <div
+          v-html="event.name"
+        />
       </div>
     </div>
   </div>

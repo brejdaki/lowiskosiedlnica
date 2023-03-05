@@ -6,7 +6,9 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000/",
+			strapiUrl: process.env.NUXT_PUBLIC_STRAPI_URL || "http://localhost:1337"
 		},
+		strapiUrl: process.env.STRAPI_URL || 'http://localhost:1337'
 	},
 
 	/**
@@ -16,6 +18,7 @@ export default defineNuxtConfig({
 		"@nuxt/content", // https://content.nuxtjs.org/get-started
 		"@nuxt/image-edge", // https://image.nuxtjs.org/getting-started
 		"@nuxtjs/google-fonts", // https://google-fonts.nuxtjs.org/setup
+		"@nuxtjs/strapi", // https://strapi.nuxtjs.org/setup
 		// "@nuxtjs/critters", // https://github.com/nuxt-modules/critters
 		"@vueuse/nuxt", // https://vueuse.org/guide/
 		"@pinia/nuxt", // https://pinia.vuejs.org/ssr/nuxt.html#installation
@@ -33,6 +36,17 @@ export default defineNuxtConfig({
 		},
 		overwriting: true,
 	},
+
+	/**
+	 * Config strapi
+	 */
+	strapi: {
+		url: process.env.STRAPI_URL || "http://localhost:1337",
+		prefix: '/api',
+		version: 'v4',
+		cookie: {},
+		cookieName: 'strapi_jwt',
+  },
 
 	/**
 	 * Config nuxt-viewport
@@ -121,8 +135,23 @@ export default defineNuxtConfig({
 	 * Config route
 	 */
 	routeRules: {
-		'/index.php/cennik': { redirect: { to: '/#cennik', statusCode: 302 } },
-		'/index.php/kalendarzje': { redirect: { to: '/kalendarz', statusCode: 302 } },
-		'/index.php/**': { redirect: { to: '/', statusCode: 302 } },
+		'/index.php/cennik': { 
+			redirect: { 
+				to: '/#cennik', 
+				statusCode: 302 
+			} 
+		},
+		'/index.php/kalendarzje': { 
+			redirect: { 
+				to: '/kalendarz', 
+				statusCode: 302 
+			} 
+		},
+		'/index.php/**': { 
+			redirect: { 
+				to: '/', 
+				statusCode: 302 
+			} 
+		},
 	}
 })
