@@ -130,20 +130,28 @@ const attributes = [
         @click="handleClosePopup"
       />
 
-      <h3>{{ selectedDay?.label }}</h3>
-
-      <div
-        v-for="event in selectedDay?.events"
-        class="calendar__popup-inner"
+      <h3 
+        v-if="selectedDay"
       >
-        <span 
-          :class="event.style"
-        />
+        {{ selectedDay.label }}
+      </h3>
 
+      <template 
+        v-if="selectedDay?.events"
+      >
         <div
-          v-html="event.name"
-        />
-      </div>
+          v-for="event in selectedDay.events"
+          class="calendar__popup-inner"
+        >
+          <span 
+            :class="event.style"
+          />
+
+          <div
+            v-html="event.name"
+          />
+        </div>
+      </template>
     </div>
   </div>
 
