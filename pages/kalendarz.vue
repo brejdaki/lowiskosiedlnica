@@ -137,7 +137,7 @@ const attributes = [
       </h3>
 
       <template 
-        v-if="selectedDay?.events"
+        v-if="selectedDay"
       >
         <div
           v-for="event in selectedDay.events"
