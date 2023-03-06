@@ -1,9 +1,16 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
+import { Hash } from '@/composables/enum/hash'
 
-// const viewport = useViewport()
-const { isMenuSlideVisible } = storeToRefs(useMainStore()) 
+const store = useMainStore()
+const router = useRouter()
+const { isMenuMobileVisible } = storeToRefs(useMainStore()) 
+
+async function  handleLogin (): Promise<void> {
+	await router.push({ hash: Hash.login })
+  store.setModalVisible(true)
+}
 </script>
 
 <template>
@@ -41,13 +48,20 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
 
       <Transition name="slide">
         <MenuSlide 
-          v-if="isMenuSlideVisible"
+          v-if="isMenuMobileVisible"
         />
       </Transition>
 
       <NavbarHamburger 
         v-if="$viewport.isLessThan('desktop-small')"
       />
+
+      <button
+        v-if="$viewport.isGreaterOrEquals('desktop-small')"
+        @click="handleLogin"
+      >
+        logowanie
+      </button>
     </div>
   </div>
 </nav>
@@ -63,7 +77,7 @@ const { isMenuSlideVisible } = storeToRefs(useMainStore())
   height: 4rem;
   background-color: var(--c-lgray);
   overflow: hidden;
-  z-index: var(--z-upper);
+  z-index: var(--z-navbar);
 
   &__container {
     width: 100%;

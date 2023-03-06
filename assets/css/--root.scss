@@ -13,11 +13,16 @@
 
   --b-shadow-menu: rgba(70, 70, 70, .5);
 
-  --c-cal-open: #38a169;
-  --c-cal-reservation: #e53e3e;
+  --c-cal-open: rgba(56, 161, 105, 1);
+  --c-cal-reservation: rgba(229, 62, 62, 1);
+
+  --c-form-succes: rgba(56, 161, 105, 1);
+  --c-from-error: rgba(229, 62, 62, 1);
 
   --z-under: -1;
-  --z-fixed: 20;
-  --z-upper: 40;
-  --z-overflow: 10;
+  --z-top: 1;
+  --z-navbar: 10;
+  --z-overlayer: 20;
+  --z-menu: 40;
+  --z-modal: 60;
 }

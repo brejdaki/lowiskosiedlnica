@@ -9,7 +9,7 @@ const {
   login, 
   logout, 
   register,
-  getProviderAuthenticationUrl
+  // getProviderAuthenticationUrl
 } = useStrapiAuth()
 const user = useStrapiUser()
 const router = useRouter()
@@ -20,8 +20,6 @@ const form = reactive({
   password: '', 
   name: '' 
 })
-
-console.log(user.value)
 
 const onSubmit = async () => {
   loading.value = true
@@ -34,9 +32,9 @@ const onSubmit = async () => {
   loading.value = false
 }
 
-const onClick = () => {
-  window.location = getProviderAuthenticationUrl('github') as unknown as Location
-}
+// const onClick = () => {
+//   window.location = getProviderAuthenticationUrl('facebook') as unknown as Location
+// }
 
 const onRegister = async () => {
   try {
@@ -102,9 +100,9 @@ function handleLogout() {
       {{ loading ? 'Loading...' : 'Login' }}
     </button>
 
-    <button type="button" @click="onClick">
-      {{ loading ? 'Loading...' : 'Login with GitHub' }}
-    </button>
+    <!-- <button type="button" @click="onClick">
+      {{ loading ? 'Loading...' : 'Login with facebook' }}
+    </button> -->
   </form>
 
 

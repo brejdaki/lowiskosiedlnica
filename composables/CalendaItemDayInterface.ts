@@ -1,13 +1,15 @@
 export interface CalendarItemDayInterface {
-  ariaLabel: String
-  attributes: [{
-    dot: {
-      base: {
-        color: String
-      }
-    },
-    customData: {
-      description: String
-    }
-  }],
+	ariaLabel: string
+	attributes: [
+		{
+			dot: {
+				base: {
+					color: string
+				}
+			}
+			customData: {
+				description: string
+			}
+		}
+	]
 }

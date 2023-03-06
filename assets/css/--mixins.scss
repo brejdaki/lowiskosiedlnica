@@ -38,6 +38,7 @@
   background-color: transparent;
   font-family: 'IBM Plex Sans Condensed', Arial, Helvetica, sans-serif;
   font-weight: 600;
+  font-size: 1rem;
 
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
@@ -55,5 +56,55 @@
     &:not(:-moz-focusring) {
         outline: none;
     }
+  }
+}
+
+@mixin reset-input {
+  margin: 0;
+	border: 0;
+	padding: 0;
+	display: block;
+  width: 100%;
+	vertical-align: middle;
+	white-space: normal;
+	background: none;
+	font-size: 1rem;
+  font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+  min-height: 3rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--c-black-alpha);
+  padding: 0 1rem;
+  background-color: var(--c-white);
+}
+
+@mixin icon-close {
+  top: 1rem;
+  right: 1rem;
+  overflow: hidden;
+  position: absolute;
+  border: none;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  background: transparent;
+  color: var(--c-black);
+  cursor: pointer;
+
+  &:before, 
+  &:after {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 0.0625rem);
+    width: 0.125rem;
+    height: 100%;
+    border-radius: 0.125rem;
+    transform: rotate(45deg);
+    background: currentcolor;
+    content: "";
+  }
+  
+  &:after { 
+    transform: rotate(-45deg); 
   }
 }

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'main',
+})
+
 const { resetPassword } = useStrapiAuth()
 const router = useRouter()
 const route = useRoute()

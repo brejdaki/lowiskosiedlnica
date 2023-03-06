@@ -1,22 +1,11 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
-import { useMainStore } from '@/stores/main'
 
-const store = useMainStore()
-const { isMenuMobileVisible } = storeToRefs(useMainStore()) 
-
-function handleButton() {
-  store.setMobileMenuVisible(!isMenuMobileVisible.value)
-}
 </script>
 
 <template>
 <button
-  @click="handleButton"
-  :class="[
-    'navbar__hamburger',
-    { 'navbar__hamburger--active' : isMenuMobileVisible }
-  ]"
+  @click="$emit('clicked')"
+  class="button-close button-close--active"
   aria-label="Menu"
 >
   <svg>
@@ -45,7 +34,7 @@ function handleButton() {
 </template>
 
 <style lang="scss" scoped>
-.navbar__hamburger {
+.button-close {
   @include reset-button;
   height: 80px;
   width: 80px;

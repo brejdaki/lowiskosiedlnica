@@ -1,29 +1,38 @@
 import { defineStore } from "pinia"
-import { SelectedDayInterface } from '@/composables/SelectedDayInterface' 
+import { SelectedDayInterface } from "@/composables/SelectedDayInterface"
 
 interface State {
-	isMenuSlideVisible: boolean
+	isMenuMobileVisible: boolean
+	isModalVisible: boolean
 	isLayerOverflowVisible: boolean
 	selectedDay: SelectedDayInterface | null
 }
 
 export const useMainStore = defineStore("main", {
 	state: (): State => ({
-		isMenuSlideVisible: false,
+		isMenuMobileVisible: false,
+		isModalVisible: false,
 		isLayerOverflowVisible: false,
-		selectedDay: null
+		selectedDay: null,
 	}),
 
 	getters: {},
 
 	actions: {
-		setModalMenuVisible(payload: boolean) {
-			this.isMenuSlideVisible = payload
+		setMobileMenuVisible(payload: boolean) {
+			this.isMenuMobileVisible = payload
+			this.isLayerOverflowVisible = payload
+		},
+
+		setModalVisible(payload: boolean) {
+			this.isMenuMobileVisible = false
+			this.isModalVisible = payload
 			this.isLayerOverflowVisible = payload
 		},
 
 		setOverflowLayerVisible(payload: boolean) {
-			this.isMenuSlideVisible = payload
+			this.isMenuMobileVisible = false
+			this.isModalVisible = payload
 			this.isLayerOverflowVisible = payload
 		},
 

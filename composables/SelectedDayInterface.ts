@@ -1,6 +1,6 @@
-import { SelectedDayEventsInterface } from '@/composables/SelectedDayEventsInterface'
+import { SelectedDayEventsInterface } from "@/composables/SelectedDayEventsInterface"
 
 export interface SelectedDayInterface {
-  label: String,
-  events: SelectedDayEventsInterface[]
+	label: string
+	events: SelectedDayEventsInterface[]
 }

@@ -225,35 +225,7 @@ const attributes = [
   }
 
   &__close {
-    top: 1rem;
-    right: 1rem;
-    overflow: hidden;
-    position: absolute;
-    border: none;
-    padding: 0;
-    width: 2rem;
-    height: 2em;
-    border-radius: 1.5rem;
-    background: transparent;
-    color: var(--c-black-alpha);
-    cursor: pointer;
-
-    &:before, 
-    &:after {
-      position: absolute;
-      top: 0;
-      left: calc(50% - 0.0625rem);
-      width: 0.125rem;
-      height: 100%;
-      border-radius: 0.125rem;
-      transform: rotate(45deg);
-      background: currentcolor;
-      content: "";
-    }
-    
-    &:after { 
-      transform: rotate(-45deg); 
-    }
+    @include icon-close
   }
 
   :deep(.calendar__custom) {

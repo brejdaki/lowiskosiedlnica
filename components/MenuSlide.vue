@@ -1,11 +1,18 @@
 <script lang="ts" setup>
 import { useMainStore } from '@/stores/main'
 import { menuItem } from '@/composables/MenuItem';
+import { Hash } from '@/composables/enum/hash'
 
 const store = useMainStore()
+const router = useRouter()
 
-function handleMenuItem() {
-  store.setModalMenuVisible(false)
+function handleMenuItem (): void {
+  store.setMobileMenuVisible(false)
+}
+
+async function  handleLogin (): Promise<void> {
+	await router.push({ hash: Hash.login })
+  store.setModalVisible(true)
 }
 
 function handlePhoneCall (): void {
@@ -20,6 +27,12 @@ function handlePhoneCall (): void {
 	<div
 		class="menu-slide__top"
 	>
+		<button
+			@click="handleLogin"
+		>
+			logowanie
+		</button>
+
 		<h3
 			class="menu-slide__title"
 		>
@@ -95,7 +108,7 @@ function handlePhoneCall (): void {
 	bottom: 0;
 	padding: 1rem 1.5rem 0;
 	background-color: var(--c-white);
-	z-index: var(--z-fixed);
+	z-index: var(--z-menu);
 	box-shadow: var(--b-shadow-menu) 0 0 1.5rem 0.25rem;
 	overflow-y: auto;
 

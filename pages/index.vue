@@ -1,15 +1,20 @@
 <script lang="ts" setup>
 // import { useSchemaOrg, defineWebPage, defineLocalBusiness } from '@vueuse/schema-org'
-const { find } = useStrapi()
+// const { find } = useStrapi()
 
 definePageMeta({
   layout: 'main',
+  middleware: 'modal'
 })
 
-const landing = await find('landing', {
-  populate: '*',
-})
-console.log('landing', landing)
+// const route = useRoute()
+
+// console.log(route)
+
+// const landing = await find('landing', {
+//   populate: '*',
+// })
+// console.log('landing', landing)
 
 // useSchemaOrg([
 //   defineLocalBusiness({
@@ -39,19 +44,19 @@ console.log('landing', landing)
 <template>
   <!-- <SchemaOrgDebug /> -->
 
-  <HeroBase />
+  <LazyHeroBase />
 
-  <InfoBox />
+  <LazyInfoBox />
 
-  <InfoFishery />
+  <LazyInfoFishery />
 
-  <InfoPrice />
+  <LazyInfoPrice />
 
-  <InfoOffer />
+  <LazyInfoOffer />
 
-  <InfoContact />
+  <LazyInfoContact />
 
-  <IconScroll />
+  <LazyIconScroll />
 
-  <FaqBox />
+  <LazyFaqBox />
 </template>

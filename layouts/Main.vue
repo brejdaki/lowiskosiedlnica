@@ -1,13 +1,11 @@
 <script setup>
+import { defineAsyncComponent } from 'vue'
+
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
-
-const { isLayerOverflowVisible } = storeToRefs(useMainStore())
+import { Hash } from '@/composables/enum/hash'
 
 useHead({
-  htmlAttrs: { 
-    lang: 'pl' 
-  },
   title: 'Łowisko wędkarskie Siedlnica',
   meta: [
     { 
@@ -20,9 +18,49 @@ useHead({
     }
   ],
 })
+
+const AccountLogin = defineAsyncComponent(() => import('@/components/AccountLogin.vue'))
+const AccountRegister = defineAsyncComponent(() => import('@/components/AccountRegister.vue'))
+const AccountForgotPassword = defineAsyncComponent(() => import('@/components/AccountForgotPassword.vue'))
+const AccountResetPassword = defineAsyncComponent(() => import('@/components/AccountResetPassword.vue'))
+const ModalBase = defineAsyncComponent(() => import('@/components/ModalBase.vue'))
+
+// const store = useMainStore()
+const route = useRoute()
+
+const { 
+  isModalVisible,
+  isLayerOverflowVisible 
+} = storeToRefs(useMainStore()) 
+
+const isAccountLogin = computed(() => {
+  return route.hash === Hash.login || route.hash === Hash.loginConfirmed
+})
+
+const isAccountRegister = computed(() => {
+  return route.hash === Hash.register
+})
+
+const isAccountForgotPassword = computed(() => {
+  return route.hash === Hash.forgotPassword
+})
+
+const isAccountResetPassword = computed(() => {
+  return route.hash.startsWith(Hash.resetPassword)
+})
+
+// const hashCallModal = ['#login', '#register', '#forgot-password']
+// const isModal = computed(() => {
+//   return hashCallModal.includes(route.hash)
+// })
+
+// store.setModalVisible(isModal)
+
 </script>
 
 <template>
+  <NuxtLoadingIndicator />
+
   <NavbarBase />
 
   <main>
@@ -31,11 +69,35 @@ useHead({
 
   <FooterPage />
 
-  <Transition name="fade">
-    <LayerOverflow 
-      v-if="isLayerOverflowVisible"
-    />
-  </Transition>
+  <ClientOnly>
+    <Transition name="fade">
+      <LayerOverflow 
+        v-if="isLayerOverflowVisible"
+      />
+    </Transition>
+
+    <Transition name="fade">
+      <ModalBase
+        v-if="isModalVisible"
+      >
+        <AccountLogin 
+          v-if="isAccountLogin"
+        />
+        
+        <AccountRegister 
+          v-if="isAccountRegister"
+        />
+
+        <AccountForgotPassword
+          v-if="isAccountForgotPassword"
+        />
+
+        <AccountResetPassword
+          v-if="isAccountResetPassword"
+        />
+      </ModalBase>
+    </Transition>
+  </ClientOnly>
 </template>
 
 <style lang="scss">
