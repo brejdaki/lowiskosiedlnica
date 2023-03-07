@@ -15,11 +15,9 @@ export default defineNuxtConfig({
 	 * Config modules
 	 */
 	modules: [
-		"@nuxt/content", // https://content.nuxtjs.org/get-started
 		"@nuxt/image-edge", // https://image.nuxtjs.org/getting-started
 		"@nuxtjs/google-fonts", // https://google-fonts.nuxtjs.org/setup
 		"@nuxtjs/strapi", // https://strapi.nuxtjs.org/setup
-		// "@nuxtjs/critters", // https://github.com/nuxt-modules/critters
 		"@vueuse/nuxt", // https://vueuse.org/guide/
 		"@pinia/nuxt", // https://pinia.vuejs.org/ssr/nuxt.html#installation
 		"nuxt-viewport", // https://github.com/mvrlin/nuxt-viewport
@@ -75,19 +73,6 @@ export default defineNuxtConfig({
 	},
 
 	/**
-	 * Config critters
-	 *
-	 * Options passed directly to critters:
-	 * https://github.com/GoogleChromeLabs/critters#critters-2
-	 */
-	// critters: {
-	// 	config: {
-	// 		// Default: 'media'
-	// 		preload: "swap",
-	// 	},
-	// },
-
-	/**
 	 * Config style
 	 */
 	css: ["~/assets/css/typography.scss", "~/assets/css/main.scss"],
@@ -131,7 +116,7 @@ export default defineNuxtConfig({
 	 * Config build
 	 */
 	build: {
-		transpile: ["v-calendar", "vee-validate"],
+		transpile: ["v-calendar"],
 	},
 
 	/**

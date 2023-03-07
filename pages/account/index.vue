@@ -11,7 +11,7 @@ const user = useStrapiUser()
 
 function handleLogout() {
   logout()
-  router.push('/login')
+  router.push('/')
 }
 
 const getUserFishes = await find('fishes', {
