@@ -297,7 +297,7 @@ const attributes = [
     position: absolute;
     background: var(--c-white);
     padding: 2rem;
-    z-index: var(--z-overflow);
+    z-index: var(--z-overlayer);
     left: 0;
     top: 0;
     right: 0;
