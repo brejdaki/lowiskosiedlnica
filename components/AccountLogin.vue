@@ -5,7 +5,10 @@ import * as Yup from 'yup';
 import { useMainStore } from '@/stores/main'
 import { Hash } from '@/composables/enum/hash'
 
-const { login } = useStrapiAuth()
+const { 
+  login, 
+  getProviderAuthenticationUrl 
+} = useStrapiAuth()
 const store = useMainStore()
 const router = useRouter()
 const route = useRoute()
@@ -14,11 +17,11 @@ const isLoading = ref(false)
 const isAuthorizationError = ref(false)
 const isButtonDisabled = ref(false)
 
-const isUserConfirmed = computed(() => {
+const isUserConfirmed = computed((): boolean => {
   return route.hash === Hash.loginConfirmed
 })
 
-const isSubmitButtonDisabled = computed(() => {
+const isSubmitButtonDisabled = computed((): boolean => {
   return isButtonDisabled.value
 })
 
@@ -26,6 +29,15 @@ const form = reactive({
   identifier: '', 
   password: '', 
 })
+
+const schema = Yup.object().shape({
+  identifier: Yup.string()
+    .email(() => 'Nieprawidłowy adres email.')
+    .required(() => 'Pole wymagane.'),
+  password: Yup.string()
+    .min((6), () => 'Hasło musi posiadać min 6 znaków.')
+    .required(() => 'Pole wymagane.'),
+});
 
 async function onSubmit(_values: any, actions: any) {
   isLoading.value = true
@@ -43,7 +55,7 @@ async function onSubmit(_values: any, actions: any) {
   isLoading.value = false
 }
 
-function onInvalidSubmit() {
+function onInvalidSubmit(): void {
   isButtonDisabled.value = true
 
   setTimeout(() => {
@@ -51,14 +63,9 @@ function onInvalidSubmit() {
   }, 2000);
 }
 
-const schema = Yup.object().shape({
-  identifier: Yup.string()
-    .email(() => 'Nieprawidłowy adres email.')
-    .required(() => 'Pole wymagane.'),
-  password: Yup.string()
-    .min((6), () => 'Hasło musi posiadać min 6 znaków.')
-    .required(() => 'Pole wymagane.'),
-});
+const handeFacebookLogin = (): void => {
+  window.location = getProviderAuthenticationUrl('facebook')
+}
 </script>
 
 <template>
@@ -121,15 +128,23 @@ const schema = Yup.object().shape({
       {{ isLoading ? 'Loading...' : 'Zaloguj się' }}
     </template>
   </ButtonBase>
-
-  <div 
-    v-if="$viewport.isLessThan('mobile-large') && !isUserConfirmed"
-    class="form__account"
-  >
-    Nie masz konta? 
-    <NuxtLink :to="Hash.register">Zarejestruj się</NuxtLink>.
-  </div>
 </form>
+
+<ButtonBase
+  @clicked="handeFacebookLogin"
+>
+  <template v-slot:text>
+    Zaloguj za pomocą facebooka
+  </template>
+</ButtonBase>
+
+<div 
+  v-if="$viewport.isLessThan('mobile-large') && !isUserConfirmed"
+  class="form__account"
+>
+  Nie masz konta? 
+  <NuxtLink :to="Hash.register">Zarejestruj się</NuxtLink>.
+</div>
 </template>
 
 <style lang="scss" scoped>

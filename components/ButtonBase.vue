@@ -2,7 +2,7 @@
 const props = defineProps({
   color: {
     type: String,
-    default: 'text',
+    default: 'blue',
   },
 
   isIcon: {
@@ -24,6 +24,7 @@ const props = defineProps({
       `button--${color}`
     ]"
     :disabled="disabled"
+    @click="$emit('clicked')"
   >
     <div class="button__content">
       <slot name="text" />

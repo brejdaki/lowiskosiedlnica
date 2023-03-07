@@ -121,15 +121,16 @@ const schema = Yup.object().shape({
       {{ isLoading ? 'Loading...' : 'Zarejestruj się' }}
     </template>
   </ButtonBase>
-
-  <div 
-    v-if="$viewport.isLessThan('mobile-large') && !isRegisterSucces"
-    class="form__account"
-  >
-    Masz już konto? 
-    <NuxtLink :to="Hash.login">Zaloguj się</NuxtLink>
-  </div>
 </form>
+
+
+<div 
+  v-if="$viewport.isLessThan('mobile-large') && !isRegisterSucces"
+  class="form__account"
+>
+  Masz już konto? 
+  <NuxtLink :to="Hash.login">Zaloguj się</NuxtLink>
+</div>
 </template>
 
 <style lang="scss" scoped>

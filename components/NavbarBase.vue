@@ -46,11 +46,13 @@ async function  handleLogin (): Promise<void> {
         :size="28"
       />
 
-      <Transition name="slide">
-        <MenuSlide 
-          v-if="isMenuMobileVisible"
-        />
-      </Transition>
+      <Teleport to="body">
+        <Transition name="slide">
+          <MenuSlide 
+            v-if="isMenuMobileVisible"
+          />
+        </Transition>
+      </Teleport>
 
       <NavbarHamburger 
         v-if="$viewport.isLessThan('desktop-small')"
