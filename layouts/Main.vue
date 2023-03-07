@@ -19,11 +19,11 @@ useHead({
   ],
 })
 
-const AccountLogin = defineAsyncComponent(() => import('@/components/AccountLogin.vue'))
-const AccountRegister = defineAsyncComponent(() => import('@/components/AccountRegister.vue'))
-const AccountForgotPassword = defineAsyncComponent(() => import('@/components/AccountForgotPassword.vue'))
-const AccountResetPassword = defineAsyncComponent(() => import('@/components/AccountResetPassword.vue'))
-const ModalBase = defineAsyncComponent(() => import('@/components/ModalBase.vue'))
+// const AccountLogin = defineAsyncComponent(() => import('@/components/AccountLogin.vue'))
+// const AccountRegister = defineAsyncComponent(() => import('@/components/AccountRegister.vue'))
+// const AccountForgotPassword = defineAsyncComponent(() => import('@/components/AccountForgotPassword.vue'))
+// const AccountResetPassword = defineAsyncComponent(() => import('@/components/AccountResetPassword.vue'))
+// const ModalBase = defineAsyncComponent(() => import('@/components/ModalBase.vue'))
 
 // const store = useMainStore()
 const route = useRoute()

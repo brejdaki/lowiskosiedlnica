@@ -44,19 +44,19 @@ definePageMeta({
 <template>
   <!-- <SchemaOrgDebug /> -->
 
-  <LazyHeroBase />
+  <HeroBase />
 
-  <LazyInfoBox />
+  <InfoBox />
 
-  <LazyInfoFishery />
+  <InfoFishery />
 
-  <LazyInfoPrice />
+  <InfoPrice />
 
-  <LazyInfoOffer />
+  <InfoOffer />
 
-  <LazyInfoContact />
+  <InfoContact />
 
-  <LazyIconScroll />
+  <IconScroll />
 
-  <LazyFaqBox />
+  <FaqBox />
 </template>
