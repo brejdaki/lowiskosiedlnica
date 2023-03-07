@@ -6,9 +6,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000/",
-			strapiUrl: process.env.NUXT_PUBLIC_STRAPI_URL || "http://localhost:1337",
 		},
-		strapiUrl: process.env.STRAPI_URL || "http://localhost:1337",
 	},
 
 	/**
@@ -39,7 +37,7 @@ export default defineNuxtConfig({
 	 * Config strapi
 	 */
 	strapi: {
-		url: process.env.STRAPI_URL || "http://localhost:1337",
+		url: process.env.STRAPI_URL,
 		prefix: "/api",
 		version: "v4",
 		cookie: {},
