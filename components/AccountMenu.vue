@@ -55,7 +55,6 @@ async function handleLogout() {
   background-color: var(--c-white);
   position: fixed;
   width: 16.875rem;
-  height: calc(100vh - 4rem);
   z-index: var(--z-upper-menu);
   top: 4rem;
   left: 0;
