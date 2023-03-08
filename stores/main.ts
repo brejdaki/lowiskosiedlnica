@@ -24,6 +24,7 @@ export const useMainStore = defineStore("main", {
 		setMobileMenuVisible(payload: boolean) {
 			this.isMenuMobileVisible = payload
 			this.isLayerOverflowVisible = payload
+			this.isMenuLayerOverflowVisible = false
 		},
 
 		setModalVisible(payload: boolean) {
@@ -36,6 +37,7 @@ export const useMainStore = defineStore("main", {
 			this.isMenuMobileVisible = false
 			this.isModalVisible = payload
 			this.isLayerOverflowVisible = payload
+			this.isMenuLayerOverflowVisible = false
 		},
 
 		setMenuOverflowLayerVisible(payload: boolean) {
