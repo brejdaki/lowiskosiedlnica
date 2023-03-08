@@ -60,6 +60,7 @@ async function handleLogout() {
   top: 4rem;
   left: 0;
   right: 0;
+  bottom: 0;
   padding: 3rem 1.5rem 0;
   display: flex;
   flex-flow: column;
