@@ -53,7 +53,8 @@ async function handleLogout() {
 <style lang="scss" scoped>
 .account-menu {
   background-color: var(--c-white);
-  position: absolute;
+  position: fixed;
+  width: 16.875rem;
   height: calc(100vh - 4rem);
   z-index: var(--z-upper-menu);
   top: 4rem;
