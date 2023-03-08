@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000/",
+			strapiUrl: process.env.STRAPI_URL,
 		},
 	},
 
@@ -37,7 +38,7 @@ export default defineNuxtConfig({
 	 * Config strapi
 	 */
 	strapi: {
-		url: process.env.STRAPI_URL,
+		url: process.env.STRAPI_URL || 'http://localhost:1337',
 		prefix: "/api",
 		version: "v4",
 		cookie: {},
@@ -121,23 +122,11 @@ export default defineNuxtConfig({
 	 * Config route
 	 */
 	routeRules: {
-		"/index.php/cennik": {
-			redirect: {
-				to: "/#cennik",
-				statusCode: 302,
-			},
-		},
-		"/index.php/kalendarzje": {
-			redirect: {
-				to: "/kalendarz",
-				statusCode: 302,
-			},
-		},
-		"/index.php/**": {
-			redirect: {
-				to: "/",
-				statusCode: 302,
-			},
-		},
+		"/regulamin": { static: true },
+		"/polityka-prywatnosci": { static: true },
+		"/account/**": { ssr: false },
+		"/index.php/cennik": { redirect: { to: "/#cennik", statusCode: 302 }},
+		"/index.php/kalendarzje": { redirect: { to: "/kalendarz", statusCode: 302 }},
+		"/index.php/**": { redirect: { to: "/", statusCode: 302 }},
 	},
 })

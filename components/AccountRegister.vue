@@ -18,6 +18,7 @@ const isSubmitButtonDisabled = computed(() => {
 const form = reactive({ 
   username: '',
   email: '', 
+  name: '',
   password: '', 
 })
 
@@ -51,6 +52,8 @@ const schema = Yup.object().shape({
   email: Yup.string()
     .email(() => 'Nieprawidłowy adres email.')
     .required(() => 'Pole wymagane.'),
+  name: Yup.string()
+    .required(() => 'Pole wymagane.'),
   password: Yup.string()
     .min((6), () => 'Hasło musi posiadać min 6 znaków.')
     .required(() => 'Pole wymagane.'),
@@ -82,6 +85,14 @@ const schema = Yup.object().shape({
     label="email"
     placeholder="Twój adress email"
     @input="form.email = $event.target.value, form.username = $event.target.value"
+  />
+
+  <InputBase
+    v-if="!isRegisterSucces"
+    name="name"
+    label="imię / nick"
+    placeholder="Twoje imię lub nick"
+    @input="form.name = $event.target.value"
   />
 
   <InputBase

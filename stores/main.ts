@@ -5,6 +5,7 @@ interface State {
 	isMenuMobileVisible: boolean
 	isModalVisible: boolean
 	isLayerOverflowVisible: boolean
+	isMenuLayerOverflowVisible: boolean
 	selectedDay: SelectedDayInterface | null
 }
 
@@ -13,6 +14,7 @@ export const useMainStore = defineStore("main", {
 		isMenuMobileVisible: false,
 		isModalVisible: false,
 		isLayerOverflowVisible: false,
+		isMenuLayerOverflowVisible: false,
 		selectedDay: null,
 	}),
 
@@ -34,6 +36,10 @@ export const useMainStore = defineStore("main", {
 			this.isMenuMobileVisible = false
 			this.isModalVisible = payload
 			this.isLayerOverflowVisible = payload
+		},
+
+		setMenuOverflowLayerVisible(payload: boolean) {
+			this.isMenuLayerOverflowVisible = payload
 		},
 
 		setSelectedDay(payload: SelectedDayInterface) {

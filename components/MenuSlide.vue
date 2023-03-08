@@ -1,19 +1,36 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
 import { menuItem } from '@/composables/MenuItem';
 import { Hash } from '@/composables/enum/hash'
 
 const store = useMainStore()
 const router = useRouter()
+const user = useStrapiUser()
+
+const { 
+  isMenuLayerOverflowVisible
+} = storeToRefs(useMainStore()) 
+const isVisibleAccountMenu = ref(false)
+
+function handleAccountMenu (): void {
+	isVisibleAccountMenu.value = !isVisibleAccountMenu.value
+	store.setMenuOverflowLayerVisible(isVisibleAccountMenu.value)
+}
 
 function handleMenuItem (): void {
   store.setMobileMenuVisible(false)
 }
 
-async function  handleLogin (): Promise<void> {
+async function handleLogin (): Promise<void> {
 	await router.push({ hash: Hash.login })
   store.setModalVisible(true)
 }
+
+// async function handleAccount (): Promise<void> {
+// 	await router.push('/account')
+//   store.setModalVisible(false)
+// }
 
 function handlePhoneCall (): void {
 	document.location.href = 'tel:+48888660314'
@@ -24,15 +41,50 @@ function handlePhoneCall (): void {
 <div
 	class="menu-slide"
 >
+	<button
+		v-if="!user"
+		class="menu-slide__user"
+		@click="handleLogin"
+	>
+		Zaloguj się
+	</button>
+	
+	<button
+		v-else
+		class="menu-slide__user"
+		@click="handleAccountMenu"
+	>
+		<div>
+			Cześć {{ user.name }}
+			<small>Moje konto</small>
+		</div>
+
+		<NuxtImg 
+			:class="[
+				'menu-slide__user-icon',
+				{ 'menu-slide__user-icon--active' : isMenuLayerOverflowVisible }
+			]"
+			src="/icons/chevron.svg"
+			width="24"
+			height="24"
+		/>
+	</button>
+
+	<Transition name="slide">
+		<AccountMenu 
+			v-if="user && isVisibleAccountMenu"
+		/>
+	</Transition>
+
+	<Transition name="fade">
+		<LayerOverflowMenu
+			v-if="user && isMenuLayerOverflowVisible"
+		/>
+	</Transition>
+
 	<div
 		class="menu-slide__top"
 	>
-		<button
-			@click="handleLogin"
-		>
-			logowanie
-		</button>
-
 		<h3
 			class="menu-slide__title"
 		>
@@ -112,12 +164,44 @@ function handlePhoneCall (): void {
 	box-shadow: var(--b-shadow-menu) 0 0 1.5rem 0.25rem;
 	overflow-y: auto;
 
+	&__user {
+		@include reset-button;
+		height: 4rem;
+		margin: -1rem -1.5rem;
+		background-color: var(--c-secondary);
+		color: var(--c-white);
+		font-size: 1.2rem;
+		letter-spacing: 1px;
+		padding: 0 1.5rem;
+		text-align: left;
+		display: flex;
+		flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1;
+		position: relative;
+		z-index: var(--z-modal);
+
+		small {
+			display: block;
+			font-weight: 400;
+			margin-top: 0.25rem;
+			font-family: 'IBM Plex Sans', Arial, Helvetica, sans-serif;
+		}
+
+		&-icon {
+			&--active {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
 	&__title {
 		color: var(--c-black-alpha);
 	}
 
 	&__list {
-		margin-bottom: 3rem;
+		margin-bottom: 0;
 
 		&-item {
 			font-size: 1.75rem;
@@ -205,5 +289,26 @@ function handlePhoneCall (): void {
 			text-align: left;
 		}
 	}
+}
+
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup>
-import { defineAsyncComponent } from 'vue'
+// import { defineAsyncComponent } from 'vue'
 
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
