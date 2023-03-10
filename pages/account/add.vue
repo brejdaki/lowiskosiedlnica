@@ -191,13 +191,20 @@ function handleAdd() {
   </div>
 
   <ButtonBase 
-    class="form__submit"
+    class="account__add"
     @click="handleAdd"
   >
     <template v-slot:text>
       Dodaj kolejne zdjęcie
     </template>
   </ButtonBase>
+
+  <NuxtLink 
+    class="account__back"
+    to="/account"
+  >
+    Moje konto
+  </NuxtLink>
 </div>
 </template>
 
@@ -222,12 +229,22 @@ function handleAdd() {
   &__image {
     max-width: 100%;
     margin-bottom: 1rem;
+    border-radius: 0.25rem;
   }
 
   &__name {
     color: var(--c-black);
     font-size: 1.2rem;
     letter-spacing: 1px;
+  }
+
+  &__add {
+    margin: 0 0 2rem;
+  }
+
+  &__back {
+    text-align: center;
+    display: block;
   }
 }
 
@@ -238,6 +255,7 @@ function handleAdd() {
 
   &__description {
     color:  var(--c-black-alpha);
+    margin-bottom: 2rem;
 
     span {
       color: var(--c-from-error);

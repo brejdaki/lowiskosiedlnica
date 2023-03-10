@@ -202,14 +202,14 @@ function handlePhoneCall (): void {
 		margin-bottom: 0;
 
 		&-item {
-			font-size: 1.75rem;
+			font-size: 1.5rem;
 
 			@media screen and (height: 30rem) {
 				font-size: 1.25rem;
 			}
 
 			@media screen and (min-height: 48.75rem) {
-				font-size: 2rem;
+				font-size: 1.7rem;
 			}
 
 			&:not(:last-child) {

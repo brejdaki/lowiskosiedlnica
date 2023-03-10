@@ -22,6 +22,11 @@ export const menuItem: MenuItemInterface[] = [
 		isDesktop: true,
 	},
 	{
+		label: "Galeria",
+		link: "/galeria",
+		isDesktop: true,
+	},
+	{
 		label: "Regulamin",
 		link: "/regulamin",
 		isDesktop: true,

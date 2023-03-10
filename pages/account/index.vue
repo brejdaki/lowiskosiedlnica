@@ -1,29 +1,19 @@
 <script lang="ts" setup>
+import qs from 'qs'
+
 definePageMeta({
   layout: 'main',
   middleware: 'auth'
 })
 
 const config = useRuntimeConfig()
-const { logout } = useStrapiAuth()
-const { find, create } = useStrapi()
-const router = useRouter()
+const { delete: _delete } = useStrapi()
 const user = useStrapiUser()
+const router = useRouter()
+const publicUrl = config.public.strapiUrl
 const cookie = useCookie('strapi_jwt')
-const formData = new FormData() 
-const input = ref<HTMLInputElement | null>(null)
 
-const isPending = ref(false)
-const isError = ref(false)
-
-// const client = useStrapiClient()
-
-function handleLogout() {
-  logout()
-  router.push('/')
-}
-
-const getUserFishes = await find('fishes', {
+const fishesQuery = qs.stringify({
   populate: [
     'image'
   ],
@@ -34,50 +24,141 @@ const getUserFishes = await find('fishes', {
       }
     },
   }
+},
+{
+  encodeValuesOnly: true,
 })
 
-async function handleUploadImage () {
-  isPending.value = true
+const { data, pending, refresh } = await useFetch(`${config.public.strapiUrl}/api/fishes?${fishesQuery}`, {
+  method: "GET",
+  headers: {
+    'Authorization': 'Bearer ' + cookie.value,
+  },
+})
 
-  if (input?.value?.files) formData.append('files', input.value.files[0])
+async function onDelete (item: object) {
+  await _delete('fishes', item.id)
 
-  await useFetch(`${config.public.strapiUrl}/api/upload/`, {
-    method: "POST",
+  await useFetch(`${config.public.strapiUrl}/api/upload/files/${item.attributes.image.data.id}`, {
+    method: "DELETE",
     headers: {
       'Authorization': 'Bearer ' + cookie.value,
     },
-    body: formData,
-  }).then(async (resp: any) => {
-    await create('fishes', { 
-      weight: 10, 
-      dimension: 100, 
-      species: 'Karp', 
-      user: user.value?.id, 
-      image: resp.value[0]?.id
-    })
   })
 
-  setTimeout(() => {
-    isPending.value = false
-  }, 3000)
+  refresh()
 }
 </script>
 
 <template>
 <div
-  v-if="user"
-  class="container"
+  class="container account" 
 >
-    <h2>Moje konto</h2>
-    <button type="button" @click="handleLogout">
-      Logout
-    </button>
-    <pre>{{ user }}</pre>
-    <!-- <pre>{{ getUserFishes }}</pre> -->
+  <h2>Cześć {{ user.name }}</h2>
 
-    <input ref="input" type="file">
-    <button @click="handleUploadImage">upload</button>
+  <div 
+    v-if="data.meta.pagination.total > 0"
+    class="account__count"
+  >
+    <span>Dodano zdjęć:</span> 
+    {{ data.meta.pagination.total }}<br>
+    
+    <!-- <span>Kliknij na zdjęcie aby wyświetlić szczegóły</span> -->
+  </div>
+  <div 
+    v-else
+    class="account__empty"
+  >
+    Brak dodanych zdjęć
+  </div>
 
-    <div v-if="isPending">Loading ...</div>
+  <div
+    v-if="!pending && data.meta.pagination.total > 0"
+    class="account__photo"
+  >
+    <div
+      v-for="item in data.data"
+      class="account__item"
+    >
+      <NuxtImg
+        loading="lazy"
+        fit="contain"
+        :src="publicUrl + item.attributes.image.data.attributes.formats.medium.url"
+      />
+
+      <!-- <div class="account__item-inner">
+        <strong>
+          {{ item.attributes.species }}
+        </strong>
+
+        <div v-if="item.attributes.weight > 0">
+          {{ item.attributes.weight }}
+        </div>
+
+        <div v-if="item.attributes.dimension > 0">
+          {{ item.attributes.dimension }}
+        </div> -->
+        
+        <!-- <pre>{{ fish }}</pre> -->
+        <!-- <button @click="onDelete(item)">usun</button> -->
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <ButtonBase 
+    class="account__add"
+    @click="router.push('/account/add')"
+  >
+    <template v-slot:text>
+      Dodaj nowe zdjęcie
+    </template>
+  </ButtonBase>
 </div>
 </template>
+
+<style lang="scss" scoped>
+.account {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+
+  &__count {
+    margin-bottom: 2rem;
+
+    span {
+      color: var(--c-black-alpha)
+    }
+  }
+
+  &__empty {
+    margin: 3rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  &__photo {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  &__item {
+    // display: grid;
+    // grid-template-columns: 40% 1fr;
+    border-radius: 0.25rem;
+    // border: 1px solid var(--c-black-alpha);
+    overflow: hidden;
+
+    // &-photo {
+    // }
+
+    // &-inner {
+    //   padding: 1rem 0.5rem;
+    //   display: flex;
+    //   flex-flow: column;
+    //   gap: 0.5rem
+    // }
+  }
+}
+</style>
