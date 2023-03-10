@@ -1,13 +1,11 @@
+import { pathAccount } from '@/composables/PathAccount'
+
 export default defineNuxtRouteMiddleware((to) => {
 	const user = useStrapiUser()
 
 	console.log('midd', to)
 
-	if (to.name === "account"  && !user.value) {
-		return navigateTo("#login")
+	if (!user.value && pathAccount.includes(to.name as string)) {
+		return navigateTo("/#login")
 	}
-
-	// if (to.name === "login" && user.value) {
-	// 	return navigateTo("/account")
-	// }
 })

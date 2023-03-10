@@ -23,7 +23,7 @@ export const menuItem: MenuItemInterface[] = [
 	},
 	{
 		label: "Regulamin",
-		link: "regulamin",
+		link: "/regulamin",
 		isDesktop: true,
 		isPage: true,
 	},

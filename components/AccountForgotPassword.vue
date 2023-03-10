@@ -78,7 +78,7 @@ const schema = Yup.object().shape({
     class="form__submit"
   >
     <template v-slot:text>
-      {{ isLoading ? 'Loading...' : 'Odzyskaj hasło' }}
+      {{ isLoading ? 'Wysyłam wiadomość ...' : 'Odzyskaj hasło' }}
     </template>
   </ButtonBase>
 </form>

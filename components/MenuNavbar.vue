@@ -11,11 +11,14 @@ import { menuItem } from '@/composables/MenuItem';
   >
     <li
       v-if="item.isDesktop"
-      class="navbar__list-item font-sans"
+      class="navbar__list-item"
     >
       <NuxtLink
         no-rel
-        class="text-color--secondary"
+        :class="[
+          { 'text-color--black' : $viewport.isGreaterOrEquals('desktop-small') },
+          { 'text-color--secondary' : $viewport.isLessThan('desktop-small') }
+        ]"
         :to="item.link"
       >
         {{ item.label }}
@@ -28,12 +31,13 @@ import { menuItem } from '@/composables/MenuItem';
 <style lang="scss" scoped>
 .navbar__list {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-flow: row;
 
   &-item {
     a {
       font-size: 1.25rem;
+      letter-spacing: 1px;
       @include hover-underline(var(--c-primary));
     }
   }

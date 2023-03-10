@@ -63,9 +63,13 @@ function onInvalidSubmit(): void {
   }, 2000);
 }
 
-const handeFacebookLogin = (): void => {
-  window.location = getProviderAuthenticationUrl('facebook')
-}
+// const handleFacebookLogin = (): void => {
+//   window.location = getProviderAuthenticationUrl('facebook')
+// }
+
+// const handleGitLogin = (): void => {
+//   window.location = getProviderAuthenticationUrl('github')
+// }
 </script>
 
 <template>
@@ -99,7 +103,6 @@ const handeFacebookLogin = (): void => {
     name="identifier"
     label="email"
     placeholder="Twój adress email"
-    success-message="To jest ok"
     @input="form.identifier = $event.target.value"
   />
 
@@ -108,7 +111,6 @@ const handeFacebookLogin = (): void => {
     label="hasło"
     type="password"
     placeholder="Twoje hasło"
-    success-message="Wydaje się być w porządku"
     @input="form.password = $event.target.value"
   />
 
@@ -125,18 +127,26 @@ const handeFacebookLogin = (): void => {
     class="form__submit"
   >
     <template v-slot:text>
-      {{ isLoading ? 'Loading...' : 'Zaloguj się' }}
+      {{ isLoading ? 'Loguję ...' : 'Zaloguj się' }}
     </template>
   </ButtonBase>
 </form>
 
-<ButtonBase
-  @clicked="handeFacebookLogin"
+<!-- <ButtonBase
+  @clicked="handleFacebookLogin"
 >
   <template v-slot:text>
     Zaloguj za pomocą facebooka
   </template>
 </ButtonBase>
+
+<ButtonBase
+  @clicked="handleGitLogin"
+>
+  <template v-slot:text>
+    Zaloguj za pomocą github
+  </template>
+</ButtonBase> -->
 
 <div 
   v-if="$viewport.isLessThan('mobile-large') && !isUserConfirmed"

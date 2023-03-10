@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useMainStore } from '@/stores/main'
 import { storeToRefs } from 'pinia'
+import { useMainStore } from '@/stores/main'
 
 const store = useMainStore()
 const { 
@@ -19,7 +19,7 @@ function handleOverflowLayer() {
     'overflow-layer',
     { 'overflow-layer--modal' : isModalVisible }
   ]"
-  @click.stop.prevent="handleOverflowLayer"
+  @click.once.prevent="handleOverflowLayer"
 />
 </template>
 

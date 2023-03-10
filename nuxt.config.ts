@@ -6,8 +6,9 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000/",
-			strapiUrl: process.env.STRAPI_URL,
+			strapiUrl: process.env.NUXT_PUBLIC_STRAPI_URL || 'http://localhost:1337',
 		},
+		strapiUrl: process.env.STRAPI_URL || 'http://localhost:1337',
 	},
 
 	/**
@@ -99,7 +100,7 @@ export default defineNuxtConfig({
 				lang: "pl",
 			},
 			charset: "utf-16",
-			viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+			viewport: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1",
 		},
 	},
 

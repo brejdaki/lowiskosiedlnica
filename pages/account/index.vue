@@ -18,13 +18,10 @@ const isError = ref(false)
 
 // const client = useStrapiClient()
 
-
 function handleLogout() {
   logout()
   router.push('/')
 }
-
-
 
 const getUserFishes = await find('fishes', {
   populate: [
@@ -67,9 +64,11 @@ async function handleUploadImage () {
 </script>
 
 <template>
-<div>
-  <div v-if="user">
-    <h2>User</h2>
+<div
+  v-if="user"
+  class="container"
+>
+    <h2>Moje konto</h2>
     <button type="button" @click="handleLogout">
       Logout
     </button>
@@ -80,6 +79,5 @@ async function handleUploadImage () {
     <button @click="handleUploadImage">upload</button>
 
     <div v-if="isPending">Loading ...</div>
-  </div>
 </div>
 </template>

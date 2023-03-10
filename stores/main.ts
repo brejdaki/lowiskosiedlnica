@@ -3,6 +3,7 @@ import { SelectedDayInterface } from "@/composables/SelectedDayInterface"
 
 interface State {
 	isMenuMobileVisible: boolean
+	isUserMenuVisible: boolean
 	isModalVisible: boolean
 	isLayerOverflowVisible: boolean
 	isMenuLayerOverflowVisible: boolean
@@ -12,6 +13,7 @@ interface State {
 export const useMainStore = defineStore("main", {
 	state: (): State => ({
 		isMenuMobileVisible: false,
+		isUserMenuVisible: false,
 		isModalVisible: false,
 		isLayerOverflowVisible: false,
 		isMenuLayerOverflowVisible: false,
@@ -21,6 +23,10 @@ export const useMainStore = defineStore("main", {
 	getters: {},
 
 	actions: {
+		setUserMenuVisible(payload: boolean) {
+			this.isUserMenuVisible = payload
+		},
+
 		setMobileMenuVisible(payload: boolean) {
 			this.isMenuMobileVisible = payload
 			this.isLayerOverflowVisible = payload
@@ -35,7 +41,7 @@ export const useMainStore = defineStore("main", {
 
 		setOverflowLayerVisible(payload: boolean) {
 			this.isMenuMobileVisible = false
-			this.isModalVisible = payload
+			this.isModalVisible = false
 			this.isLayerOverflowVisible = payload
 			this.isMenuLayerOverflowVisible = false
 		},

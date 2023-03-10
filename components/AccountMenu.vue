@@ -1,14 +1,18 @@
 <script lang="ts" setup>
+import { onClickOutside } from '@vueuse/core'
 import { useMainStore } from '@/stores/main'
 import { menuAccount } from '@/composables/MenuAccount';
 
+const viewport = useViewport()
 const router = useRouter()
 const store = useMainStore()
 const { logout } = useStrapiAuth()
+const menu = ref(null)
 
 function handleMenuItem() {
   store.setMobileMenuVisible(false)
   store.setMenuOverflowLayerVisible(false)
+  store.setUserMenuVisible(false)
 }
 
 async function handleLogout() {
@@ -16,10 +20,16 @@ async function handleLogout() {
   handleMenuItem()
   await router.push('/')
 }
+
+onClickOutside(menu, (event: PointerEvent) => {
+  viewport.isGreaterOrEquals('desktop-small') && 
+    (event?.target?.localName !== "button") && handleMenuItem()
+})
 </script>
 
 <template>
 <div
+  ref="menu"
   class="account-menu"
 >
   <ul 
@@ -28,12 +38,18 @@ async function handleLogout() {
     <li
       v-for="(item, index) in menuAccount"
       :key="index"
-      class="account-menu__list-item font-sans"
+      :class="[
+        'account-menu__list-item', 
+        { 'font-sans' : $viewport.isLessThan('desktop-small') }
+      ]"
     >
       <NuxtLink
         no-rel
         @click="handleMenuItem"
-        class="text-color--secondary"
+        :class="[
+          { 'text-color--black' : $viewport.isGreaterOrEquals('desktop-small') },
+          { 'text-color--secondary' : $viewport.isLessThan('desktop-small') }
+        ]"
         :to="item.link"
       >
         {{ item.label }}
@@ -65,24 +81,29 @@ async function handleLogout() {
   flex-flow: column;
   justify-content: space-between;
 
+  @include breakpoint-to('desktop-small') {
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    left: inherit;
+    width: auto;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--c-black);
+    border-radius: 0.25rem;
+    bottom: inherit;
+  }
+
   &__list {
     &-item {
       font-size: 1.75rem;
 
-      @media screen and (height: 30rem) {
-        font-size: 1.25rem;
-      }
-
-      @media screen and (min-height: 48.75rem) {
-        font-size: 2rem;
-      }
-
       &:not(:last-child) {
         margin-bottom: 0.5rem;
+      }
 
-        @media screen and (min-height: 48.75rem) {
-          margin-bottom: 1.25rem;
-        }
+      @include breakpoint-to('desktop-small') {
+        font-size: 1.2rem;
+        color: var(--c-black)
       }
     }
   }
@@ -98,6 +119,17 @@ async function handleLogout() {
 		letter-spacing: 1px;
 		padding: 0 1.5rem;
 		text-align: left;
+
+    @include breakpoint-to('desktop-small') {
+      width: max-content;
+      margin: 0.75rem 0 0 0;
+      height: auto;
+      background-color: transparent;
+      padding: 0;
+      letter-spacing: 0;
+      color: inherit;
+      @include hover-underline(var(--c-primary))
+    }
   }
 }
 </style>

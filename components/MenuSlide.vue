@@ -11,11 +11,9 @@ const user = useStrapiUser()
 const { 
   isMenuLayerOverflowVisible
 } = storeToRefs(useMainStore()) 
-const isVisibleAccountMenu = ref(false)
 
 function handleAccountMenu (): void {
-	isVisibleAccountMenu.value = !isVisibleAccountMenu.value
-	store.setMenuOverflowLayerVisible(isVisibleAccountMenu.value)
+	store.setMenuOverflowLayerVisible(!isMenuLayerOverflowVisible.value)
 }
 
 function handleMenuItem (): void {
@@ -72,7 +70,7 @@ function handlePhoneCall (): void {
 
 	<Transition name="slide">
 		<AccountMenu 
-			v-if="user && isVisibleAccountMenu"
+			v-if="user && isMenuLayerOverflowVisible"
 		/>
 	</Transition>
 
@@ -158,7 +156,7 @@ function handlePhoneCall (): void {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	padding: 1rem 1.5rem 0;
+	padding: 0 1.5rem;
 	background-color: var(--c-white);
 	z-index: var(--z-menu);
 	box-shadow: var(--b-shadow-menu) 0 0 1.5rem 0.25rem;
@@ -167,12 +165,12 @@ function handlePhoneCall (): void {
 	&__user {
 		@include reset-button;
 		height: 4rem;
-		margin: -1rem -1.5rem;
+		margin: 0 -1.5rem;
 		background-color: var(--c-secondary);
 		color: var(--c-white);
 		font-size: 1.2rem;
 		letter-spacing: 1px;
-		padding: 0 1.5rem;
+		padding: 0 1rem 0 1.5rem;
 		text-align: left;
 		display: flex;
 		flex-flow: row;

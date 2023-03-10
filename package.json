@@ -27,6 +27,7 @@
     "@pinia/nuxt": "^0.4.7",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
+    "@vee-validate/rules": "^4.7.4",
     "@vue/eslint-config-standard": "^8.0.1",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
