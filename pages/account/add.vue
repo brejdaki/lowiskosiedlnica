@@ -135,13 +135,6 @@ function test(e) {
       @changeValue="form.species = $event"
     />
 
-    <!-- <InputBase
-      name="species"
-      label="gatunek"
-      placeholder="Gatunek ryby"
-      @input="form.species = $event.target.value"
-    /> -->
-
     <InputBase
       :is-required="false"
       name="weight"
