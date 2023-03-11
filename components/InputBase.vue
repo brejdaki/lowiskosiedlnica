@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import { useField } from 'vee-validate';
+// import { storeToRefs } from 'pinia'
+// import { useMainStore } from '@/stores/main'
+
+// const store = useMainStore()
+// const { isModalVisible } = storeToRefs(useMainStore()) 
 
 const props = defineProps({
   type: {
@@ -40,7 +45,7 @@ const props = defineProps({
   isSelectedFile: {
     type: Boolean,
     default: true,
-  }
+  },
 });
 
 const name = toRef(props, 'name');
@@ -55,10 +60,6 @@ const {
 } = useField(name, undefined, {
   initialValue: props.value,
 });
-
-// const isSelectedFile = computed(() => {
-//   return !!file.value.files 
-// })
 
 defineExpose({ inputValue });
 </script>
@@ -87,6 +88,7 @@ defineExpose({ inputValue });
       :placeholder="placeholder"
       @input="handleChange"
       @blur="handleBlur"
+      autocomplete="off"
     />
 
     <div

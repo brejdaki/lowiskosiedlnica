@@ -56,7 +56,6 @@ async function handleUploadImage () {
     },
     body: formData,
   }).then(async (uploadResp: any) => {
-
     await create('fishes', { 
       weight: form.weight !== '' ? form.weight : 0, 
       dimension: form.dimension !=='' ? form.dimension : 0, 
@@ -88,6 +87,10 @@ function handleAdd() {
   form.image = ''
   isUploadItem.value = false
 }
+
+function test() {
+  console.log('test')
+}
 </script>
 
 <template>
@@ -110,12 +113,34 @@ function handleAdd() {
       @input="form.image = $event.target.files[0]"
     />
 
-    <InputBase
+    <SelectBase
+      name="species"
+      label="gatunek"
+      placeholder="Gatunek ryby"
+      :data="[
+        'Amur',
+        'Karaś',
+        'Karaś srebrzysty',
+        'Karp',
+        'Krąp',
+        'Leszcz',
+        'Lin',
+        'Okoń',
+        'Płoć',
+        'Sandacz',
+        'Szczupak',
+        'Węgorz',
+        'Wzdręga'
+      ]"
+      @input="form.species = $event.target.value"
+    />
+
+    <!-- <InputBase
       name="species"
       label="gatunek"
       placeholder="Gatunek ryby"
       @input="form.species = $event.target.value"
-    />
+    /> -->
 
     <InputBase
       :is-required="false"
@@ -134,8 +159,6 @@ function handleAdd() {
       placeholder="Wymiar w cm"
       @input="form.dimension = $event.target.value"
     />
-
-    <!-- <SelectBase /> -->
 
     <ButtonBase 
       :disabled="isSubmitButtonDisabled"

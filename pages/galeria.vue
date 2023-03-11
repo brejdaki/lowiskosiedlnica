@@ -1,18 +1,30 @@
 <script lang="ts" setup>
+import { Hash } from '@/composables/enum/hash'
+
 definePageMeta({
   layout: 'main',
+  middleware: 'modal'
 })
 
+const user = useStrapiUser()
 const config = useRuntimeConfig()
 
 const { data, pending } = await useFetch(`${config.public.strapiUrl}/api/fishes?populate[0]=image`)
 </script>
 
 <template>
-<div class="container">
+<div class="container gallery">
+  <h1>Galeria</h1>
+
+  <p>Publikujemy tutaj zdjęcia zamieszczane przez naszych gości.<br>
+    Aby dodać zdjęcia swoich połowów 
+    <NuxtLink v-if="!user" :to="Hash.login">zaloguj się</NuxtLink>
+    <NuxtLink v-else to="/account/add">kliknij tutaj</NuxtLink>.
+  </p>
+
   <div
     v-if="!pending && data.meta.pagination.total > 0"
-    class="gallery"
+    class="gallery__inner"
   >
     <div
       v-for="item in data.data"
@@ -30,13 +42,21 @@ const { data, pending } = await useFetch(`${config.public.strapiUrl}/api/fishes?
 
 <style lang="scss" scoped>
 .gallery {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 1rem;
-  padding: 3rem 0;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 
-  @include breakpoint-to('desktop-small') {
-    grid-template-columns: auto auto auto auto;
+  p {
+    margin-bottom: 2rem;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+
+    @include breakpoint-to('desktop-small') {
+      grid-template-columns: auto auto auto auto;
+    }
   }
 }
 </style>

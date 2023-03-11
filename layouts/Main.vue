@@ -30,6 +30,7 @@ const route = useRoute()
 
 const { 
   isModalVisible,
+  isSelectVisible,
   isLayerOverflowVisible 
 } = storeToRefs(useMainStore()) 
 
