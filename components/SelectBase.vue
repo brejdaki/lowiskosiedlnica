@@ -86,6 +86,8 @@ defineExpose({ inputValue });
       @blur="handleBlur"
       autocomplete="off"
       @focusin="isFocus = true"
+      readonly
+      inputmode="none"
     />
 
     <div 
