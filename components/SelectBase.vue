@@ -113,26 +113,32 @@ defineExpose({ inputValue });
   >
     {{ errorMessage }}
   </p>
-</div>
 
-<div 
-  ref="select"
-  v-if="isFocus"
-  class="input__select"
->
   <div 
-    v-for="item in data"
-    @click="inputValue = item, isFocus = false"
+    ref="select"
+    v-if="isFocus"
+    class="input__select"
   >
-    {{ item }}
+    <div class="title">
+      Wybierz gatunek
+    </div>
+    
+    <div 
+      v-for="item in data"
+      @click="inputValue = item, isFocus = false"
+    >
+      {{ item }}
+    </div>
   </div>
 </div>
 
-<div
+
+
+<!-- <div
   v-if="isFocus"
   class="input__select-overflow"
   @click="isFocus = false"
-/>
+/> -->
 </template>
 
 <style lang="scss" scoped>
@@ -195,17 +201,22 @@ defineExpose({ inputValue });
 
   &__select {
     position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: var(--z-modal);
-    border-radius: 0.25rem;
+    // border-radius: 0.25rem;
     background-color: var(--c-white);
-    width: calc(100% - 3rem);
-    max-height: 75vh;
+    // width: calc(100% - 3rem);
+    // max-height: 75vh;
     overflow-y: auto;
     padding: 1rem;
+    text-align: center;
     font-size: 1.2rem;
     letter-spacing: 1px;
-    top: 50%;
-    transform: translateY(-50%);
+    // top: 50%;
+    // transform: translateY(-50%);
     
     div {
       &:not(:last-child) {
@@ -213,17 +224,17 @@ defineExpose({ inputValue });
       }
     }
 
-    &-overflow {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: var(--z-overlayer-menu);
-      background-color: var(--c-black-alpha);
-      backdrop-filter: blur(1px);
-      -webkit-backdrop-filter: blur(1px);
-    }
+    // &-overflow {
+    //   position: fixed;
+    //   top: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   left: 0;
+    //   z-index: var(--z-overlayer-menu);
+    //   background-color: var(--c-black-alpha);
+    //   backdrop-filter: blur(1px);
+    //   -webkit-backdrop-filter: blur(1px);
+    // }
   }
 
   &.has-error {
