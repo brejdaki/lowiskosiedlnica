@@ -88,8 +88,8 @@ function handleAdd() {
   isUploadItem.value = false
 }
 
-function test() {
-  console.log('test')
+function test(e) {
+  console.log('test', e)
 }
 </script>
 
@@ -132,7 +132,7 @@ function test() {
         'Węgorz',
         'Wzdręga'
       ]"
-      @input="form.species = $event.target.value"
+      @changeValue="form.species = $event"
     />
 
     <!-- <InputBase

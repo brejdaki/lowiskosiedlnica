@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useField } from 'vee-validate';
+import { useScrollLock } from '@vueuse/core'
 
 const props = defineProps({
   type: {
@@ -46,6 +47,8 @@ const props = defineProps({
 const name = toRef(props, 'name')
 const select = ref()
 const isFocus = ref(false)
+const el = ref<HTMLElement | null>(document.querySelector('body'))
+const isLocked = useScrollLock(el)
 
 const {
   value: inputValue,
@@ -85,7 +88,7 @@ defineExpose({ inputValue });
       @input="handleChange"
       @blur="handleBlur"
       autocomplete="off"
-      @focusin="isFocus = true"
+      @focusin="isFocus = true, isLocked = true"
       readonly
       inputmode="none"
     />
@@ -119,13 +122,18 @@ defineExpose({ inputValue });
     v-if="isFocus"
     class="input__select"
   >
-    <div class="title">
+    <span class="title">
       Wybierz gatunek
-    </div>
-    
+    </span>
+
     <div 
       v-for="item in data"
-      @click="inputValue = item, isFocus = false"
+      @click="[
+        inputValue = item, 
+        isFocus = false, 
+        isLocked = false,
+        $emit('changeValue', item)
+      ]"
     >
       {{ item }}
     </div>
@@ -214,11 +222,16 @@ defineExpose({ inputValue });
     padding: 1rem;
     text-align: center;
     font-size: 1.2rem;
-    letter-spacing: 1px;
     // top: 50%;
     // transform: translateY(-50%);
-    
+    span {
+      display: block;
+      margin-bottom: 2rem;
+    }
+
     div {
+      letter-spacing: 1px;
+
       &:not(:last-child) {
         margin-bottom: 0.75rem;
       }
