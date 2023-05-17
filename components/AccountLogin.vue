@@ -5,9 +5,9 @@ import * as Yup from 'yup';
 import { useMainStore } from '@/stores/main'
 import { Hash } from '@/composables/enum/hash'
 
-const { 
-  login, 
-  getProviderAuthenticationUrl 
+const {
+  login,
+  getProviderAuthenticationUrl
 } = useStrapiAuth()
 const store = useMainStore()
 const router = useRouter()
@@ -25,9 +25,9 @@ const isSubmitButtonDisabled = computed((): boolean => {
   return isButtonDisabled.value
 })
 
-const form = reactive({ 
-  identifier: '', 
-  password: '', 
+const form = reactive({
+  identifier: '',
+  password: '',
 })
 
 const schema = Yup.object().shape({
@@ -63,9 +63,9 @@ function onInvalidSubmit(): void {
   }, 2000);
 }
 
-// const handleFacebookLogin = (): void => {
-//   window.location = getProviderAuthenticationUrl('facebook')
-// }
+const handleFacebookLogin = (): void => {
+  window.location = getProviderAuthenticationUrl('facebook')
+}
 
 // const handleGitLogin = (): void => {
 //   window.location = getProviderAuthenticationUrl('github')
@@ -76,16 +76,16 @@ function onInvalidSubmit(): void {
 <div class="form__header">
   <h3 class="title">Logowanie</h3>
 
-  <div 
+  <div
     v-if="$viewport.isGreaterOrEquals('mobile-large') && !isUserConfirmed"
     class="form__account"
   >
-    Nie masz konta? 
+    Nie masz konta?
     <NuxtLink :to="Hash.register">Zarejestruj się</NuxtLink>.
   </div>
 </div>
 
-<div 
+<div
   v-if="isUserConfirmed && !isAuthorizationError"
   class="form__success"
 >
@@ -114,7 +114,7 @@ function onInvalidSubmit(): void {
     @input="form.password = $event.target.value"
   />
 
-  <div 
+  <div
     v-if="isAuthorizationError"
     class="form__error"
   >
@@ -122,7 +122,7 @@ function onInvalidSubmit(): void {
     <NuxtLink :to="Hash.forgotPassword">utwórz nowe hasło</NuxtLink>.
   </div>
 
-  <ButtonBase 
+  <ButtonBase
     :disabled="isSubmitButtonDisabled"
     class="form__submit"
   >
@@ -132,7 +132,7 @@ function onInvalidSubmit(): void {
   </ButtonBase>
 </form>
 
-<!-- <ButtonBase
+<ButtonBase
   @clicked="handleFacebookLogin"
 >
   <template v-slot:text>
@@ -140,7 +140,7 @@ function onInvalidSubmit(): void {
   </template>
 </ButtonBase>
 
-<ButtonBase
+<!-- <ButtonBase
   @clicked="handleGitLogin"
 >
   <template v-slot:text>
@@ -148,11 +148,11 @@ function onInvalidSubmit(): void {
   </template>
 </ButtonBase> -->
 
-<div 
+<div
   v-if="$viewport.isLessThan('mobile-large') && !isUserConfirmed"
   class="form__account"
 >
-  Nie masz konta? 
+  Nie masz konta?
   <NuxtLink :to="Hash.register">Zarejestruj się</NuxtLink>.
 </div>
 </template>
