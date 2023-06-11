@@ -1,0 +1,64 @@
+.admin {
+  padding: 2rem 1.5rem 4rem;
+
+  @include breakpoint-to('desktop-small') {
+    min-height: calc(100vh - 22.5rem);
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+    color: var(--c-black-alpha)
+  }
+
+  :deep(.tox) {
+    margin: 0 -1.5rem 2rem;
+    border-width: 1px;
+    border-radius: 0;
+
+    @include breakpoint-to('mobile-xlarge') {
+      border-radius: 0.25rem;
+      margin: 0 0 2rem;
+    }
+  }
+
+  &__button {
+    @include breakpoint-to('mobile-xlarge') {
+      width: 20rem;
+    }
+  }
+
+  &__menu {
+    &-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      
+      @include breakpoint-to('desktop-small') {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &-item {
+      height: 5rem;
+    }
+
+    &-link {
+      border: 1px solid var(--c-black-alpha);
+      border-radius: 0.25rem;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__price {
+    &-outer {
+      @include breakpoint-to('desktop-small') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+  }
+}

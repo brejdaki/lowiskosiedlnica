@@ -6,6 +6,7 @@ import { Hash } from '@/composables/enum/hash'
 const store = useMainStore()
 const user = useStrapiUser()
 const router = useRouter()
+
 const { 
   isMenuMobileVisible,
   isUserMenuVisible
@@ -106,85 +107,5 @@ function toggleUserMenu (): void {
 </template>
 
 <style lang="scss" scoped>
-.navbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  height: 4rem;
-  background-color: var(--c-lgray);
-  z-index: var(--z-navbar);
-
-  &__container {
-    width: 100%;
-    display: flex;
-    padding: 0 1rem;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-
-    @include breakpoint-to('desktop-small') {
-      padding: 0 1.5rem;
-    }
-  }
-
-  &__logo {
-    font-size: 1.25rem;
-  }
-
-  &__link {
-    color: var(--c-secondary);
-  }
-
-  &__inner {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  &__user {
-    font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
-    display: flex;
-    height: 2.375rem;
-    width: fit-content;
-    padding: .25rem 1rem;
-    align-items: center;
-    border: 1px solid var(--c-black);
-    background-color: transparent;
-    border-radius: .25rem;
-    color: var(--c-black);
-    font-size: 0.875rem;
-    gap: 0.875rem;
-    cursor: pointer;
-
-    &:hover {
-      color: var(--c-white);
-      background-color: var(--c-black);
-
-      img {
-        filter: invert(0);
-      }
-    }
-
-    &-icon {
-      transform: rotate(90deg);
-      filter: invert(1);
-
-      &--active {
-        transform: rotate(270deg);
-      }
-    }
-  }
-}
-
-// .slide-enter-active,
-// .slide-leave-active {
-//   transition: transform 0.5s ease;
-// }
-
-// .slide-enter-from,
-// .slide-leave-to {
-//   transform: translateX(-100%);
-// }
+@import '@/assets/css/components/NavbarBase';
 </style>

@@ -1,4 +1,4 @@
-export interface MenuItemInterface {
+export interface MenuItem {
 	label: string
 	link: string
 	hash?: string

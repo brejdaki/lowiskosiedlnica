@@ -74,53 +74,5 @@
 </template>
 
 <style lang="scss" scoped>
-.info-offer {
-  padding-top: 5rem;
-  position: relative;
-
-  @include breakpoint-to('desktop') {
-    font-size: 1.1rem;
-  }
-
-  p {
-    &:last-child {
-      color: var(--c-black-alpha);
-    }
-
-    @include breakpoint-to('desktop-small') {
-      max-width: 80%;
-    }
-  }
-
-  ul {
-    list-style-type: circle;
-    padding-left: 1.1rem;
-    margin: 1.5rem 0;
-
-    @include breakpoint-to('mobile-xlarge') {
-      column-count: 2;
-      column-gap: 3rem;
-    }
-
-    @include breakpoint-to('desktop-small') {
-      padding-left: 1.3rem;
-      column-count: 3;
-    }
-
-    @include breakpoint-to('desktop') {
-      max-width: 90%;
-    }
-
-    li {
-      span,
-      &::marker {
-        color: var(--c-black-alpha);
-      }
-
-      &:not(:last-child) {
-        margin-bottom: .5rem;
-      }
-    }
-  }
-}
+@import '@/assets/css/components/InfoOffer';
 </style>

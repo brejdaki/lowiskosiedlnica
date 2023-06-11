@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { menuItem } from '@/composables/MenuItem';
+import { NavbarMenuItems } from '~~/composables/NavbarMenuItems';
 
 const getYear = new Date().getFullYear()
 </script>
@@ -25,7 +25,7 @@ const getYear = new Date().getFullYear()
       class="footer-page__list"
     >
       <li
-        v-for="(item, index) in menuItem"
+        v-for="(item, index) in NavbarMenuItems"
         :key="index"
         class="footer-page__list-item"
       >
@@ -72,93 +72,5 @@ const getYear = new Date().getFullYear()
 </template>
 
 <style lang="scss" scoped>
-.footer-page {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas: 
-    "contact"
-    "menu"
-    "copyright";
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 0;
-
-  @include breakpoint-to('desktop') {
-    font-size: 1.1rem;
-  }
-
-  @include breakpoint-to('desktop-small') {
-    grid-template-columns: auto 1fr;
-    grid-template-areas: 
-      "contact menu"
-      "contact copyright";
-    grid-column-gap: 0;
-  }
- 
-  &__outer {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    background-color: var(--c-lgray);
-  }
-
-  &__contact {
-    grid-area: contact;
-    margin-bottom: 2rem;
-    text-decoration: none;
-    pointer-events: none;
-    color: var(--c-secondary);
-
-    @include breakpoint-to('desktop-small') {
-      margin: 0;
-    }
-  }
-
-  &__list {
-    grid-area: menu;
-    display: flex;
-    flex-flow: column;
-    margin-bottom: 2rem;
-
-    @include breakpoint-to('desktop-small') {
-      margin: 0;
-      flex-flow: row;
-      justify-content: flex-end;
-      gap: 1rem;
-      margin-right: 7rem;
-    }
-
-    &-item {
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  &__copyright {
-    grid-area: copyright;
-    display: flex;
-    flex-flow: column-reverse;
-    gap: 1rem;
-
-    @include breakpoint-to('desktop-small') {
-      justify-content: flex-end;
-      align-items: flex-end;
-      flex-flow: row;
-      gap: 2rem;
-    }
-  }
-
-  &__created {
-    font-size: .75rem;
-    line-height: 1.5rem;
-
-    @include breakpoint-to('desktop') {
-      line-height: 1.75rem;
-    }
-  }
-
-  &__plant {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 5rem;
-  }
-}
+@import '@/assets/css/components/FooterPage';
 </style>

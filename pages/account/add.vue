@@ -3,7 +3,7 @@ import { Form } from 'vee-validate';
 import * as Yup from 'yup';
 
 definePageMeta({
-  layout: 'main',
+  layout: 'account',
   middleware: 'auth'
 })
 
@@ -87,10 +87,6 @@ function handleAdd() {
   form.image = ''
   isUploadItem.value = false
 }
-
-function test(e) {
-  console.log('test', e)
-}
 </script>
 
 <template>
@@ -167,6 +163,7 @@ function test(e) {
     </div>
   </Form>
 </div>
+
 <div 
   v-else
   class="container account"

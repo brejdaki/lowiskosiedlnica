@@ -1,6 +1,4 @@
-<script setup>
-// import { defineAsyncComponent } from 'vue'
-
+<script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { useMainStore } from '@/stores/main'
 import { Hash } from '@/composables/enum/hash'
@@ -19,18 +17,10 @@ useHead({
   ],
 })
 
-// const AccountLogin = defineAsyncComponent(() => import('@/components/AccountLogin.vue'))
-// const AccountRegister = defineAsyncComponent(() => import('@/components/AccountRegister.vue'))
-// const AccountForgotPassword = defineAsyncComponent(() => import('@/components/AccountForgotPassword.vue'))
-// const AccountResetPassword = defineAsyncComponent(() => import('@/components/AccountResetPassword.vue'))
-// const ModalBase = defineAsyncComponent(() => import('@/components/ModalBase.vue'))
-
-// const store = useMainStore()
 const route = useRoute()
 
 const { 
   isModalVisible,
-  isSelectVisible,
   isLayerOverflowVisible 
 } = storeToRefs(useMainStore()) 
 
@@ -104,6 +94,11 @@ const isAccountResetPassword = computed(() => {
 <style lang="scss">
 main {
   padding-top: 4rem;
+  min-height: calc(100vh - 600px);
+
+  @include breakpoint-to('desktop-small') {
+    min-height: calc(100vh - 200px);
+  }
 }
 
 .fade-enter-active,

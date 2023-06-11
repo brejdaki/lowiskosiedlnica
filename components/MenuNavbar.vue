@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { menuItem } from '@/composables/MenuItem';
+import { NavbarMenuItems } from '@/composables/NavbarMenuItems';
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { menuItem } from '@/composables/MenuItem';
   class="navbar__list"
 >
   <template
-    v-for="item in menuItem"
+    v-for="item in NavbarMenuItems"
   >
     <li
       v-if="item.isDesktop"
@@ -29,17 +29,5 @@ import { menuItem } from '@/composables/MenuItem';
 </template>
 
 <style lang="scss" scoped>
-.navbar__list {
-  display: flex;
-  gap: 1.5rem;
-  flex-flow: row;
-
-  &-item {
-    a {
-      font-size: 1.25rem;
-      letter-spacing: 1px;
-      @include hover-underline(var(--c-primary));
-    }
-  }
-}
+@import '@/assets/css/components/MenuNavbar';
 </style>

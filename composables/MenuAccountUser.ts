@@ -1,6 +1,6 @@
-import { MenuItemInterface } from "@/composables/MenuItemInterface"
+import { MenuItem } from "@/composables/interface/MenuItem"
 
-export const menuAccount: MenuItemInterface[] = [
+export const menuAccount: MenuItem[] = [
   {
 		label: "Mój profil",
 		link: "/account",

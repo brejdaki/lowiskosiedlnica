@@ -1,17 +1,29 @@
 import { defineStore } from "pinia"
 
-// interface State {
-// 	user: any
-// }
+interface State {
+	type: string
+}
 
 export const useUserStore = defineStore("user", {
-	// state: (): State => ({
-	// 	user: {},
-	// }),
-	// getters: {},
-	// actions: {
-	// 	setUser(payload: any) {
-	// 		this.user = payload
-	// 	},
-	// },
+	state: (): State => ({
+		type: '',
+	}),
+
+	getters: {},
+
+	actions: {
+		async setUserType() {
+			const config = useRuntimeConfig()
+			const cookie = useCookie('strapi_jwt')
+
+			await useFetch(`${config.public.strapiUrl}/api/users/me?populate=*`, {
+				method: "GET",
+				headers: {
+					'Authorization': 'Bearer ' + cookie.value,
+				},
+			}).then((resp) => {
+				this.type = resp?.data?.value?.role?.type
+			})
+		},
+	},
 })

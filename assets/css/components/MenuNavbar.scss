@@ -1,0 +1,13 @@
+.navbar__list {
+  display: flex;
+  gap: 1.5rem;
+  flex-flow: row;
+
+  &-item {
+    a {
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      @include hover-underline(var(--c-primary));
+    }
+  }
+}

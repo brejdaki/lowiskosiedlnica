@@ -1,21 +1,26 @@
 <script lang="ts" setup>
 import { Form } from 'vee-validate';
 import * as Yup from 'yup';
+import { storeToRefs } from 'pinia'
 
 import { useMainStore } from '@/stores/main'
+import { useUserStore } from '@/stores/user'
 import { Hash } from '@/composables/enum/hash'
 
-const {
-  login,
-  getProviderAuthenticationUrl
+const { 
+  login, 
+  // getProviderAuthenticationUrl 
 } = useStrapiAuth()
-const store = useMainStore()
+const storeMain = useMainStore()
+const storeUser = useUserStore()
 const router = useRouter()
 const route = useRoute()
 
 const isLoading = ref(false)
 const isAuthorizationError = ref(false)
 const isButtonDisabled = ref(false)
+
+const { type } = storeToRefs(useUserStore()) 
 
 const isUserConfirmed = computed((): boolean => {
   return route.hash === Hash.loginConfirmed
@@ -25,9 +30,9 @@ const isSubmitButtonDisabled = computed((): boolean => {
   return isButtonDisabled.value
 })
 
-const form = reactive({
-  identifier: '',
-  password: '',
+const form = reactive({ 
+  identifier: '', 
+  password: '', 
 })
 
 const schema = Yup.object().shape({
@@ -44,9 +49,14 @@ async function onSubmit(_values: any, actions: any) {
 
   try {
     await login(form)
+    await storeUser.setUserType()
 
-    store.setModalVisible(false)
-    router.push('/account')
+    storeMain.setModalVisible(false)
+
+    type.value === 'authenticated' 
+      ? router.push('/account') 
+      : router.push('/admin')
+    
   } catch (e) {
     isAuthorizationError.value = true
     actions.resetForm()
@@ -60,32 +70,29 @@ function onInvalidSubmit(): void {
 
   setTimeout(() => {
     isButtonDisabled.value = false
-  }, 2000);
+  }, 1000);
 }
 
-const handleFacebookLogin = (): void => {
-  window.location = getProviderAuthenticationUrl('facebook')
-}
-
-// const handleGitLogin = (): void => {
-//   window.location = getProviderAuthenticationUrl('github')
+// const handleFacebookLogin = (): void => {
+//   window.location = getProviderAuthenticationUrl('facebook')
 // }
+
 </script>
 
 <template>
 <div class="form__header">
   <h3 class="title">Logowanie</h3>
 
-  <div
+  <div 
     v-if="$viewport.isGreaterOrEquals('mobile-large') && !isUserConfirmed"
     class="form__account"
   >
-    Nie masz konta?
+    Nie masz konta? 
     <NuxtLink :to="Hash.register">Zarejestruj się</NuxtLink>.
   </div>
 </div>
 
-<div
+<div 
   v-if="isUserConfirmed && !isAuthorizationError"
   class="form__success"
 >
@@ -114,7 +121,7 @@ const handleFacebookLogin = (): void => {
     @input="form.password = $event.target.value"
   />
 
-  <div
+  <div 
     v-if="isAuthorizationError"
     class="form__error"
   >
@@ -122,7 +129,7 @@ const handleFacebookLogin = (): void => {
     <NuxtLink :to="Hash.forgotPassword">utwórz nowe hasło</NuxtLink>.
   </div>
 
-  <ButtonBase
+  <ButtonBase 
     :disabled="isSubmitButtonDisabled"
     class="form__submit"
   >
@@ -132,77 +139,23 @@ const handleFacebookLogin = (): void => {
   </ButtonBase>
 </form>
 
-<ButtonBase
+<!-- <ButtonBase
   @clicked="handleFacebookLogin"
 >
   <template v-slot:text>
     Zaloguj za pomocą facebooka
   </template>
-</ButtonBase>
-
-<!-- <ButtonBase
-  @clicked="handleGitLogin"
->
-  <template v-slot:text>
-    Zaloguj za pomocą github
-  </template>
 </ButtonBase> -->
 
-<div
+<div 
   v-if="$viewport.isLessThan('mobile-large') && !isUserConfirmed"
   class="form__account"
 >
-  Nie masz konta?
+  Nie masz konta? 
   <NuxtLink :to="Hash.register">Zarejestruj się</NuxtLink>.
 </div>
 </template>
 
 <style lang="scss" scoped>
-.form {
-  &__error {
-    color: var(--c-black-alpha);
-    margin: 0 0.5rem;
-
-    span {
-      display: inline-block;
-      margin-bottom: .5rem;
-      color: var(--c-from-error);
-    }
-  }
-
-  &__success {
-    color: var(--c-black-alpha);
-    margin-bottom: 1.5rem;
-
-    span {
-      display: inline-block;
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-      color: var(--c-form-succes);
-    }
-  }
-
-  &__header {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  &__account {
-    margin-top: 2.5rem;
-    text-align: center;
-    color: var(--c-black-alpha);
-
-    @include breakpoint-to('mobile-large') {
-      margin: 0;
-      text-align: right;
-    }
-  }
-
-  &__submit {
-    margin-top: 1.5rem;
-  }
-}
+@import '@/assets/css/components/AccountLogin';
 </style>

@@ -2,7 +2,7 @@
 import qs from 'qs'
 
 definePageMeta({
-  layout: 'main',
+  layout: 'account',
   middleware: 'auth'
 })
 
@@ -10,7 +10,6 @@ const config = useRuntimeConfig()
 const { delete: _delete } = useStrapi()
 const user = useStrapiUser()
 const router = useRouter()
-const publicUrl = config.public.strapiUrl
 const cookie = useCookie('strapi_jwt')
 
 const fishesQuery = qs.stringify({
@@ -52,6 +51,7 @@ async function onDelete (item: object) {
 
 <template>
 <div
+  v-if="user && data"
   class="container account" 
 >
   <h2>Cześć {{ user.name }}</h2>
@@ -83,7 +83,7 @@ async function onDelete (item: object) {
       <NuxtImg
         loading="lazy"
         fit="contain"
-        :src="publicUrl + item.attributes.image.data.attributes.formats.medium.url"
+        :src="config.public.strapiUrl + item.attributes.image.data.attributes.formats.medium.url"
       />
 
       <!-- <div class="account__item-inner">
@@ -144,21 +144,16 @@ async function onDelete (item: object) {
   }
 
   &__item {
-    // display: grid;
-    // grid-template-columns: 40% 1fr;
+    overflow: hidden;
+    aspect-ratio: 16/9;
     border-radius: 0.25rem;
-    // border: 1px solid var(--c-black-alpha);
     overflow: hidden;
 
-    // &-photo {
-    // }
-
-    // &-inner {
-    //   padding: 1rem 0.5rem;
-    //   display: flex;
-    //   flex-flow: column;
-    //   gap: 0.5rem
-    // }
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

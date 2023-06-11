@@ -1,0 +1,34 @@
+.modal {
+	position: fixed;
+	padding: 0 1rem 0.5rem;
+	top: 50%;
+	left: 0;
+	right: 0;
+	z-index: var(--z-modal);
+	background-color: var(--c-white);
+	transform: translateY(-50%);
+
+	@include breakpoint-to('mobile-xlarge') {
+		top: 50%;
+		right: inherit;
+		left: 50%;
+		width: 30rem;
+		height: auto;
+		padding: 1rem 2rem;
+		border-radius: .5rem;
+		box-shadow: 0 0 1rem var(--b-shadow-menu);
+		transform: translate(-50%,-50%);
+	}
+
+	&__header {
+    display: flex;
+		height: 4rem;
+    flex-flow: row;
+		align-items: center;
+    justify-content: flex-end;
+	}
+
+	&__content {
+		padding: 0 0.5rem 1.5rem;
+	}
+}

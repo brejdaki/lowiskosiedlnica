@@ -40,29 +40,5 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-.button {
-  @include reset-button;
-  padding: .5rem 1rem;
-  border: 1px solid var(--c-secondary);
-  background-color: var(--c-secondary);
-  color: var(--c-white);
-  border-radius: 0.25rem;
-  width: 100%;
-  min-height: 3rem;
-  letter-spacing: 1px;
-  transition: all 250ms;
-
-  @include breakpoint-to('mobile-xlarge') {
-    &:hover {
-      color: var(--c-secondary);
-      background-color: var(--c-white);
-    }
-  }
-
-  &[disabled] {
-    color: var(--c-white);
-    background-color: var(--c-black-alpha);
-    cursor: not-allowed;
-  }
-}
+@import '@/assets/css/components/ButtonBase';
 </style>

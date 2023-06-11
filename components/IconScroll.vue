@@ -18,15 +18,5 @@ const setIconName = computed((): string => {
 </template>
 
 <style lang="scss" scoped>
-.scroll-icon {
-  opacity: 0.5;
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: var(--z-navbar);
-
-  @include breakpoint-to('desktop-small') {
-    bottom: 1.5rem;
-  }
-}
+@import '@/assets/css/components/IconScroll';
 </style>

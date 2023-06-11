@@ -1,6 +1,6 @@
-import { MenuItemInterface } from "@/composables/MenuItemInterface"
+import { MenuItem } from "@/composables/interface/MenuItem"
 
-export const menuItem: MenuItemInterface[] = [
+export const NavbarMenuItems: MenuItem[] = [
 	{
 		label: "Aktualności",
 		link: "/#aktualnosci",

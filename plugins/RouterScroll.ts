@@ -1,4 +1,3 @@
-import { defineNuxtPlugin } from "#app"
 import { Hash } from "@/composables/enum/hash"
 
 interface To {

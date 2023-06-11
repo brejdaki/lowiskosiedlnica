@@ -145,50 +145,5 @@ const schema = Yup.object().shape({
 </template>
 
 <style lang="scss" scoped>
-.form {
-  &__error {
-    color: var(--c-black-alpha);
-    margin: 0 0.5rem;
-
-    span {
-      display: inline-block;
-      margin-bottom: .5rem;
-      color: var(--c-from-error);
-    }
-  }
-
-  &__success {
-    color: var(--c-black-alpha);
-
-    span {
-      display: inline-block;
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-      color: var(--c-form-succes);
-    }
-  }
-
-  &__header {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  &__account {
-    margin-top: 2.5rem;
-    text-align: center;
-    color: var(--c-black-alpha);
-
-    @include breakpoint-to('mobile-large') {
-      margin: 0;
-      text-align: right;
-    }
-  }
-
-  &__submit {
-    margin-top: 1.5rem;
-  }
-}
+@import '@/assets/css/components/AccountRegister';
 </style>

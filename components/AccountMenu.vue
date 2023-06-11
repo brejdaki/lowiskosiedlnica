@@ -1,21 +1,34 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import { onClickOutside } from '@vueuse/core'
+
 import { useMainStore } from '@/stores/main'
-import { menuAccount } from '@/composables/MenuAccount';
+import { useUserStore } from '@/stores/user'
+import { menuAccount } from '@/composables/MenuAccountUser';
+import { menuAdmin } from '@/composables/MenuAccountAdmin';
 
 const viewport = useViewport()
 const router = useRouter()
-const store = useMainStore()
+const storeMain = useMainStore()
 const { logout } = useStrapiAuth()
+
+const { type } = storeToRefs(useUserStore()) 
+
 const menu = ref(null)
 
+const menuItems = computed(() => {
+  return type.value === 'authenticated'
+    ? menuAccount
+    : menuAdmin
+})
+
 function handleMenuItem() {
-  store.setMobileMenuVisible(false)
-  store.setMenuOverflowLayerVisible(false)
-  store.setUserMenuVisible(false)
+  storeMain.setMobileMenuVisible(false)
+  storeMain.setMenuOverflowLayerVisible(false)
+  storeMain.setUserMenuVisible(false)
 }
 
-async function handleLogout() {
+async function onLogout() {
   logout()
   handleMenuItem()
   await router.push('/')
@@ -36,7 +49,7 @@ onClickOutside(menu, (event: PointerEvent) => {
     class="account-menu__list"
   >
     <li
-      v-for="(item, index) in menuAccount"
+      v-for="(item, index) in menuItems"
       :key="index"
       :class="[
         'account-menu__list-item', 
@@ -59,7 +72,7 @@ onClickOutside(menu, (event: PointerEvent) => {
 
   <button
     class="account-menu__button"
-    @click="handleLogout"
+    @click="onLogout"
   >
     Wyloguj się
   </button>
@@ -67,69 +80,5 @@ onClickOutside(menu, (event: PointerEvent) => {
 </template>
 
 <style lang="scss" scoped>
-.account-menu {
-  background-color: var(--c-white);
-  position: fixed;
-  width: 16.938rem;
-  z-index: var(--z-upper-menu);
-  top: 4rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 3rem 1.5rem 0;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-
-  @include breakpoint-to('desktop-small') {
-    position: absolute;
-    top: 100%;
-    right: 1.5rem;
-    left: inherit;
-    width: auto;
-    padding: 1rem 1.5rem;
-    border: 1px solid var(--c-black);
-    border-radius: 0.25rem;
-    bottom: inherit;
-  }
-
-  &__list {
-    &-item {
-      font-size: 1.75rem;
-
-      &:not(:last-child) {
-        margin-bottom: 0.5rem;
-      }
-
-      @include breakpoint-to('desktop-small') {
-        font-size: 1.2rem;
-        color: var(--c-black)
-      }
-    }
-  }
-
-  &__button {
-    @include reset-button;
-		height: 5.25rem;
-    width: calc(100% + 3rem);
-		margin: 3rem -1.5rem 0;
-		background-color: var(--c-black-alpha);
-		color: var(--c-white);
-		font-size: 1.2rem;
-		letter-spacing: 1px;
-		padding: 0 1.5rem;
-		text-align: left;
-
-    @include breakpoint-to('desktop-small') {
-      width: max-content;
-      margin: 0.75rem 0 0 0;
-      height: auto;
-      background-color: transparent;
-      padding: 0;
-      letter-spacing: 0;
-      color: inherit;
-      @include hover-underline(var(--c-primary))
-    }
-  }
-}
+@import '@/assets/css/components/AccountMenu';
 </style>

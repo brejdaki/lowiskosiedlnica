@@ -32,7 +32,7 @@ const { data, pending } = await useFetch(`${config.public.strapiUrl}/api/fishes?
     >
       <NuxtImg
         loading="lazy"
-        fit="contain"
+        fit="cover"
         :src="config.public.strapiUrl + item.attributes.image.data.attributes.formats.medium.url"
       />
     </div>
@@ -56,6 +56,18 @@ const { data, pending } = await useFetch(`${config.public.strapiUrl}/api/fishes?
 
     @include breakpoint-to('desktop-small') {
       grid-template-columns: auto auto auto auto;
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
   }
 }

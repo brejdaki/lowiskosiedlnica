@@ -85,28 +85,5 @@ const schema = Yup.object().shape({
 </template>
 
 <style lang="scss" scoped>
-.form {
-  &__success {
-    color: var(--c-black-alpha);
-
-    span {
-      display: inline-block;
-      font-size: 1.2rem;
-      margin-bottom: .5rem;
-      color: var(--c-form-succes);
-    }
-  }
-
-  &__header {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  &__submit {
-    margin-top: 1.5rem;
-  }
-}
+@import '@/assets/css/components/AccountForgotPassword';
 </style>

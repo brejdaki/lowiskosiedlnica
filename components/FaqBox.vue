@@ -20,8 +20,5 @@
 </template>
 
 <style lang="scss" scoped>
-.faq {
-  position: relative;
-  margin-bottom: 5rem;
-}
+@import '@/assets/css/components/FaqBox';
 </style>

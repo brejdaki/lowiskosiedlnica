@@ -67,39 +67,5 @@
 </template>
 
 <style lang="scss" scoped>
-.info-fishery {
-  position: relative;
-
-  @include breakpoint-to('desktop') {
-    font-size: 1.1rem;
-  }
-
-  &__inner {
-    &:first-child {
-      margin-bottom: 2rem;
-    }
-
-    @include breakpoint-to('desktop-small') {
-      &:first-child {
-        max-width: 60%;
-      }
-
-      max-width: 80%;
-    }
-  }
-
-  span {
-    color: var(--c-primary-darker)
-  }
-
-  &__cloud {
-    position: absolute;
-    right: 5rem;
-    top: 5rem;
-
-    @include breakpoint-to('desktop') {
-      right: 9rem;
-    }
-  }
-}
+@import '@/assets/css/components/InfoFishery';
 </style>

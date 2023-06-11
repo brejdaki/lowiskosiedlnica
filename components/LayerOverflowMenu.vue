@@ -20,20 +20,5 @@ function handleOverflowLayer() {
 </template>
 
 <style lang="scss" scoped>
-.overflow-layer {
-  position: absolute;
-  top: 4rem;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: var(--z-overlayer-menu);
-  background-color: var(--c-black-alpha);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-
-  @include breakpoint-to('mobile-xlarge') {
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-  }
-}
+@import '@/assets/css/components/LayerOverflowMenu';
 </style>

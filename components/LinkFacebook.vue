@@ -42,34 +42,5 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.link-facebook {
-  // transition: all 250ms;
-
-  &::before {
-    display: none;
-  }
-
-  &:hover {
-    @include breakpoint-to('desktop') {
-      color: var(--c-white);
-      background-color: var(--c-facebook);
-
-      img {
-        filter: brightness(100);
-      }
-    }
-  }
-
-  &--desc {
-    display: flex;
-    width: fit-content;
-    gap: 1rem;
-    padding: .25rem 1rem .25rem .25rem;
-    align-items: center;
-    border: 1px solid var(--c-facebook);
-    border-radius: .25rem;
-    color: var(--c-facebook);
-    font-size: 0.875rem;
-  }
-}
+@import '@/assets/css/components/LinkFacebook';
 </style>
